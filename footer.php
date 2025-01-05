@@ -1,6 +1,5 @@
 
-    <!--=================================
-    Footer-->
+    <!--=================================Footer-->
     <footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(images/bg/03.jpg);">
       <div class="container pt-5">
         <div class="row pb-5 pb-lg-6 mb-lg-3">

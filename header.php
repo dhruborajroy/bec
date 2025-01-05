@@ -1,3 +1,8 @@
+<?php 
+require('./inc/constant.inc.php');
+require('./inc/connection.inc.php');
+require('./inc/function.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -95,14 +100,14 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="about-us.php">About Us</a></li>
-                        <li><a class="dropdown-item" href="teachers.php">Teachers</a></li>
-                        <li><a class="dropdown-item" href="teachers-single.php">Teacher Single</a></li>
-                        <li><a class="dropdown-item" href="gallery.php">Gallery</a></li>
+                        <li><a class="dropdown-item" href="brief-introduction.php">Brief Introduction</a></li>
+                        <li><a class="dropdown-item" href="history.php">History</a></li>
+                        <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
+                        <li><a class="dropdown-item" href="Vision-mission.php">Vision and Mission</a></li>
                         <li><a class="dropdown-item" href="pricing.php">Pricing</a></li>
                         <li><a class="dropdown-item" href="faq.php">Faq</a></li>
                         <li><a class="dropdown-item" href="sign-in.php">Sign In</a></li>
@@ -155,5 +160,4 @@
         </div>
       </div>
     </header>
-    <!--=================================
-    Header -->
+    <!--=================================Header -->

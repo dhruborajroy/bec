@@ -3,8 +3,19 @@
     <section class="banner position-ralative">
       <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
         <div class="swiper-wrapper">
+          <?php
+            $active="";
+              $slider_sql="select * from `sliders` order by added_on desc";
+              $slider_res=mysqli_query($con,$slider_sql);
+              if(mysqli_num_rows($slider_res)>0){
+              $i=1;
+              while($slider_row=mysqli_fetch_assoc($slider_res)){
+              if($i=='2'){
+                  $active="active";
+              }
+          ?>
           <!-- Swiper Slider 1-->
-          <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/bg/01.jpg); background-size: cover; background-position: center center;">
+          <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
             <div class="swipeinner container">
               <div class="row justify-content-center text-center">
                 <div class="col-lg-10 col-md-12">
@@ -12,16 +23,33 @@
                     <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
                       <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s"></h1>
                       <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s">
-                        <!-- <p class="d-none d-sm-block">The first thing to remember about success is that it is a process nothing more, nothing less. There is really no magic to it and it’s not reserved only for a select few people.</p> -->
                       </div>
-                      <!-- <a href="#" class="animated4 btn btn-white mt-4 mr-1 mr-sm-2" data-swiper-animation="fadeInUp" data-duration="3.5s" data-delay="0.25s">Read More<span></span></a>
-                      <a href="#" class="animated4 btn btn-primary mt-4 ml-1 ml-sm-2" data-swiper-animation="fadeInUp" data-duration="3.5s" data-delay="0.25s">Learn More<span></span></a> -->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <?php 
+              $i++;
+              } } else { ?>
+                <!-- Swiper Slider 1-->
+                <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/1.png  ); background-size: cover; background-position: center center;">
+                  <div class="swipeinner container">
+                    <div class="row justify-content-center text-center">
+                      <div class="col-lg-10 col-md-12">
+                        <div class="slider-1">
+                          <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
+                            <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s">Default Slider</h1>
+                            <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          <?php } ?>
         </div>
       </div>
      <!-- Pagination -->
@@ -34,18 +62,16 @@
     <section class="space-ptb">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6 mb-4 mb-lg-0 pr-xl-6">
+          <div class="col-lg-6 mb-4 mb-lg-7 pr-xl-6">
             <div class="section-title mb-4">
-              <h2 class="title">Personal Education, Extraordinary Success</h2>
-              <p class="lead mb-0">Commitment is something that comes from understanding that everything has its price and then having the willingness to pay that price.</p>
+              <h2 class="title">Short Introduction</h2>
+              <p class="lead mb-0">Barishal Engineering College (Bengali: বরিশাল প্রকৌশল মহাবিদ্যালয়) commonly referred to as BEC (Bengali: বইক) is a public undergraduate college in Barishal, Bangladesh. </p>
             </div>
-            <p class="mb-4 mb-lg-5">The other virtues practice in succession by Franklin were silence, order, resolution, frugality, industry, sincerity, Justice, moderation, cleanliness, tranquility, chastity and humility. For the summary order he followed a little scheme of employing his time each day.</p>
-            <a href="#" class="btn btn-primary btn-round">Read More</a>
           </div>
           <div class="col-lg-6 pr-lg-5">
             <div class="row">
               <div class="col-sm-10">
-                <img class="img-fluid w-100 border-radius" src="images/about/01.jpg" alt="">
+                <img class="img-fluid w-100 border-radius" src="images/bg/02.jpg" alt="">
               </div>
             </div>
           </div>
@@ -65,7 +91,7 @@
               </div>
               <div class="counter-content">
                 <span class="timer" data-to="1790" data-speed="10000">1790</span>
-                <label>Satisfied Students</label>
+                <label>Students</label>
               </div>
             </div>
           </div>
@@ -76,7 +102,7 @@
               </div>
               <div class="counter-content align-self-center">
                 <span class="timer" data-to="245" data-speed="10000">245</span>
-                <label>Course Completed</label>
+                <label>Teachers</label>
               </div>
             </div>
           </div>
@@ -87,7 +113,7 @@
               </div>
               <div class="counter-content">
                 <span class="timer" data-to="491" data-speed="10000">491</span>
-                <label>Expert Advisors</label>
+                <label>Graduates</label>
               </div>
             </div>
           </div>
@@ -98,7 +124,7 @@
               </div>
               <div class="counter-content">
                 <span class="timer" data-to="1090" data-speed="10000">1090</span>
-                <label>Award Winning</label>
+                <label>Institutes</label>
               </div>
             </div>
           </div>
@@ -154,7 +180,7 @@
 
 
 
-              
+
             </div>
           </div>
         </div>
@@ -166,7 +192,7 @@
     <section class="bg-dark">
       <div class="container-fluid">
         <div class="row no-guuters">
-          <div class="col-lg-6 bg-holder d-none d-lg-block" style="background-image: url(images/bg/05.jpg);">
+          <div class="col-lg-6 bg-holder d-none d-lg-block" style="background-image: url(images/bg/01.jpg);">
           </div>
           <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
             <div class="section-title">
@@ -225,87 +251,33 @@
                 <div class="events">
                   <div class="row">
                     <div class="col-12">
-                    <div class="events shadow p-4 bg-white border-radius">
-                      <div class="row">
-                      <div class="col-lg-3">
-                        <div class="events-img mb-4 mb-lg-0">
-                          <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
+                        <div class="events shadow p-4 bg-white border-radius">
+                          <div class="row">
+                          <div class="col-lg-3">
+                            <div class="events-img mb-4 mb-lg-0">
+                              <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
+                            </div>
+                          </div>
+                          <div class="col-lg-6 align-self-center">
+                            <div class="events-content">
+                              <div class="events-tag mb-3">
+                                <a href="#" class="badge-danger">Art Competition</a>
+                              </div>
+                              <a href="event-detail.html" class="text-dark h5">Young leaders in tech policy fellowship</a>
+                              <div class="events-meta my-3">
+                                <ul class="list-unstyled mb-0 d-flex">
+                                  <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 5 Oct, 2020</a></li>
+                                  <li><a href="#"><i class="fas fa-clock pr-1"></i>  9:00 AM - 11:00 AM</a></li>
+                                </ul>
+                              </div>
+                              <p class="text-dark mb-lg-0">Franklin’s extraordinary success in life and politics can be attributed to his perseverance to overcome his personal liabilities, and his desire to constantly become better.</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 align-self-center text-lg-right text-left">
+                              <a class="btn btn-dark btn-round" href="#">Join Event</a>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 align-self-center">
-                        <div class="events-content">
-                          <div class="events-tag mb-3">
-                            <a href="#" class="badge-danger">Art Competition</a>
-                          </div>
-                          <a href="event-detail.html" class="text-dark h5">Young leaders in tech policy fellowship</a>
-                           <div class="events-meta my-3">
-                            <ul class="list-unstyled mb-0 d-flex">
-                              <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 5 Oct, 2020</a></li>
-                              <li><a href="#"><i class="fas fa-clock pr-1"></i>  9:00 AM - 11:00 AM</a></li>
-                            </ul>
-                          </div>
-                          <p class="text-dark mb-lg-0">Franklin’s extraordinary success in life and politics can be attributed to his perseverance to overcome his personal liabilities, and his desire to constantly become better.</p>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 align-self-center text-lg-right text-left">
-                          <a class="btn btn-dark btn-round" href="#">Join Event</a>
-                      </div>
-                    </div>
-                    </div>
-                    <div class="events shadow mt-4 p-4 bg-white border-radius">
-                      <div class="row">
-                      <div class="col-lg-3">
-                        <div class="events-img mb-4 mb-lg-0">
-                          <img class="img-fluid border-0" src="images/events/02.jpg" alt="">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 align-self-center">
-                        <div class="events-content">
-                          <div class="events-tag mb-3">
-                            <a href="#" class="badge-success">Architecture Events</a>
-                          </div>
-                          <a href="event-detail.html"  class="text-dark h5">Expert panel- careers in tech policy</a>
-                           <div class="events-meta my-3">
-                            <ul class="list-unstyled mb-0 d-flex">
-                              <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 05 Nov, 2020</a></li>
-                              <li><a href="#"><i class="fas fa-clock pr-1"></i>  2:00 PM - 4:00 PM</a></li>
-                            </ul>
-                          </div>
-                          <p class="text-dark mb-lg-0">Next time you really want to achieve something, take time to focus on your own personal journal. What is your temptation that is standing in your way to greatness?</p>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 align-self-center text-lg-right text-left">
-                          <a class="btn btn-dark btn-round" href="#">Join Event</a>
-                      </div>
-                    </div>
-                    </div>
-                    <div class="events shadow mt-4 p-4 bg-white border-radius">
-                      <div class="row">
-                      <div class="col-lg-3">
-                        <div class="events-img mb-4 mb-lg-0">
-                          <img class="img-fluid border-0" src="images/events/03.jpg" alt="">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 align-self-center">
-                        <div class="events-content">
-                          <div class="events-tag mb-3">
-                            <a href="#" class="badge-warning">Medicine Events</a>
-                          </div>
-                          <a href="event-detail.html" class="text-dark h5">Health and life expectancy</a>
-                           <div class="events-meta my-3">
-                            <ul class="list-unstyled mb-0 d-flex">
-                              <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 27 Nov, 2020</a></li>
-                              <li><a href="#"><i class="fas fa-clock pr-1"></i>  4:00 PM - 6:00 PM</a></li>
-                            </ul>
-                          </div>
-                          <p class="text-dark mb-lg-0">Get yourself nice and relaxed and settled. Concentrate on your breathing, engage in the moment and spend some time being still, quiet and drift inside of your own mind.</p>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 align-self-center text-lg-right text-left">
-                          <a class="btn btn-dark btn-round" href="#">Join Event</a>
-                      </div>
-                    </div>
-                    </div>
                     </div>
                   </div>
                 </div>
@@ -318,8 +290,7 @@
     <!--=================================
     Event -->
 
-    <!--=================================
-    Team -->
+    <!--=================================Team -->
     <section class="space-ptb bg-light">
       <div class="container">
         <div class="row justify-content-center">
@@ -327,13 +298,16 @@
             <!-- Section Title START -->
             <div class="section-title">
               <h2>Meet Our Team</h2>
-              <p>Meet the outstanding performers in our industry-award-winning team of professionals</p>
+              <!-- <p>Meet the outstanding performers in our industry-award-winning team of professionals</p> -->
             </div>
             <!-- Section Title END -->
           </div>
         </div>
         <div class="row">
+
+
           <div class="col-lg-4 col-md-4 col-sm-6 mb-4 mb-md-0">
+
             <!-- team-01 START -->
             <div class="team">
               <div class="team-img">
@@ -351,43 +325,10 @@
               </div>
             </div>
             <!-- team-01 END -->
+             
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 mb-4 mb-md-0">
-            <!-- team-01 START -->
-            <div class="team">
-                <img class="img-fluid" src="images/team/02.jpg" alt="">
-              <div class="team-info">
-                <a href="teachers-single.html" class="team-name">Ora Bryan</a>
-                <p class="team-leader">Illustration</p>
-                <ul class="list-unstyled">
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- team-01 END -->
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <!-- team-01 START -->
-            <div class="team">
-              <div class="team-img">
-                <img class="img-fluid" src="images/team/03.jpg" alt="">
-              </div>
-              <div class="team-info">
-                <a href="teachers-single.html" class="team-name">Gwen Bass</a>
-                <p class="team-leader">Sales and Marketing</p>
-                <ul class="list-unstyled">
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- team-01 END -->
-          </div>
+        
+        
         </div>
       </div>
     </section>
@@ -435,7 +376,7 @@
             <div class="blog d-md-flex border-bottom mb-4 pb-4">
               <!-- Blog image -->
               <div class="blog-image mr-0 mr-sm-3">
-                <img class="img-fluid border-radius" src="images/blog/05.jpg" alt="">
+                <img class="img-fluid border-radius" src="images/blog/01.jpg" alt="">
               </div>
               <!-- Blog content -->
               <div class="blog-content pt-4 pt-md-0 border-0">
@@ -489,39 +430,6 @@
         </div>
       </div>
     </section>
-    <!--=================================
-    Articles -->
+    <!--=================================Articles -->
 
-    <!--=================================
-    Call to action -->
-    <section class="positoin-relative z-index-9">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="p-4 bg-primary border-radius">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="row justify-content-between">
-                    <div class="col-lg-7 col-md-8 align-self-center mb-4 mb-md-0">
-                      <h2>Subscribe</h2>
-                      <p class="mb-0 text-white">Now go push your own limits and succeed!</p>
-                    </div>
-                    <div class="col-lg-5 col-md-4 justify-content-end align-self-center">
-                      <div class="subscribe-form">
-                        <form action="#">
-                          <input class="form-control" placeholder="Enter your email" type="email">
-                          <a href="#"><a href="#"><i class="fas fa-long-arrow-alt-right"></i></a></a>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--=================================
-    Call to action -->
 <?php include("footer.php")?>
