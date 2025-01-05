@@ -68,7 +68,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12 text-center">
-              <p class="mb-0 text-white">©Copyright 2020 <a href="index-2.html">academic</a> All Rights Reserved</p>
+              <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index">The Web Divers</a> </p>
             </div>
           </div>
         </div>
@@ -101,7 +101,6 @@
     <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jarallax/jarallax.js"></script>
     <script src="js/shuffle/shuffle.min.js"></script>
-    <!-- Template Scripts (Do not remove)-->
     <script src="js/custom.js"></script>
 
   </body>

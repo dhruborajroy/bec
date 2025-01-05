@@ -104,37 +104,72 @@ require('./inc/function.inc.php');
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="brief-introduction.php">Brief Introduction</a></li>
                         <li><a class="dropdown-item" href="history.php">History</a></li>
                         <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
-                        <li><a class="dropdown-item" href="Vision-mission.php">Vision and Mission</a></li>
-                        <li><a class="dropdown-item" href="pricing.php">Pricing</a></li>
-                        <li><a class="dropdown-item" href="faq.php">Faq</a></li>
-                        <li><a class="dropdown-item" href="sign-in.php">Sign In</a></li>
-                        <li><a class="dropdown-item" href="sign-up.php">Sign Up</a></li>
-                        <li><a class="dropdown-item" href="error-page.php">Error Page</a></li>
-                        <li><a class="dropdown-item" href="coming-soon.php">Coming Soon</a></li>
-                        <li><a class="dropdown-item" href="privacy-policy.php">Privacy Policy</a></li>
-                        <li><a class="dropdown-item" href="terms-and-conditions.php">Terms & Conditions</a></li>
-                      </ul>
+                        <li><a class="dropdown-item" href="vision-mission.php">Vision and Mission</a></li>
+                        <li><a class="dropdown-item" href="bec-organogram.php">Organogram</a></li>
+                        <li><a class="dropdown-item" href="bec-at-glance.php">BEC at a Glance</a></li>
+                        <li><a class="dropdown-item" href="bec-monogram.php">BEC Monogram</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course<i class="fas fa-chevron-down fa-xs"></i></a>
+                      <!-- Dropdown Menu -->
+                      <ul class="dropdown-menu">
+                        <div class="dropdown-mega-menu">
+                            <div class="container-fluid menu-content py-3">
+                              <div class="row">
+                                
+
+
+                              <div class="col-lg-3 col-md-12 col-sm-12">
+                                  <ul class="list-group ">
+                                    <h6 class="navbar-menu-sub-title bottom-line">
+                                      Department of Electrical and Electronic Engineering
+                                    </h6>
+
+
+                                    <li><a href="#">Head of the Department of Electrical and Electronic Engineering</a></li>
+                                    
+                                  </ul>
+                                </div>
+                              <div class="col-lg-3 col-md-12 col-sm-12">
+                                  <ul class="list-group ">
+                                    <h6 class="navbar-menu-sub-title bottom-line">
+                                      Department of Civil Engineering
+                                    </h6>
+                                    <li><a href="#">Head of the Department of Electrical and Electronic Engineering</a></li>
+                                  </ul>
+                                </div>
+                              <div class="col-lg-3 col-md-12 col-sm-12">
+                                  <ul class="list-group ">
+                                    <h6 class="navbar-menu-sub-title bottom-line">
+                                      Department of General Science and Humanities 
+                                    </h6>
+
+
+                                    <li><a href="#">Head of the Department of General Science and Humanities</a></li>
+                                    
+                                  </ul>
+                                </div>
+
+
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </ul>
+                      </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academic<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="course.php">Course</a></li>
-                          <li><a class="dropdown-item" href="course-detail.php">Course Detail</a></li>
-                      </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event<i class="fas fa-chevron-down fa-xs"></i>
-                      </a>
-                      <!-- Dropdown Menu -->
-                      <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="events-list.php">Events List</a></li>
-                          <li><a class="dropdown-item" href="events-grid.php">Events Grid</a></li>
-                          <li><a class="dropdown-item" href="event-detail.php">Event Detail</a></li>
+                          <li><a class="dropdown-item" href="result.php">Results</a></li>
+                          <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
+                          <li><a class="dropdown-item" href="syllabus.php">Syllabus</a></li>
+                          <li><a class="dropdown-item" href="exam-schedule.php">Exam Schedule</a></li>
+                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">

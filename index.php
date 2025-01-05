@@ -71,7 +71,7 @@
           <div class="col-lg-6 pr-lg-5">
             <div class="row">
               <div class="col-sm-10">
-                <img class="img-fluid w-100 border-radius" src="images/bg/02.jpg" alt="">
+                <img class="img-fluid w-100 border-radius" src="images/01.jpg" alt="">
               </div>
             </div>
           </div>
@@ -81,9 +81,9 @@
     <!--=================================About -->
 
     <!--=================================Counter -->
-    <section class="space-pb">
+    <section class="space-pb bg-light">
       <div class="container">
-        <div class="row">
+        <div class="row " style="padding-top: 70px;">
           <div class="col-sm-6 col-lg-3 mb-4 mb-lg-0">
             <div class="counter">
               <div class="counter-icon">
@@ -197,30 +197,7 @@
           <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
             <div class="section-title">
               <h2 class="title">Why Choose Us</h2>
-              <p class="mb-0">Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.</p>
-            </div>
-            <div class="media">
-              <i class="flaticon-knowledge mr-3 fa-3x text-white border border-white border-radius p-3 mb-0 font-weight-normal"></i>
-              <div class="media-body">
-                <h5 class="mt-0 mb-3">Multidisciplinary study programs</h5>
-                <p class="text-white mb-0">For the summary order he followed a little scheme of employing his time each day. From five to seven each morning he spent in bodily personal attention,</p>
-              </div>
-            </div>
-            <span class="border-bottom d-block my-5 border-light"></span>
-            <div class="media">
-              <i class="flaticon-mortarboard-2 mr-3 fa-3x text-white border border-white border-radius p-3 mb-0 font-weight-normal"></i>
-              <div class="media-body">
-                <h5 class="mt-0 mb-3">International study programs</h5>
-                <p class="text-white mb-0">saying a short prayer, thinking over the day’s business and resolutions, studying and eating breakfast. From eight till twelve he worked at his trade.</p>
-              </div>
-            </div>
-            <span class="border-bottom d-block my-5 border-light"></span>
-            <div class="media">
-              <i class="flaticon-team-1 mr-3 fa-3x text-white border border-white border-radius p-3 mb-0 font-weight-normal"></i>
-              <div class="media-body">
-                <h5 class="mt-0 mb-3">Highly qualified teaching staff</h5>
-                <p class="text-white mb-0">From twelve to one he read or overlooked his accounts and dined. From two to five he worked at his trade. The rest of the evening music, or diversion of some sort.</p>
-              </div>
+              <p class="mb-0">Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.</p>
             </div>
           </div>
         </div>
@@ -335,8 +312,7 @@
     <!--=================================
     Team -->
 
-    <!--=================================
-    Articles -->
+    <!--=================================Articles -->
     <section class="space-ptb position-relative">
       <div class="container">
         <div class="row justify-content-center">
@@ -350,27 +326,6 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-6 col-md-12 mb-0">
-            <!-- Blog 01 START -->
-            <div class="blog mb-4 mb-lg-0">
-              <!-- Blog image -->
-              <div class="blog-image">
-                <img class="img-fluid border-radius" src="images/blog/02.jpg" alt="">
-              </div>
-              <!-- Blog content -->
-              <div class="blog-content pt-4 border-0">
-                <h5 class="blog-title mb-3"><a href="blog-detail.html">The problem with the push for more college degrees</a></h5>
-                <div class="blog-meta mb-0">
-                  <ul class="list-unstyled mb-0 d-flex">
-                    <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 15 Oct, 2020</a></li>
-                    <li><a href="#"><i class="fas fa-clock pr-1"></i>  10:00 AM - 12:00 PM</a></li>
-                  </ul>
-                </div>
-                <p class="mt-3 mb-0">Imagine reaching deep inside you for all the strength and wisdom that you need to make this decision today.</p>
-              </div>
-            </div>
-            <!-- Blog 01 END -->
-          </div>
           <div class="col-lg-6 col-md-12 mb-0">
             <!-- Blog 02 START -->
             <div class="blog d-md-flex border-bottom mb-4 pb-4">
