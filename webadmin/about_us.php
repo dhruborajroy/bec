@@ -64,7 +64,16 @@ $res=mysqli_query($con,$sql);
                         ?>
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['title']?></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['details']?></td>
+                            <td class="sorting_1 dtr-control"><?php 
+                            $maxLength = 120;
+
+                            if (strlen($row['details']) > $maxLength) {
+                                $truncatedString = substr_replace($row['details'], '...', $maxLength);
+                            } else {
+                                $truncatedString = $row['details'];
+                            }
+                            echo $truncatedString;
+                            ?></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

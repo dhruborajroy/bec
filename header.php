@@ -172,6 +172,8 @@ require('./inc/function.inc.php');
                           <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
                       </ul>
                     </li>
+
+                    
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
@@ -181,6 +183,8 @@ require('./inc/function.inc.php');
                           <li><a class="dropdown-item" href="blog-detail.php">Blog Detail</a></li>
                       </ul>
                     </li>
+
+                    
                     <li class="nav-item">
                       <a class="nav-link" href="contact-us.php">Contact Us</a>
                     </li>

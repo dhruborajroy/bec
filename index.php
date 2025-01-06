@@ -15,16 +15,16 @@
               }
           ?>
           <!-- Swiper Slider 1-->
-          <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
+          <div class="swiper-slide align-items-center d-flex bg-overlay-black-10" style="background-image: url(images/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
             <div class="swipeinner container">
               <div class="row justify-content-center text-center">
                 <div class="col-lg-10 col-md-12">
                   <div class="slider-1">
-                    <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
-                      <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s"></h1>
-                      <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s">
+                      <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
+                        <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s"><?php echo $slider_row['title']?></h1>
+                        <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s"><?php echo $slider_row['sub_title']?>
+                        </div>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>

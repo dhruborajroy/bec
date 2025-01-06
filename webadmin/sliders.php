@@ -29,7 +29,7 @@ $res=mysqli_query($con,$sql);
                 <li>
                     <a href="index.php">Home</a>
                 </li>
-                <li>All Books</li>
+                <li>All Sliders</li>
             </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -54,6 +54,7 @@ $res=mysqli_query($con,$sql);
                         <tr>
                             <th>Title</th>
                             <th>Sub Title</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -65,6 +66,7 @@ $res=mysqli_query($con,$sql);
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['title']?></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['sub_title']?></td>
+                            <td class="sorting_1 dtr-control"><img src="<?php echo SLIDER_IMAGE.$row['image']?>" width="150px"></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

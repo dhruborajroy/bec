@@ -2,12 +2,10 @@
 define('NAME','Get Admitted Online');
 define('TAGLINE','Get Admitted Online');
 define('EMAIL','contact@thewebdivers.com');
-define('FRONT_SITE_PATH','http://localhost/admission/');
-define('STORE_ID',"thewe630883975551e");
-define('STORE_PASSWORD',"thewe630883975551e@ssl");
-define('STUDENT_IMAGE',FRONT_SITE_PATH."media/users/");
-define('UPLOAD_APPLICANT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/admission/media/users/");
-define('UPLOAD_STUDENT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/admission/media/users/");
+define('FRONT_SITE_PATH','http://localhost/BEC/');
+define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
+define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");
+define('UPLOAD_STUDENT_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");
 // Bkash Test Constants
 define("APP_KEY","4f6o0cjiki2rfm34kfdadl1eqq");
 define("APP_SECRET","2is7hdktrekvrbljjh44ll3d9l1dtjo4pasmjvs5vl5qr3fug4b");

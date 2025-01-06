@@ -167,6 +167,10 @@ $('[data-toggle="popover"]').popover()
             enabled: true,
             onlyInViewport: true
           },
+          autoplay: {
+            delay: 4000, // specify seconds
+            disableOnInteraction: false, // Auto-slide continues even after user interaction
+          },
             // Navigation arrows
             navigation: {
               nextEl: '.swiper-button-next',
@@ -176,14 +180,19 @@ $('[data-toggle="popover"]').popover()
               el: '.swiper-pagination',
               clickable: true,
             },
-          on: {
-            init: function() {
-              swiperAnimation.init(this).animate();
+            on: {
+              init: function() {
+                swiperAnimation.init(this).animate();
+              },
+              slideChange: function() {
+                swiperAnimation.init(this).animate();
+              }
             },
-            slideChange: function() {
-              swiperAnimation.init(this).animate();
-            }
-          }
+            // Transition Effect
+            effect: "slide", // Choose between "slide", "fade", "cube", "coverflow", etc.
+            fadeEffect: {
+              crossFade: true,
+            },
         });
     }
   }

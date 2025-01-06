@@ -52,7 +52,7 @@
    </head>
    <body>
       <!-- Preloader Start Here -->
-      <div id="preloader"></div>
+      <!-- <div id="preloader"></div> -->
       <!-- Preloader End Here -->
       <div id="wrapper" class="wrapper bg-ash">
       <!-- Header Menu Area Start Here -->
@@ -109,7 +109,7 @@
                         <span>Admin</span>
                      </div>
                      <div class="admin-img">
-                        <img src="<?php echo STUDENT_IMAGE.$row['image']?>" alt="Admin">
+                        <img src="<?php //echo STUDENT_IMAGE.$row['image']?>" alt="Admin">
                      </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
@@ -215,12 +215,17 @@
                   </a>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Sliders</span></a>
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Menus</span></a>
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
-                     <li class="nav-item">
-                        <a href="users"
+                  <li class="nav-item">
+                        <a href="menus"
                            class="nav-link <?php // echo  $application_sub_group_active?>"><i
-                           class="fas fa-angle-right"></i>Sliders</a>
+                           class="fas fa-angle-right"></i>Menus</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_menus"
+                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="fas fa-angle-right"></i>Add New Menu</a>
                      </li>
                   </ul>
                </li>
