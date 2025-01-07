@@ -42,8 +42,8 @@ $res=mysqli_query($con,$sql);
                 </div>
                 <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
-                        <a href="manage_slider"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+                        <a href="manage_menus"> <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new menus</button>
                         </a>
                     </div>
                 </div>

@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
     <!-- Breadcubs Area End Here -->
     <div class="row">
         <!-- Add Notice Area Start Here -->
-        <div class="col-4-xxxl col-12">
+        <div class="col-12-xxxl col-12">
             <div class="card height-auto">
                 <div class="card-body">
                     <div class="heading-layout1">
@@ -112,15 +112,10 @@ if(isset($_POST['submit'])){
         <!-- Add Notice Area End Here -->
     </div>
     <?php include("footer.php")?>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
-    <script>
-            ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-    </script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> -->
+<script src="js/ckeditor/ckeditor.js""></script> <!-- Update with the correct path -->
+<script src="js/ckfinder/ckfinder.js""></script> <!-- Update with the correct path -->
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>

@@ -1,7 +1,21 @@
 <?php
-define('NAME','Get Admitted Online');
-define('TAGLINE','Get Admitted Online');
-define('EMAIL','contact@thewebdivers.com');
+define('LOGO','../images/gallery/logo.png');
+define('NAME',"গণপ্রজাতন্ত্রী বাংলাদেশ সরকার 
+<br>
+অধ্যক্ষের কার্যালয়
+<br>বরিশাল ইঞ্জিনিয়ারিং কলেজ");
+define('TAGLINE','');
+define('EMAIL','contact@bec.edu.com');
+define('TEL','০১৭০৫৫৫৫৫৫৫৫');
+define('ADDRESS','দুর্গাপুর, বরিশাল');
+
+
+
+define('SIGNATURE_NAME','জনাব মোঃ লিটন রাব্বানী');
+define('DESIGNATION','অধ্যক্ষ');
+define('SIGNATURE_IMAGE','https://static.vecteezy.com/system/resources/thumbnails/023/264/092/small_2x/fake-hand-drawn-autographs-set-handwritten-signature-scribble-for-business-certificate-or-letter-isolated-illustration-vector.jpg');
+
+
 define('FRONT_SITE_PATH','http://localhost/BEC/');
 define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
 define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");

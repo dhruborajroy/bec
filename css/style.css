@@ -4971,3 +4971,58 @@ button {
     margin-top: 70px; } }
 
 /*# sourceMappingURL=../css/style.css.map */
+
+/* Custom marquee styles to avoid Bootstrap conflicts */
+.spotlight-content {
+  position: relative;
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light background */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.spotlight-title {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.marquee-spotlight {
+  display: block;
+  white-space: nowrap;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #343a40; /* Darker text */
+}
+
+.spotlight-date {
+  color: #6c757d;
+  margin-right: 10px;
+}
+
+.spotlight-notice {
+  color: #212529;
+  text-decoration: none;
+}
+
+.spotlight-notice:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+/* Pause animation on hover */
+marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .marquee-spotlight {
+    font-size: 1rem;
+  }
+}
+

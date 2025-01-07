@@ -9,14 +9,14 @@ function drawChart() {
     var data = google.visualization.arrayToDataTable([
         ['Exp Name', 'Amount'],
         <?php 
-        $sql="SELECT SUM(amount) as amount, expense_category.name from expense, expense_category WHERE expense.expense_category_id=expense_category.id AND expense.month='".date('m')."' group by expense_category.id";
-        $res=mysqli_query($con,$sql);
-        if(mysqli_num_rows($res)>0){
-            while($row=mysqli_fetch_assoc($res)){
-                echo "['".$row['name']."', ".$row['amount']."],";
-            }
-        }
-        ?>
+        // $sql="SELECT SUM(amount) as amount, expense_category.name from expense, expense_category WHERE expense.expense_category_id=expense_category.id AND expense.month='".date('m')."' group by expense_category.id";
+        // $res=mysqli_query($con,$sql);
+        // if(mysqli_num_rows($res)>0){
+        //     while($row=mysqli_fetch_assoc($res)){
+        //         echo "['".$row['name']."', ".$row['amount']."],";
+        //     }
+        // }
+        // ?>
         ]);
 
     var options = {
@@ -48,21 +48,21 @@ function drawChart() {
         backgroundColor: ["#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01",],
         data: [
             <?php
-            for ($i=1; $i <= $last_date; $i++) {
-                $a="";
-                if($i<10){
-                    $a="0";
-                }
-                $sql="SELECT sum(amount) as amount FROM `expense` WHERE month='".date('m')."' AND date_id='$a$i' and year='".date('Y')."' order by date_id desc";
-                $res=mysqli_query($con,$sql);
-                while($row=mysqli_fetch_assoc($res)){
-                    if($row['amount']>=0){
-                        echo $row['amount'].',';
-                    }else{
-                        echo '0,';                                        
-                    }
-                }
-            }
+            // for ($i=1; $i <= $last_date; $i++) {
+            //     $a="";
+            //     if($i<10){
+            //         $a="0";
+            //     }
+            //     $sql="SELECT sum(amount) as amount FROM `expense` WHERE month='".date('m')."' AND date_id='$a$i' and year='".date('Y')."' order by date_id desc";
+            //     $res=mysqli_query($con,$sql);
+            //     while($row=mysqli_fetch_assoc($res)){
+            //         if($row['amount']>=0){
+            //             echo $row['amount'].',';
+            //         }else{
+            //             echo '0,';                                        
+            //         }
+            //     }
+            // }
             ?>
         ],
         label: "Expenses (Daily)"

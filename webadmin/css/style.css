@@ -5082,3 +5082,13 @@ ul {
 .error{
   color:red;
 }
+
+.cke_notification_message{
+  display: none !important;
+}
+.cke_notification{
+  display: none !important;
+} 
+.cke_notification_warning{
+  display: none !important;
+}

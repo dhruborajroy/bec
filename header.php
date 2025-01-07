@@ -8,11 +8,11 @@ require('./inc/function.inc.php');
   
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Academic - Education, University and College Template" />
-    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="keywords" content="BEC, Barishal Engineering College" />
+    <meta name="description" content="Barishal Engineering College - An affiliated Engineering Collge" />
+    <meta name="author" content="Dhruboraj Roy(thedhrubo.xyz)" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Academic - Education, University and College Template</title>
+    <title>Barishal Engineering College - An affiliated Engineering Collge</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -172,19 +172,34 @@ require('./inc/function.inc.php');
                           <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
                       </ul>
                     </li>
-
-                    
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<i class="fas fa-chevron-down fa-xs"></i>
-                      </a>
-                      <!-- Dropdown Menu -->
-                      <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="blog.php">Blog</a></li>
-                          <li><a class="dropdown-item" href="blog-detail.php">Blog Detail</a></li>
-                      </ul>
-                    </li>
-
-                    
+                    <?php
+                    $menu_res=mysqli_query($con,"select * from menus where status=1");
+                    while($row=mysqli_fetch_assoc($menu_res)){
+                    ?>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <?php echo $row['name'];
+                          $menu_id=$row['id'];
+                          $sub_menu_res=mysqli_query($con,"select * from sub_menu where status='1' and menu_id='$menu_id'");
+                          if(mysqli_num_rows($sub_menu_res)>0){
+                          ?>                          
+                            <i class="fas fa-chevron-down fa-xs"></i>
+                          <?php }?>
+                        </a>
+                        <?php
+                        if(mysqli_num_rows($sub_menu_res)>0){
+                        ?>
+                          <!-- Dropdown Menu -->
+                          <ul class="dropdown-menu">
+                              <?php
+                              while($sub_menu_rows=mysqli_fetch_assoc($sub_menu_res)){
+                                echo '<li><a class="dropdown-item"  href="menu.php?id='.$menu_id.'&sub_menu='.$sub_menu_rows['id'].'">'.$sub_menu_rows['name'].'</a></li>';
+                              }
+                              ?>
+                            </ul>
+                        </li>
+                      <?php }
+                      }?>
                     <li class="nav-item">
                       <a class="nav-link" href="contact-us.php">Contact Us</a>
                     </li>
