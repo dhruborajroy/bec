@@ -29,11 +29,49 @@ if(isset($_POST['submit'])){
 	$details=$_POST['details'];
     $user_id=$_SESSION['ADMIN_ID'];
     $added_on=time();
+    $ref_id=uniqid();
    if($id==''){
         $id=uniqid();
         $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`updated_on`, `user_id`, `status`) VALUES 
                                     ('$id', '$title', '$details','$reference', '$added_on', '','$user_id', '1')";
         if(mysqli_query($con,$sql)){
+
+            if(isset($_POST['referance_ids'])){
+                // Assuming 'referance_ids' is an array of checked reference IDs
+                // and 'unreferance_ids' is an array of unchecked reference IDs
+                for ($i = 0; $i <= count($_POST['referance_ids']) - 1; $i++) {
+                    $referance_id = get_safe_value($_POST['referance_ids'][$i]);
+                    
+                    // Check if the record already exists
+                    $check_sql = "SELECT id FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$referance_id'";
+                    $check_result = mysqli_query($con, $check_sql);
+                    
+                    if (mysqli_num_rows($check_result) > 0) {
+                        // Record exists, perform UPDATE
+                        $update_sql = "UPDATE notice_referance SET status = 1 WHERE notice_id = '$id' AND referance_id = '$referance_id'";
+                        mysqli_query($con, $update_sql);
+                    } else {
+                        // Record does not exist, perform INSERT
+                        $ref_id = uniqid(); // Generates a unique ID
+                        $insert_sql = "INSERT INTO notice_referance (id, notice_id, referance_id, status) 
+                                    VALUES ('$ref_id', '$id', '$referance_id', 1)";
+                        mysqli_query($con, $insert_sql);
+                    }
+                }
+
+                
+            }
+            // Handle unchecked checkboxes - delete records from notice_referance
+            if (isset($_POST['unreferance_ids'])) {
+                for ($i = 0; $i <= count($_POST['unreferance_ids']) - 1; $i++) {
+                    $unreferance_id = get_safe_value($_POST['unreferance_ids'][$i]);
+                    
+                    // Delete from notice_referance if the checkbox was unchecked
+                    $delete_sql = "DELETE FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$unreferance_id'";
+                    mysqli_query($con, $delete_sql);
+                }
+            }
+
             $_SESSION['TOASTR_MSG']=array(
                 'type'=>'success',
                 'body'=>'Data Inserted',
@@ -45,8 +83,46 @@ if(isset($_POST['submit'])){
         }
     }else{
         $updated_on=time();
+        // print_r($_POST);
         $sql="update `notice` set  `title`='$title', `details`='$details',`reference`='$reference',`updated_on`='$updated_on' where id='$id'";
         if(mysqli_query($con,$sql)){
+                if(isset($_POST['referance_ids'])){
+                // Assuming 'referance_ids' is an array of checked reference IDs
+                    // and 'unreferance_ids' is an array of unchecked reference IDs
+                    for ($i = 0; $i <= count($_POST['referance_ids']) - 1; $i++) {
+                        $referance_id = get_safe_value($_POST['referance_ids'][$i]);
+                        
+                        // Check if the record already exists
+                        $check_sql = "SELECT id FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$referance_id'";
+                        $check_result = mysqli_query($con, $check_sql);
+                        
+                        if (mysqli_num_rows($check_result) > 0) {
+                            // Record exists, perform UPDATE
+                            $update_sql = "UPDATE notice_referance SET status = 1 WHERE notice_id = '$id' AND referance_id = '$referance_id'";
+                            mysqli_query($con, $update_sql);
+                        } else {
+                            // Record does not exist, perform INSERT
+                            $ref_id = uniqid(); // Generates a unique ID
+                            $insert_sql = "INSERT INTO notice_referance (id, notice_id, referance_id, status) 
+                                        VALUES ('$ref_id', '$id', '$referance_id', 1)";
+                            mysqli_query($con, $insert_sql);
+                        }
+                    }
+
+                }
+                            
+                // Handle unchecked checkboxes - delete records from notice_referance
+                if (isset($_POST['unreferance_ids'])) {
+                    for ($i = 0; $i <= count($_POST['unreferance_ids']) - 1; $i++) {
+                        $unreferance_id = get_safe_value($_POST['unreferance_ids'][$i]);
+                        
+                        // Delete from notice_referance if the checkbox was unchecked
+                        $delete_sql = "DELETE FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$unreferance_id'";
+                        mysqli_query($con, $delete_sql);
+                    }
+                }
+
+            
             $_SESSION['TOASTR_MSG']=array(
                 'type'=>'success',
                 'body'=>'Data Inserted',
@@ -101,6 +177,18 @@ if(isset($_POST['submit'])){
                                 <textarea name="details" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
                             <div class="col-12 form-group mg-t-8">
+                                    <h3>Select References for Notice ?></h3>
+                                    <?php 
+                                        $sql="select * from referances";
+                                        $referances_res=mysqli_query($con,$sql);
+                                        while ($referances_row = mysqli_fetch_assoc($referances_res)) { ?>
+                                        <div>
+                                            <input type="checkbox" name="referance_ids[]" value="<?php echo $referances_row['id']; ?>">
+                                            <label><?php echo htmlspecialchars($referances_row['name']); ?></label>
+                                        </div>
+                                    <?php } ?>
+                            </div>
+                            <div class="col-12 form-group mg-t-8">
                                 <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
                                     name="submit">
                             </div>
@@ -118,4 +206,5 @@ if(isset($_POST['submit'])){
 <script src="js/ckfinder/ckfinder.js""></script> <!-- Update with the correct path -->
 <script>
     CKEDITOR.replace( 'editor' );
+    CKFinder.setupCKEditor('editor');
 </script>

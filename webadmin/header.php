@@ -264,13 +264,13 @@
                      </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Subjects</span></a>
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Others</span></a>
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
                   <li class="nav-item">
-                        <a href="subjects"
+                        <a href="referances"
                            class="nav-link <?php // echo  $application_sub_group_active?>"><i
                            class="fas fa-angle-right"></i>All
-                           Subjects</a>
+                           Referances</a>
                      </li>
                      <li class="nav-item">
                         <a href="manage_subjects"

@@ -19,7 +19,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	}
 
 }
-$sql="select * from subjects order by id desc";
+$sql="select * from referances";
 $res=mysqli_query($con,$sql);
 ?>
 <!-- Page Area Start Here -->
@@ -42,26 +42,6 @@ $res=mysqli_query($con,$sql);
                 <div class="item-title">
                     <h3>All Students Data</h3>
                 </div>
-                <div class="item-title row">
-                    <form action="./pdfreports/users.php">
-                    <div class="row">
-                        <select name="batch_id" id="batch_id">
-                        <option value="">Select Batch</option>
-                            <?php
-                            $batch_res=mysqli_query($con,"SELECT * FROM `batch` where status='1' order by numaric_value asc");
-                            while($batch_row=mysqli_fetch_assoc($batch_res)){
-                                if($batch_row['id']==$batch){
-                                    echo "<option selected='selected' value=".$batch_row['id'].">".$batch_row['name']."</option>";
-                                }else{
-                                    echo "<option value=".$batch_row['id'].">".$batch_row['name']."</option>";
-                                }                                                        
-                            }
-                            ?>
-                        </select>
-                        <input type="submit" value="Generate report">
-                    </div>
-                    </form>
-                </div>
             </div>
             <form class="mg-b-20">
                 <div class="row gutters-8">
@@ -76,9 +56,7 @@ $res=mysqli_query($con,$sql);
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Name</th>
-                            <th>Roll</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -88,8 +66,6 @@ $res=mysqli_query($con,$sql);
                         ?>
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['name']?></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['sub_code']?></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['full_mark']?></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -104,7 +80,7 @@ $res=mysqli_query($con,$sql);
                                                     class="fas fa-times text-orange-red"></i>Active</a>
                                         <?php }?>
                                         <a class="dropdown-item"
-                                            href="manage_subjects?id=<?php echo $row['id']?>"><i
+                                            href="manage_referances?id=<?php echo $row['id']?>"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
                                         <!-- <a class="dropdown-item" href="#"><i
                                                 class="fas fa-redo-alt text-orange-peel"></i>Refresh</a> -->

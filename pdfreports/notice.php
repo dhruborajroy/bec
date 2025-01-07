@@ -91,7 +91,7 @@ if(mysqli_num_rows($res)>0){
                 <td align="left" colspan="7">
                     <u>সদয় অবগতি ও প্রয়োজনীয় কার্যার্থে অনুলিপি(জেষ্ঠতার ভিত্তিতে নয়):</u>
                     <ol>';
-                    $notice_res = mysqli_query($con, "SELECT * FROM `referances`");
+                    $notice_res = mysqli_query($con, "SELECT referances.name FROM referances INNER JOIN notice_referance ON referances.id = notice_referance.referance_id INNER JOIN notice ON notice.id = notice_referance.notice_id WHERE notice.id = '".$notice_id."'");
                     while ($notice_res_row = mysqli_fetch_assoc($notice_res)) {
                         $html .= '<li>' . $notice_res_row['name'] . '</li>';
                     }

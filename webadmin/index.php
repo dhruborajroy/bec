@@ -59,6 +59,9 @@ include('header.php');?>
                   <div class="post-date bg-skyblue text-color-black">
                      <?php echo get_time_ago(intval($row['added_on']));?>
                   </div>
+                  <div class="post-date bg-orange">
+                     <a href="../pdfreports/notice.php?notice_id=<?php echo $row['id']?>" style="color:white">Generate Pdf</a>
+                  </div>
                   <h6 class="notice-title"><a href="./pdfreports/notice.php?notice_id=<?php echo $row['id']?>"><?php echo $row['title']?></a></h6>
                   <div class="entry-meta"><?php echo $row['details']?></div>
                </div>
