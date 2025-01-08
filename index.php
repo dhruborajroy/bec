@@ -229,8 +229,7 @@
 </section>
 <!--=================================
    Why choose us -->
-<!--=================================
-   Event -->
+<!--=================================Event -->
 <section class="space-ptb">
    <div class="container">
       <div class="row">
@@ -239,7 +238,6 @@
                <div class="col-md-7">
                   <div class="section-title">
                      <h2 class="title">Latest Events</h2>
-                     <p class="mb-0">Success isn’t really that difficult. There is a significant portion of the population</p>
                   </div>
                </div>
                <div class="col-md-5 text-md-right mb-4 mb-md-0">
@@ -250,36 +248,49 @@
                <div class="col-lg-12">
                   <div class="events">
                      <div class="row">
-                        <div class="col-12">
+                     <div class="col-12">
+                     <?php
+                        $news_res=mysqli_query($con,"select * from news where status=1 limit 3");
+                        if(mysqli_num_rows($news_res)>0){
+                        while($news_res_row=mysqli_fetch_assoc($news_res)){
+                        ?>
                            <div class="events shadow p-4 bg-white border-radius">
-                              <div class="row">
-                                 <div class="col-lg-3">
-                                    <div class="events-img mb-4 mb-lg-0">
-                                       <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6 align-self-center">
-                                    <div class="events-content">
-                                       <div class="events-tag mb-3">
-                                          <a href="#" class="badge-danger">Art Competition</a>
-                                       </div>
-                                       <a href="event-detail.html" class="text-dark h5">Young leaders in tech policy fellowship</a>
-                                       <div class="events-meta my-3">
-                                          <ul class="list-unstyled mb-0 d-flex">
-                                             <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 5 Oct, 2020</a></li>
-                                             <li><a href="#"><i class="fas fa-clock pr-1"></i>  9:00 AM - 11:00 AM</a></li>
-                                          </ul>
-                                       </div>
-                                       <p class="text-dark mb-lg-0">Franklin’s extraordinary success in life and politics can be attributed to his perseverance to overcome his personal liabilities, and his desire to constantly become better.</p>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-3 align-self-center text-lg-right text-left">
-                                    <a class="btn btn-dark btn-round" href="#">Join Event</a>
+                           <div class="row">
+                              <div class="col-lg-3">
+                                 <div class="events-img mb-4 mb-lg-0">
+                                 <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
                                  </div>
                               </div>
+                              <div class="col-lg-6 align-self-center">
+                                 <div class="events-content">
+                                 <a href="event-detail.html" class="text-dark h5"><?php echo $news_res_row['title']?></a>
+                                 <div class="events-meta my-2">
+                                    <ul class="list-unstyled mb-0 d-flex">
+                                       <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
+                                    </ul>
+                                 </div>
+                                 <p class="text-dark mb-lg-0">
+                                 <?php 
+                                    $maxLength = 600;
+
+                                    if (strlen($news_res_row['details']) > $maxLength) {
+                                       $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
+                                    } else {
+                                       $truncatedString = $news_res_row['details'];
+                                    }
+                                    echo $truncatedString;
+                                    ?></p>
+                                 </div>
+                              </div>
+                              <div class="col-lg-3 align-self-center text-lg-right text-left">
+                                 <a class="btn btn-dark btn-round" href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>">View News</a>
+                              </div>
                            </div>
-                        </div>
-                     </div>
+                           </div>
+
+                           <?php } }?>
+                    </div>
+                  </div>
                   </div>
                </div>
             </div>
@@ -287,118 +298,5 @@
       </div>
    </div>
 </section>
-<!--=================================
-   Event -->
-<!--=================================Team -->
-<section class="space-ptb bg-light">
-   <div class="container">
-      <div class="row justify-content-center">
-         <div class="col-lg-8 col-md-10 text-center">
-            <!-- Section Title START -->
-            <div class="section-title">
-               <h2>Meet Our Team</h2>
-               <!-- <p>Meet the outstanding performers in our industry-award-winning team of professionals</p> -->
-            </div>
-            <!-- Section Title END -->
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-lg-4 col-md-4 col-sm-6 mb-4 mb-md-0">
-            <!-- team-01 START -->
-            <div class="team">
-               <div class="team-img">
-                  <img class="img-fluid" src="images/team/01.jpg" alt="">
-               </div>
-               <div class="team-info">
-                  <a href="teachers-single.html" class="team-name">Mellissa Doe</a>
-                  <p class="team-leader">Team Leader</p>
-                  <ul class="list-unstyled">
-                     <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                     <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                  </ul>
-               </div>
-            </div>
-            <!-- team-01 END -->
-         </div>
-      </div>
-   </div>
-</section>
-<!--=================================
-   Team -->
-<!--=================================Articles -->
-<section class="space-ptb position-relative">
-   <div class="container">
-      <div class="row justify-content-center">
-         <div class="col-lg-7 col-md-10 text-center">
-            <!-- Section Title START -->
-            <div class="section-title">
-               <h2 class="title">Latest Articles</h2>
-               <p>Check out our latest blog posts, articles, client success stories and essential announcement</p>
-            </div>
-            <!-- Section Title END -->
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-lg-6 col-md-12 mb-0">
-            <!-- Blog 02 START -->
-            <div class="blog d-md-flex border-bottom mb-4 pb-4">
-               <!-- Blog image -->
-               <div class="blog-image mr-0 mr-sm-3">
-                  <img class="img-fluid border-radius" src="images/blog/01.jpg" alt="">
-               </div>
-               <!-- Blog content -->
-               <div class="blog-content pt-4 pt-md-0 border-0">
-                  <h5 class="blog-title mb-3"><a href="blog-detail.html">Colleges with the most hispanic students</a></h5>
-                  <div class="blog-meta mb-0">
-                     <ul class="list-unstyled mb-0 d-flex">
-                        <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 20 Sept, 2020</a></li>
-                        <li><a href="#"><i class="fas fa-clock pr-1"></i>  12:00 PM - 3:00 PM</a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <!-- Blog 02 END -->
-            <!-- Blog 02 START -->
-            <div class="blog d-md-flex border-bottom mb-4 pb-4">
-               <!-- Blog image -->
-               <div class="blog-image mr-0 mr-sm-3">
-                  <img class="img-fluid border-radius" src="images/blog/01.jpg" alt="">
-               </div>
-               <!-- Blog content -->
-               <div class="blog-content pt-4 pt-md-0 border-0">
-                  <h5 class="blog-title mb-3"><a href="blog-detail.html">Get a job, internship during COVID-19</a></h5>
-                  <div class="blog-meta mb-0">
-                     <ul class="list-unstyled mb-0 d-flex">
-                        <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 05 Nov, 2020</a></li>
-                        <li><a href="#"><i class="fas fa-clock pr-1"></i>  2:00 PM - 4:00 PM</a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <!-- Blog 02 END -->
-            <!-- Blog 02 START -->
-            <div class="blog d-md-flex">
-               <!-- Blog image -->
-               <div class="blog-image mr-0 mr-sm-3">
-                  <img class="img-fluid border-radius" src="images/blog/08.jpg" alt="">
-               </div>
-               <!-- Blog content -->
-               <div class="blog-content pt-4 pt-md-0 border-0">
-                  <h5 class="blog-title mb-3"><a href="blog-detail.html">Why student loan default rate matters</a></h5>
-                  <div class="blog-meta mb-0">
-                     <ul class="list-unstyled mb-0 d-flex">
-                        <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i> 27 Nov, 2020</a></li>
-                        <li><a href="#"><i class="fas fa-clock pr-1"></i>  4:00 PM - 6:00 PM</a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <!-- Blog 02 END -->
-         </div>
-      </div>
-   </div>
-</section>
-<!--=================================Articles -->
+<!--=================================Event -->
 <?php include("footer.php")?>

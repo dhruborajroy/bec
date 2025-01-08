@@ -113,48 +113,39 @@ require('./inc/function.inc.php');
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course<i class="fas fa-chevron-down fa-xs"></i></a>
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
+                      aria-haspopup="true" aria-expanded="false">Subjects<i class="fas fa-chevron-down fa-xs"></i></a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
                         <div class="dropdown-mega-menu">
                             <div class="container-fluid menu-content py-3">
                               <div class="row">
-                                
-
-
                               <div class="col-lg-3 col-md-12 col-sm-12">
                                   <ul class="list-group ">
                                     <h6 class="navbar-menu-sub-title bottom-line">
-                                      Department of Electrical and Electronic Engineering
+                                      <a href="#">
+                                        Electrical and Electronic Engineering
+                                      </a>
                                     </h6>
-
-
-                                    <li><a href="#">Head of the Department of Electrical and Electronic Engineering</a></li>
-                                    
+                                    <li><a href="dept/eee">Department of Electrical and Electronic Engineering</a></li>
                                   </ul>
                                 </div>
                               <div class="col-lg-3 col-md-12 col-sm-12">
                                   <ul class="list-group ">
                                     <h6 class="navbar-menu-sub-title bottom-line">
-                                      Department of Civil Engineering
+                                      Civil Engineering
                                     </h6>
-                                    <li><a href="#">Head of the Department of Electrical and Electronic Engineering</a></li>
+                                    <li><a href="dept/ce">Department of Civil Engineering</a></li>
                                   </ul>
                                 </div>
                               <div class="col-lg-3 col-md-12 col-sm-12">
                                   <ul class="list-group ">
                                     <h6 class="navbar-menu-sub-title bottom-line">
-                                      Department of General Science and Humanities 
+                                      General Science and Humanities 
                                     </h6>
-
-
-                                    <li><a href="#">Head of the Department of General Science and Humanities</a></li>
-                                    
+                                    <li><a href="dept/gsh">Department of General Science and Humanities</a></li>
                                   </ul>
                                 </div>
-
-
-                                
                               </div>
                             </div>
                           </div>
@@ -166,10 +157,10 @@ require('./inc/function.inc.php');
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="result.php">Results</a></li>
-                          <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
+                          <!-- <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
                           <li><a class="dropdown-item" href="syllabus.php">Syllabus</a></li>
                           <li><a class="dropdown-item" href="exam-schedule.php">Exam Schedule</a></li>
-                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
+                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li> -->
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -212,6 +203,9 @@ require('./inc/function.inc.php');
                         </li>
                       <?php }
                       }?>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link " href="notices.php" role="button">Notices</a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link" href="contact-us.php">Contact Us</a>
                     </li>
