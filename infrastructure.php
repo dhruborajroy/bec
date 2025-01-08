@@ -13,12 +13,27 @@
     </section>
     <!--=================================inner-header -->
 
-    <div class="body-section mt-2 mb-2">
-      <div class="container mb-5">
-        <h1 class="text-center text-center shadow-sm p-3 mb-5  bg-light rounded">KUET ACT</h1>
-        <div class="row">
-          <iframe src="https://www.kuet.ac.bd/storage/webfile/kuet_actF.pdf" type="application/pdf" frameborder="0" scrolling="auto" height="1000px" width="100%"></iframe>
+
+    
+    <!--=================================vision_mission -->
+    <section class="space-ptb" >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-12 col-lg-9">
+            <div class=" mb-12">
+              <p class="lead">
+                <?php
+                    $genereral_infores=mysqli_query($con,"select general_info.vision_mission from general_info where id=1");
+                    if(mysqli_num_rows($genereral_infores)>0){
+                    while($genereral_infores_row=mysqli_fetch_assoc($genereral_infores)){
+                    ?>
+                      <?php echo $genereral_infores_row['vision_mission']?>  
+                <?php } }?>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!--=================================HISTORY -->
 <?php include("footer.php")?>

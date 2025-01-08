@@ -64,7 +64,8 @@ $res=mysqli_query($con,$sql);
                         ?>
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['title']?></td>
-                            <td class="sorting_1 dtr-control"><?php 
+                            <td class="sorting_1 dtr-control">
+                            <?php 
                             $maxLength = 120;
 
                             if (strlen($row['details']) > $maxLength) {

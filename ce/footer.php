@@ -33,13 +33,12 @@
             <h5 class="text-white mb-2 mb-sm-4">Useful Link</h5>
             <div class="footer-link">
               <ul class="list-unstyled mb-0">
-                <?php
-                $useful_links_res=mysqli_query($con,"select * from useful_links where status=1");
-                if(mysqli_num_rows($useful_links_res)>0){
-                while($useful_links_row=mysqli_fetch_assoc($useful_links_res)){
-                ?>
-                  <li><a class="text-white" href="<?php echo $useful_links_row['link']?>"><?php echo $useful_links_row['link_text']?></a></li>
-                <?php } }?>
+                <li><a class="text-white" href="index-2.html">Home</a></li>
+                <li><a class="text-white" href="about-us.html">About</a></li>
+                <li><a class="text-white" href="course.html">Course</a></li>
+                <li><a class="text-white" href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a class="text-white" href="pricing.html">Pricing</a></li>
+                <li><a class="text-white" href="faq.html">Faq</a></li>
               </ul>
             </div>
           </div>
@@ -69,7 +68,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12 text-center">
-              <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index">The Web Divers</a> </p>
+              <p class="mb-0 text-white">©Copyright 2020 <a href="index-2.html">academic</a> All Rights Reserved</p>
             </div>
           </div>
         </div>
@@ -88,21 +87,24 @@
     Javascript -->
 
     <!-- JS Global Compulsory (Do not remove)-->
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/popper/popper.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../js/popper/popper.min.js"></script>
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
 
     <!-- Page JS Implementing Plugins (Remove the plugin script here if site does not use that feature)-->
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/counter/jquery.countTo.js"></script>
-    <script src="js/select2/select2.full.js"></script>
-    <script src="js/owl-carousel/owl.carousel.min.js"></script>
-    <script src="js/swiper/swiper.min.js"></script>
-    <script src="js/swiperanimation/SwiperAnimation.min.js"></script>
-    <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/jarallax/jarallax.js"></script>
-    <script src="js/shuffle/shuffle.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="../js/jquery.appear.js"></script>
+    <script src="../js/counter/jquery.countTo.js"></script>
+    <script src="../js/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../js/swiper/swiper.min.js"></script>
+    <script src="../js/swiperanimation/SwiperAnimation.min.js"></script>
+    <script src="../js/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="../js/shuffle/shuffle.min.js"></script>
+
+    <!-- Template Scripts (Do not remove)-->
+    <script src="../js/custom.js"></script>
 
   </body>
+
+
+<!-- Mirrored from themes.potenzaglobalsolutions.com/html/academic/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 05 Jan 2025 11:50:34 GMT -->
 </html>

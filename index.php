@@ -8,11 +8,7 @@
               $slider_sql="select * from `sliders` order by added_on desc";
               $slider_res=mysqli_query($con,$slider_sql);
               if(mysqli_num_rows($slider_res)>0){
-              $i=1;
               while($slider_row=mysqli_fetch_assoc($slider_res)){
-              if($i=='2'){
-                  $active="active";
-              }
             ?>
          <!-- Swiper Slider 1-->
          <div class="swiper-slide align-items-center d-flex bg-overlay-black-10" style="background-image: url(images/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
@@ -31,7 +27,6 @@
             </div>
          </div>
          <?php 
-            $i++;
             } } else { ?>
          <!-- Swiper Slider 1-->
          <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/1.png  ); background-size: cover; background-position: center center;">
@@ -66,15 +61,15 @@
       <div class="flex-grow-1 marquee-spotlight p-1">
          <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10">
             <?php
-               $notice_arr=array();
                $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc");
-               while($notice_arr[]=$notice_res_row=mysqli_fetch_assoc($notice_res)){
+               if(mysqli_num_rows($notice_res)>0){
+               while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                ?>
                   <a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
                   <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
                   <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
                   </a>
-            <?php }?>
+            <?php } }?>
          </marquee>
       </div>
    </div>
@@ -86,7 +81,25 @@
          <div class="col-lg-6 mb-4 mb-lg-7 pr-xl-6">
             <div class="section-title mb-4">
                <h2 class="title">Short Introduction</h2>
-               <p class="lead mb-0">Barishal Engineering College (Bengali: বরিশাল প্রকৌশল মহাবিদ্যালয়) commonly referred to as BEC (Bengali: বইক) is a public undergraduate college in Barishal, Bangladesh. </p>
+               <p class="lead mb-0">
+
+               
+               <?php
+                     $genereral_infores=mysqli_query($con,"SELECT * FROM `about_us` where id='64441dc980a91'");
+                     if(mysqli_num_rows($genereral_infores)>0){
+                     while($genereral_infores_row=mysqli_fetch_assoc($genereral_infores)){                        
+                        $maxLength = 600;
+
+                        if (strlen($genereral_infores_row['details']) > $maxLength) {
+                            $truncatedString = substr_replace($genereral_infores_row['details'], '...', $maxLength);
+                        } else {
+                            $truncatedString = $genereral_infores_row['details'];
+                        }
+                        echo $truncatedString;
+                        } 
+                     }?>
+
+               </p>
             </div>
          </div>
          <div class="col-lg-6 pr-lg-6">
