@@ -172,6 +172,18 @@ require('./inc/function.inc.php');
                           <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
                       </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Faculty & Staff<i class="fas fa-chevron-down fa-xs"></i>
+                      </a>
+                      <!-- Dropdown Menu -->
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="faculty.php">Faculty</a></li>
+                          <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
+                          <li><a class="dropdown-item" href="syllabus.php">Syllabus</a></li>
+                          <li><a class="dropdown-item" href="exam-schedule.php">Exam Schedule</a></li>
+                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
+                      </ul>
+                    </li>
                     <?php
                     $menu_res=mysqli_query($con,"select * from menus where status=1");
                     while($row=mysqli_fetch_assoc($menu_res)){

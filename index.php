@@ -57,8 +57,6 @@
    <div class="swiper-button-next text-white"><i class="fa fa-arrow-right"></i></div>
 </section>
 <!--=================================Banner -->
-
-
 <!--=================================Notice -->
 <div class="spotlight-content">
    <div class="d-flex">
@@ -68,20 +66,19 @@
       <div class="flex-grow-1 marquee-spotlight p-1">
          <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10">
             <?php
+               $notice_arr=array();
                $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc");
-               while($notice_res_row=mysqli_fetch_assoc($notice_res)){
+               while($notice_arr[]=$notice_res_row=mysqli_fetch_assoc($notice_res)){
                ?>
-            <a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
-              <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
-              <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
-            </a>
+                  <a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
+                  <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
+                  <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
+                  </a>
             <?php }?>
          </marquee>
       </div>
    </div>
 </div>
-
-
 <!--=================================About -->
 <section class="space-ptb">
    <div class="container-fluid">
@@ -102,7 +99,7 @@
       </div>
    </div>
 </section>
-<!--=================================About -->
+<!--=================================About -->  
 <!--=================================Counter -->
 <section class="space-pb bg-light">
    <div class="container">
