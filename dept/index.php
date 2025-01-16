@@ -67,7 +67,7 @@
                         if(mysqli_num_rows($notice_res)>0){
                         while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                         ?>
-                          <a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
+                          <a href="../pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
                           <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
                           <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
                           </a>
@@ -184,7 +184,7 @@
                 <img class="img-fluid border-radius" src="../images/teachers/<?php echo $faculty_row['image']?>" alt="">
               </div>
               <div class="team-info text-center">
-                <a href="teachers-single.html" class="team-title"><?php echo $faculty_row['name']?></a>
+                <a target="_blank" href="../faculty-details?id=<?php echo md5($faculty_row['id'])?>" class="team-title"><?php echo $faculty_row['name']?></a>
                 <p class="team-designation text-white"><?php echo $faculty_row['designation']?></p>
                 <div class="team-social">
                   <ul>

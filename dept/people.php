@@ -12,7 +12,7 @@ if(isset($_GET['type'])){
 
     <!--=================================
     inner-header -->
-    <section class="inner-banner bg-overlay-black-70 bg-holder" style="background-image: url('images/bg/02.jpg');">
+    <section class="inner-banner bg-overlay-black-70 bg-holder" style="background-image: url('../images/bg/02.jpg');">
       <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-md-12">

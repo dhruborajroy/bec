@@ -44,30 +44,23 @@ require('./inc/function.inc.php');
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              <div class="d-none d-lg-flex align-items-center text-center">
-                <div class="mr-3 d-inline-block">
-                  <a class="text-white" href="mailto:<?php echo EMAIL ?>"><i class="far fa-envelope mr-2"></i><span>Email:</span> <?php echo EMAIL ?></a>
-                </div>
-                <div class="mr-auto d-inline-block">
-                  <a class="text-white" href="tel:<?php echo TEL ?>"><i class="fas fa-phone-alt mr-2"></i><span>Call</span> <?php echo TEL ?></a>
-                </div>
+              <div class="d-none d-lg-flex justify-content-end  text-center">
                 <div class="social-icon">
                   <ul class="social-icon">
                     <li>
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="http://bec.ac.bd" target="_blank" rel="noopener noreferrer">Old Website</a>
                     </li>
                     <li>
-                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
+                    </li>
+                    <li>                      
+                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Libray</a>
                     </li>
                     <li>
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
                     </li>
                   </ul>
                 </div>
-
               </div>
             </div>
           </div>
