@@ -11,8 +11,6 @@ $news_id=get_safe_value($_GET['news_id']);
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            
-
               <?php
                $news_res=mysqli_query($con,"select * from news where status=1 AND md5(id)='$news_id'");
                if(mysqli_num_rows($news_res)>0){
@@ -20,7 +18,7 @@ $news_id=get_safe_value($_GET['news_id']);
                ?>
             <div class="events">
               <div class="events-img">
-                <img class="img-fluid border-0" src="images/events/03.jpg" alt="">
+                <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
               </div>
               <div class="events-content mt-4">
                 <a href="#" class="text-dark h2"><?php echo $news_res_row['title']?></a>

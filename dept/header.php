@@ -1,6 +1,11 @@
 <?php 
-if(!isset($_GET['dept_id'])){
-  header("Location: /");
+session_start();
+if(!isset($_SESSION['DEPT_ID'])){
+  $dept_id=$_SESSION['DEPT_ID'];
+  if(!isset($_GET['dept_id'])){
+    $_SESSION['DEPT_ID']=$_GET['dept_id'];
+    // header("Location: /");
+  }
 }
 require('../inc/constant.inc.php');
 require('../inc/connection.inc.php');
@@ -87,8 +92,8 @@ require('../inc/function.inc.php');
             <div class="col-sm-12">
               <nav class="navbar navbar-expand-lg">
                 <!-- Sticky logo -->
-                <a class="navbar-brand logo-sticky" href="index-2.html">
-                  <img src="../images/logo.svg" alt="Logo">
+                <a class="navbar-brand logo-sticky" href="ce">
+                  <img src="../images/bec-ce.svg" alt="Logo">
                 </a>
                 <!-- Navbar toggler START-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,58 +104,60 @@ require('../inc/function.inc.php');
                 <!-- Navbar START -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav">
-                    <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle" href="http://localhost/BEC/dept/ce" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link" href="dept/ce" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        About<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="about-us.html">About Us</a></li>
+                        <li><a class="dropdown-item" href="about-us">About Us</a></li>
+                        <li><a class="dropdown-item" href="vision-mission">Vision & Mission</a></li>
+                        <li><a class="dropdown-item" href="head-message">Message of the Head</a></li>
+                        <li><a class="dropdown-item" href="booklet">Information Booklet</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Course<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        People<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="course.html">Course</a></li>
-                          <li><a class="dropdown-item" href="course-detail.html">Course Detail</a></li>
+                          <li><a class="dropdown-item" href="faculty">Faculty</a></li>
+                          <li><a class="dropdown-item" href="officers">Officers</a></li>
+                          <li><a class="dropdown-item" href="Staff">Staff</a></li>
+                          <li><a class="dropdown-item" href="former-head">Former Head</a></li>
+                          <li><a class="dropdown-item" href="former-faculty">Former Faculty</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Event<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Research<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="events-list.html">Events List</a></li>
-                          <li><a class="dropdown-item" href="events-grid.html">Events Grid</a></li>
-                          <li><a class="dropdown-item" href="event-detail.html">Event Detail</a></li>
+                          <li><a class="dropdown-item" href="publication">Publication</a></li>
+                          <li><a class="dropdown-item" href="research">Researches</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Facilities<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="blog.html">Blog</a></li>
-                          <li><a class="dropdown-item" href="blog-detail.html">Blog Detail</a></li>
+                          <li><a class="dropdown-item" href="labs">List of Laboratories</a></li>
+                          <li><a class="dropdown-item" href="laboratories">Scholarships</a></li>
                       </ul>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="contact-us.html">Contact Us</a>
+                      <a class="nav-link" href="contact-us">Contact Us</a>
                     </li>
                   </ul>
                 </div>
                 <!-- Navbar END-->
-
-                <div class="mr-5 mr-lg-0 d-sm-flex d-none align-items-center">
-                  <!-- Button START-->
-                  <a class="btn btn-dark" href="#">Get a Quote</a>
-                  <!-- Button END-->
-                </div>
-
               </nav>
             </div>
           </div>

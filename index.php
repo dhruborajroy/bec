@@ -189,18 +189,33 @@
                <div class="grid-item" data-groups='["branding"]'>
                   <div class="course-item">
                      <div class="coures-img">
-                        <img class="img-fluid" src="images/courses/01.jpg" alt="">
-                        <div class="course-tag">
-                           <a href="#">Business</a>
-                        </div>
+                        <img class="img-fluid" src="images/ce/sliders/01.jpg" alt="">
                      </div>
                      <div class="course-conten">
-                        <a href="#" class="course-author d-flex align-items-center mb-3">
+                        <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
                         <img class="avatar img-fluid" src="images/avatar/01.jpg" alt="">
                         <span class="author-name">Alice Williams</span>
-                        </a>
+                        </a> -->
                         <h5 class="mb-3">
-                           <a href="course-detail.html">Aeronautical & Manufacturing Engineering</a>
+                           <a href="dept/ce">Civil Engineering</a>
+                        </h5>
+                     </div>
+                  </div>
+               </div>
+               <!-- item End -->
+               <!-- item START -->
+               <div class="grid-item" data-groups='["branding"]'>
+                  <div class="course-item">
+                     <div class="coures-img">
+                        <img class="img-fluid" src="images/ce/sliders/02.jpg" alt="">
+                     </div>
+                     <div class="course-conten">
+                        <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
+                        <img class="avatar img-fluid" src="images/avatar/01.jpg" alt="">
+                        <span class="author-name">Alice Williams</span>
+                        </a> -->
+                        <h5 class="mb-3">
+                           <a href="dept/ce">Electrical & Electronics Engineering</a>
                         </h5>
                      </div>
                   </div>
@@ -258,7 +273,7 @@
                            <div class="row">
                               <div class="col-lg-3">
                                  <div class="events-img mb-4 mb-lg-0">
-                                 <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
+                                 <img class="img-fluid border-0" src="images/events/<?php echo $news_res_row['image']?>" alt="">
                                  </div>
                               </div>
                               <div class="col-lg-6 align-self-center">

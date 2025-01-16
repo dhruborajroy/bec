@@ -19,6 +19,7 @@
                   <tr class="bg-dark">
                     <th class="text-white" scope="col">Date</th>
                     <th class="text-white" scope="col">Title</th>
+                    <th class="text-white" scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -28,8 +29,9 @@
                while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                ?>
                <tr  style="font-size: 22px;">
-                 <td style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></td>
-                 <td><a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>"><?php echo $notice_res_row['title']?></a></td>
+                 <td style="color:#1a2844 !important;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></td>
+                 <td><?php echo $notice_res_row['title']?></td>
+                 <td  style="color:red;"><a  style="color:red;" href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>">Download <i class="fa fa-download "></i></a></td>
                </tr>
               <?php } }?>
                 </tbody>

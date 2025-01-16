@@ -5,41 +5,17 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-12">
             <div class="text-center">
-              <h1 class="text-white">Gallery</h1>
+              <h1 class="text-white">News</h1>
             </div>
           </div>
         </div>
       </div>
     </section>
     <!--=================================inner-header -->
-
-
-    
     <!--=================================
     Event -->
     <section class="space-ptb">
       <div class="container">
-        <div class="course-archive bg-dark py-3 px-4 mb-5 border-radius">
-          <div class="row d-flex align-items-center justify-content-between">
-          <div class="col-md-8">
-            <div class="d-flex">
-              <div class="mr-3">
-                <a class="text-white" href="events-grid.html"><i class="fa fa-th-large mr-2"></i></a>
-                <a class="text-white" href="events-list.html"><i class="fa fa-list-ul"></i></a>
-              </div>
-              <div class="text-white">
-                Showing 1-6 of 11 results
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mt-4 mt-md-0">
-            <form class="navbar-form search d-flex">
-              <input type="text" name="q" class="form-control input-search rounded-0 bg-white" placeholder="search" autocomplete="off">
-              <a href="#"><i class="fa fa-search text-white"></i></a>
-            </form>
-          </div>
-         </div>
-        </div>
         <div class="row">
           <div class="col-lg-12">
             <div class="row">
@@ -56,7 +32,7 @@
                           <div class="row">
                             <div class="col-lg-3">
                               <div class="events-img mb-4 mb-lg-0">
-                                <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
+                                <img class="img-fluid border-0" src="images/events/<?php echo $news_res_row['image']?>" alt="">
                               </div>
                             </div>
                             <div class="col-lg-6 align-self-center">
@@ -86,9 +62,7 @@
                           </div>
                         </div>
 
-                        <?php } }else{
-                          redirect("/");  
-                        }?>
+                        <?php } }?>
                     </div>
                   </div>
                 </div>

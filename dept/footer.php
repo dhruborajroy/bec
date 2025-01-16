@@ -1,6 +1,6 @@
 
     <!--=================================Footer-->
-    <footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(images/bg/03.jpg);">
+    <footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(../images/bg/01.jpg);">
       <div class="container pt-5">
         <div class="row pb-5 pb-lg-6 mb-lg-3">
           <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 pr-lg-5">
@@ -33,31 +33,31 @@
             <h5 class="text-white mb-2 mb-sm-4">Useful Link</h5>
             <div class="footer-link">
               <ul class="list-unstyled mb-0">
-                <li><a class="text-white" href="index-2.html">Home</a></li>
-                <li><a class="text-white" href="about-us.html">About</a></li>
-                <li><a class="text-white" href="course.html">Course</a></li>
-                <li><a class="text-white" href="privacy-policy.html">Privacy Policy</a></li>
-                <li><a class="text-white" href="pricing.html">Pricing</a></li>
-                <li><a class="text-white" href="faq.html">Faq</a></li>
+                <?php
+                $useful_links_res=mysqli_query($con,"select * from useful_links where status=1");
+                if(mysqli_num_rows($useful_links_res)>0){
+                while($useful_links_row=mysqli_fetch_assoc($useful_links_res)){
+                ?>
+                  <li><a class="text-white" href="<?php echo $useful_links_row['link']?>"><?php echo $useful_links_row['link_text']?></a></li>
+                <?php } }?>
               </ul>
             </div>
           </div>
           <div class="col-sm-6 col-lg-4">
             <h5 class="text-white mb-2 mb-sm-4">Contact Us</h5>
-            <p class="text-white">Helped thousands of clients to find the right property for their needs.</p>
             <div class="footer-contact-info">
               <div class="contact-address mt-4">
                 <div class="contact-item">
                   <i class="fas fa-map-marker-alt"></i>
-                  <p class="ml-3 mb-0 text-white">6580 Allison Turnpike Creminfort, AL 32808-4509</p>
+                  <p class="ml-3 mb-0 text-white"><?php echo ADDRESS?></p>
                 </div>
                 <div class="contact-item">
                   <i class="fas fa-microphone-alt"></i>
-                  <p class="mb-0 font-weight-bold ml-3"><a class="text-white" href="#">+(123) 456-7890</a></p>
+                  <p class="mb-0 font-weight-bold ml-3"><a class="text-white" href="#"><?php echo TEL?></a></p>
                 </div>
                 <div class="contact-item mb-0">
                   <i class="fas fa-headset"></i>
-                  <a class="text-white ml-3 text-white" href="#">letstalk@academic.com</a>
+                  <a class="text-white ml-3 text-white" href="#"><?php echo EMAIL?></a>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12 text-center">
-              <p class="mb-0 text-white">©Copyright 2020 <a href="index-2.html">academic</a> All Rights Reserved</p>
+              <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index">The Web Divers</a> </p>
             </div>
           </div>
         </div>
@@ -82,7 +82,6 @@
     <div id="back-to-top" class="back-to-top">up</div>
     <!--=================================
     Back To Top-->
-
     <!--=================================
     Javascript -->
 

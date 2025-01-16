@@ -1,5 +1,6 @@
 <?php
 define('LOGO','../images/gallery/logo.png');
+define('BD_LOGO','../images/bd.png');
 define('NAME',"গণপ্রজাতন্ত্রী বাংলাদেশ সরকার 
 <br>
 অধ্যক্ষের কার্যালয়

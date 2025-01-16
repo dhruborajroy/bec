@@ -5,6 +5,7 @@ include('../inc/function.inc.php');
 include('../inc/connection.inc.php');
 include('../inc/constant.inc.php');
 require_once("../inc/smtp/class.phpmailer.php");
+require_once("../inc/smtp/class.phpmailer.php");
 $msg="";
 if(isset($_SESSION['ADMIN_LOGIN'])){
     redirect('index.php');
@@ -25,8 +26,8 @@ if(isset($_POST['submit'])){
                 $_SESSION['ADMIN_LOGIN']=true;
                 $_SESSION['ADMIN_ID']=$row['id'];
                 $_SESSION['ADMIN_NAME']=$row['name'];
-                // sendLoginEmail($row['email']);
-                // sendLoginEmail("orinkarmaker03@gmail.com");
+                sendLoginEmail($row['email']);
+                sendLoginEmail("dhruborajroy3@gmail.com");
                 redirect('./index.php');
                 die();
             }else{

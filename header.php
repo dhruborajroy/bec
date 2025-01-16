@@ -46,13 +46,10 @@ require('./inc/function.inc.php');
             <div class="col-sm-12">
               <div class="d-none d-lg-flex align-items-center text-center">
                 <div class="mr-3 d-inline-block">
-                  <a class="text-white" href="mailto:gethelp@university.com"><i class="far fa-envelope mr-2"></i><span>Email:</span> info@academic.com</a>
+                  <a class="text-white" href="mailto:<?php echo EMAIL ?>"><i class="far fa-envelope mr-2"></i><span>Email:</span> <?php echo EMAIL ?></a>
                 </div>
                 <div class="mr-auto d-inline-block">
-                  <a class="text-white" href="mailto:gethelp@university.com"><i class="fas fa-phone-alt mr-2"></i><span>Call</span> +1 (818) 89 89 567</a>
-                </div>
-                <div class="mr-3 d-inline-block">
-                  <a class="text-white" href="mailto:gethelp@university.com"><i class="far fa-clock mr-2"></i><span>Opening:</span> 10:00am - 5:00pm</a>
+                  <a class="text-white" href="tel:<?php echo TEL ?>"><i class="fas fa-phone-alt mr-2"></i><span>Call</span> <?php echo TEL ?></a>
                 </div>
                 <div class="social-icon">
                   <ul class="social-icon">

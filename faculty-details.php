@@ -1,7 +1,7 @@
 <?php include("header.php");
 
 if(isset($_GET['id']) && $_GET['id']>0){
-	$id=get_safe_value($_GET['id']);
+	  $id=get_safe_value($_GET['id']);
     $res=mysqli_query($con,"select * from `faculty` where md5(id)='$id'");
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
@@ -31,7 +31,14 @@ if(isset($_GET['id']) && $_GET['id']>0){
            'title'=>'Error',
         );
         // redirect("index.php");
-    }
+  }
+}else{
+  $_SESSION['TOASTR_MSG']=array(
+     'type'=>'error',
+     'body'=>'You don\'t have the permission to access the location!',    
+     'title'=>'Error',
+  );
+  // redirect("index.php");
 }
 ?>
     <!--=================================inner-header -->
@@ -55,6 +62,30 @@ if(isset($_GET['id']) && $_GET['id']>0){
           <div class="col-lg-12">
             <div class="row">
               <div class="col-md-4 mb-4 mb-md-0">
+              <div class="bd-example">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <p><strong>This is some placeholder content the Home tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <p><strong>This is some placeholder content the Profile tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <p><strong>This is some placeholder content the Contact tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+  </div>
+</div>
                 <div class="team-single is-sticky">
                   <div class="team-img">
                   <img class="img-fluid border-radius" src="images/teachers/<?php echo $row['image']?>" alt="">
