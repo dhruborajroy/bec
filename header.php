@@ -110,44 +110,16 @@ require('./inc/function.inc.php');
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
-                      aria-haspopup="true" aria-expanded="false">Subjects<i class="fas fa-chevron-down fa-xs"></i></a>
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Departments<i class="fas fa-chevron-down fa-xs"></i>
+                      </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <div class="dropdown-mega-menu">
-                            <div class="container-fluid menu-content py-3">
-                              <div class="row">
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                  <ul class="list-group ">
-                                    <h6 class="navbar-menu-sub-title bottom-line">
-                                      <a href="#">
-                                        Electrical and Electronic Engineering
-                                      </a>
-                                    </h6>
-                                    <li><a href="dept/eee">Department of Electrical and Electronic Engineering</a></li>
-                                  </ul>
-                                </div>
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                  <ul class="list-group ">
-                                    <h6 class="navbar-menu-sub-title bottom-line">
-                                      Civil Engineering
-                                    </h6>
-                                    <li><a href="dept/ce">Department of Civil Engineering</a></li>
-                                  </ul>
-                                </div>
-                              <div class="col-lg-3 col-md-12 col-sm-12">
-                                  <ul class="list-group ">
-                                    <h6 class="navbar-menu-sub-title bottom-line">
-                                      General Science and Humanities 
-                                    </h6>
-                                    <li><a href="dept/gsh">Department of General Science and Humanities</a></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <li><a class="dropdown-item" href="dept/ce">Department of Civil Engineering</a></li>
+                        <li><a class="dropdown-item" href="dept/eee">Department of Elelctrical & Electronics Engineering</a></li>
+                        <li><a class="dropdown-item" href="dept/gsh">Department of General Science & Engineering</a></li>
                         </ul>
-                      </li>
+                    </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academic<i class="fas fa-chevron-down fa-xs"></i>
                       </a>

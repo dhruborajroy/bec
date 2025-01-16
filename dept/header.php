@@ -125,11 +125,11 @@ require('../inc/function.inc.php');
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="faculty">Faculty</a></li>
-                          <li><a class="dropdown-item" href="officers">Officers</a></li>
-                          <li><a class="dropdown-item" href="Staff">Staff</a></li>
-                          <li><a class="dropdown-item" href="former-head">Former Head</a></li>
-                          <li><a class="dropdown-item" href="former-faculty">Former Faculty</a></li>
+                          <li><a class="dropdown-item" href="people?type=faculty">Faculty</a></li>
+                          <li><a class="dropdown-item" href="people?type=officers">Officers</a></li>
+                          <li><a class="dropdown-item" href="people?type=Staff">Staff</a></li>
+                          <li><a class="dropdown-item" href="people?type=former-head">Former Head</a></li>
+                          <li><a class="dropdown-item" href="people?type=former-faculty">Former Faculty</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -149,7 +149,7 @@ require('../inc/function.inc.php');
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="labs">List of Laboratories</a></li>
-                          <li><a class="dropdown-item" href="laboratories">Scholarships</a></li>
+                          <li><a class="dropdown-item" href="scholarships">Scholarships</a></li>
                       </ul>
                     </li>
                     <li class="nav-item">
