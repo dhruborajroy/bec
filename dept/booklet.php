@@ -1,4 +1,14 @@
-<?php include("header.php")?>
+<?php 
+define('SECURE_ACCESS', true);
+session_start();
+if(!isset($_SESSION['DEPT_ID'])) {
+  header("Location: /"); // Redirect if no session and no dept_id in URL
+  exit();
+}else{
+  $dept_id=$_SESSION['DEPT_ID'];
+}
+include("header.php");
+?>
     <!--=================================inner-header -->
     <section class="inner-banner bg-overlay-black-70 bg-holder" style="background-image: url('../images/bg/02.jpg');">
       <div class="container">

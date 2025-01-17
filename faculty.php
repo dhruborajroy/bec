@@ -1,5 +1,8 @@
-<?php include("header.php")?>
 
+<?php
+define('SECURE_ACCESS', true);
+include("header.php");
+?>
 
     <!--=================================
     inner-header -->

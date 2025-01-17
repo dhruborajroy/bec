@@ -1,4 +1,7 @@
 <?php 
+if (!defined('SECURE_ACCESS')) {
+  die("Direct access not allowed!");
+}
 require('./inc/constant.inc.php');
 require('./inc/connection.inc.php');
 require('./inc/function.inc.php');

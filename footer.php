@@ -1,4 +1,7 @@
-
+<?php
+if (!defined('SECURE_ACCESS')) {
+  die("Direct access not allowed!");
+}?>
     <!--=================================Footer-->
     <footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(images/bg/01.jpg);">
       <div class="container pt-5">

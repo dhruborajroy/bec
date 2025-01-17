@@ -1,5 +1,7 @@
-<?php include("header.php")?>
-
+<?php
+define('SECURE_ACCESS', true);
+include("header.php");
+?>
 <style>.container1 {
   position: relative;
   overflow: hidden;

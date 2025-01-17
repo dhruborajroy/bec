@@ -1,4 +1,7 @@
-<?php include("header.php")?>
+<?php
+define('SECURE_ACCESS', true);
+include("header.php");
+?>
     <!--=================================
     campus-->
     <section class="space-ptb">

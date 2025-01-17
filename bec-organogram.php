@@ -1,4 +1,7 @@
-<?php include("header.php")?>
+<?php
+define('SECURE_ACCESS', true);
+include("header.php");
+?>
     <!--=================================inner-header -->
     <section class="inner-banner bg-overlay-black-70 bg-holder" style="background-image: url('images/bg/02.jpg');">
       <div class="container">

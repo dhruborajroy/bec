@@ -1,4 +1,6 @@
-<?php include("header.php")?>
+<?php 
+define('SECURE_ACCESS', true);
+include("header.php")?>
 <!--=================================Banner -->
 <section class="banner position-ralative">
    <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
@@ -182,7 +184,7 @@
                <div class="grid-item" >
                   <div class="course-item">
                      <div class="coures-img">
-                        <img class="img-fluid" src="images/ce/sliders/01.jpg" alt="">
+                        <img class="img-fluid" src="images/dept/sliders/01.jpg" alt="">
                      </div>
                      <div class="course-conten">
                         <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
@@ -200,7 +202,7 @@
                <div class="grid-item" >
                   <div class="course-item">
                      <div class="coures-img">
-                        <img class="img-fluid" src="images/ce/sliders/02.jpg" alt="">
+                        <img class="img-fluid" src="images/dept/sliders/02.jpg" alt="">
                      </div>
                      <div class="course-conten">
                         <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
@@ -218,7 +220,7 @@
                <div class="grid-item" >
                   <div class="course-item">
                      <div class="coures-img">
-                        <img class="img-fluid" src="images/ce/sliders/03.jpg" alt="">
+                        <img class="img-fluid" src="images/dept/sliders/03.jpg" alt="">
                      </div>
                      <div class="course-conten">
                         <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
@@ -246,10 +248,19 @@
          </div>
          <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
             <div class="section-title">
-               <h2 class="title">Why Choose Us</h2>
+               <h2 class="title">About Us</h2>
+               <?php
+              $about_us_sql="select about_us.details from `about_us`";
+              $about_us_res=mysqli_query($con,$about_us_sql);
+              if(mysqli_num_rows($about_us_res)>0){
+              while($about_us_row=mysqli_fetch_assoc($about_us_res)){
+            ?>
                <p class="mb-0">
-                  Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.
+                  <?php echo $about_us_row['details']?>
                </p>
+               <?php 
+                  } } else { ?>
+               <?php } ?>
             </div>
          </div>
       </div>

@@ -1,12 +1,25 @@
-<?php include("header.php")?>
+<?php
+define('SECURE_ACCESS', true);
+session_start();
+if(isset($_GET['dept_id'])) {
+  if (!in_array($_GET['dept_id'], ['ce', 'gsh', 'eee'])) {
+    header("Location: /"); // Change to your desired redirect page
+    exit();
+  }
+  $dept_id=$_SESSION['DEPT_ID'] = $_GET['dept_id'];
+}else{
+  header("Location: /"); // Redirect if no session and no dept_id in URL
+  exit();
+}
+include("header.php");
+?>
 
 <!--=================================Banner -->
 <section class="banner position-ralative">
    <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
       <div class="swiper-wrapper">
          <?php
-            $active="";
-              $slider_sql="select * from `dept_sliders` order by added_on desc";
+              $slider_sql="select * from `dept_sliders` where dept='$dept_id' order by added_on desc";
               $slider_res=mysqli_query($con,$slider_sql);
               if(mysqli_num_rows($slider_res)>0){
               while($slider_row=mysqli_fetch_assoc($slider_res)){
@@ -63,7 +76,7 @@
               <div class="flex-grow-1 marquee-spotlight p-1">
                   <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10">
                     <?php
-                        $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc");
+                        $notice_res=mysqli_query($con,"select * from notice where status=1 and  dept='$dept_id'  order by added_on desc");
                         if(mysqli_num_rows($notice_res)>0){
                         while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                         ?>
@@ -95,7 +108,7 @@
                 </div>
               </div>
               <div class="col-md-4 text-md-right">
-                <a class="btn btn-white" href="../news">View All</a>
+                <a class="btn btn-white" href="news">View All</a>
               </div>
             </div>
 
@@ -103,7 +116,7 @@
             <div class="row">
               <div class="col-lg-12">
                       <?php
-                      $news_res=mysqli_query($con,"select * from news where status=1");
+                      $news_res=mysqli_query($con,"select * from news  where  dept='$dept_id' and status=1");
                       if(mysqli_num_rows($news_res)>0){
                       while($news_res_row=mysqli_fetch_assoc($news_res)){
                       ?>
@@ -111,7 +124,7 @@
                           <div class="row">
                             <div class="col-lg-3">
                               <div class="events-img mb-4 mb-lg-0">
-                                <img class="img-fluid border-0" src="../images/events/01.jpg" alt="">
+                                <img class="img-fluid border-0" src="../images/events/<?php echo $news_res_row['image']?>" alt="">
                               </div>
                             </div>
                             <div class="col-lg-6 align-self-center">
@@ -160,8 +173,7 @@
           <div class="col-lg-8 col-md-10 text-center">
             <!-- Section Title START -->
             <div class="section-title">
-              <h2 class="title">Meet Our Heroes</h2>
-              <p>Meet the outstanding performers in our industry-award-winning team of professionals</p>
+              <h2 class="title">Faculty Members</h2>
             </div>
             <!-- Section Title END -->
           </div>
@@ -170,7 +182,7 @@
 
         
         <?php
-            $faculty_sql="select * from faculty";
+            $faculty_sql="select * from faculty where  dept='$dept_id' ";
             $faculty_res=mysqli_query($con,$faculty_sql); 
             if(mysqli_num_rows($faculty_res)>0){
               $i=1;        
@@ -202,25 +214,7 @@
           <?php 
                 $i++;
                 } } else { ?>
-                <div class="col-xl-3 col-lg-6 col-sm-6 mb-4">
-                  <!-- team-01 START -->
-                  <div class="team">
-                    <div class="team-img">
-                      <img class="img-fluid" src="images/teachers/rabbani.jpg" alt="">
-                    </div>
-                    <div class="team-info">
-                      <a href="faculty-details" class="team-name">Md. Liton Rabbani</a>
-                      <p class="team-leader">Principal(In-charge)</p>
-                      <ul class="list-unstyled">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- team-01 END -->
-                </div>
+                No Members Found
             <?php } ?>
         </div>
       </div>

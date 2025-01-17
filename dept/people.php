@@ -1,4 +1,12 @@
 <?php 
+define('SECURE_ACCESS', true);
+session_start();
+if(!isset($_SESSION['DEPT_ID'])) {
+  header("Location: /"); // Redirect if no session and no dept_id in URL
+  exit();
+}else{
+  $dept_id=$_SESSION['DEPT_ID'];
+}
 if(!isset($_GET['type'])){
     // header("Location: /");
     die;
@@ -38,7 +46,7 @@ if(isset($_GET['type'])){
             if($type!=""){
               $additional_sql="and type='$type'";
             }
-            $sql="select * from people  where dept='Civil Engineering' $additional_sql limit 5";
+            $sql="select * from people  where  dept='$dept_id'  $additional_sql";
             $res=mysqli_query($con,$sql); 
             if(mysqli_num_rows($res)>0){
               $i=1;        

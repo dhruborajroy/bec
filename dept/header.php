@@ -1,15 +1,11 @@
 <?php 
-session_start();
-if(!isset($_SESSION['DEPT_ID'])){
-  $dept_id=$_SESSION['DEPT_ID'];
-  if(!isset($_GET['dept_id'])){
-    $_SESSION['DEPT_ID']=$_GET['dept_id'];
-    // header("Location: /");
-  }
+if (!defined('SECURE_ACCESS')) {
+  die("Direct access not allowed!");
 }
 require('../inc/constant.inc.php');
 require('../inc/connection.inc.php');
 require('../inc/function.inc.php');
+// echo pr($_SESSION['DEPT_ID']);
 ?>
 
 <!DOCTYPE html>
@@ -86,8 +82,8 @@ require('../inc/function.inc.php');
                 <!-- Navbar toggler END-->
                 <div class="col-sm-4">
                   <!-- logo -->
-                  <a class="navbar-brand logo text-lg-center" href="index">
-                    <img src="../images/bec-ce.svg" alt="Logo">
+                  <a class="navbar-brand logo text-lg-center" href="<?php echo $dept_id?>">
+                    <img src="../images/bec-<?php echo $dept_id?>.png" alt="Logo">
                   </a>
                 </div>
                 <div class="col-sm-8">
@@ -95,7 +91,7 @@ require('../inc/function.inc.php');
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                          <a class="nav-link" href="dept/ce" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                          <a class="nav-link" href="dept/<?php echo $dept_id?>" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
