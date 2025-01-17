@@ -16,10 +16,16 @@ define('SIGNATURE_NAME','জনাব মোঃ লিটন রাব্বা�
 define('DESIGNATION','অধ্যক্ষ');
 define('SIGNATURE_IMAGE','https://static.vecteezy.com/system/resources/thumbnails/023/264/092/small_2x/fake-hand-drawn-autographs-set-handwritten-signature-scribble-for-business-certificate-or-letter-isolated-illustration-vector.jpg');
 
+
+
 define('FRONT_SITE_PATH','http://localhost/BEC/');
 define('SLIDER_IMAGE',FRONT_SITE_PATH."/images/sliders/");
+define('DEPT_SLIDER_IMAGE',FRONT_SITE_PATH."/images/dept/sliders/");
 define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");
+define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/dept/sliders/");
 define('UPLOAD_FACULTY_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/teachers/");
+
+
 
 $curStr=$_SERVER['REQUEST_URI'];
 $curArr=explode('/',$curStr);

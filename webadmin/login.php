@@ -63,7 +63,7 @@ if(isset($_POST['submit'])){
     <!-- Animate CSS -->
     <link rel="stylesheet" href="css/animate.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Modernize js -->
     <script src="js/modernizr-3.6.0.min.js"></script>
 </head>
@@ -77,15 +77,15 @@ if(isset($_POST['submit'])){
         <div class="login-page-content">
             <div class="login-box">
                 <div class="item-logo">
-                    <img src="<?php echo FRONT_SITE_PATH?>/webadmin/img/logo2.png" alt="logo">
+                    <img src="../images/bec.png" alt="logo" style="width: 350px;">
                 </div>
                 <form class="login-form" method="POST" id="validate">
                     <div class="form-group">
                         <?php echo $msg?>
                     </div>
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" placeholder="Enter usrename" class="form-control" name="email">
+                        <label>Email</label>
+                        <input type="text" placeholder="Enter Email" class="form-control" name="email">
                         <i class="far fa-envelope"></i>
                     </div>
                     <div class="form-group">
@@ -94,17 +94,13 @@ if(isset($_POST['submit'])){
                         <i class="fas fa-lock"></i>
                     </div>
                     <div class="form-group d-flex align-items-center justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="remember-me" >
-                            <label for="remember-me" class="form-check-label">Remember Me</label>
-                        </div>
+                        <div class="form-check"></div>
                         <a href="forgotPassword.php" class="forgot-btn">Forgot Password?</a>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="submit" class="login-btn">Login</button>
                     </div>
                 </form>
-                <div class="">Don't have an account ? <a href="#">Signup now!</a></div>
             </div>
         </div>
     </div>

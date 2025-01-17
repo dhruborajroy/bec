@@ -12,7 +12,7 @@
               while($slider_row=mysqli_fetch_assoc($slider_res)){
             ?>
             <!-- Swiper Slider 1-->
-            <div class="swiper-slide align-items-center d-flex bg-overlay-black-10" style="background-image: url(../images/ce/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
+            <div class="swiper-slide align-items-center d-flex bg-overlay-black-10" style="background-image: url(../images/dept/sliders/<?php echo $slider_row['image']?>); background-size: cover; background-position: center center;">
                 <div class="swipeinner container">
                   <div class="row justify-content-center text-center">
                       <div class="col-lg-10 col-md-12">

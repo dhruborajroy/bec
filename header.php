@@ -111,6 +111,7 @@ require('./inc/function.inc.php');
                         <li><a class="dropdown-item" href="dept/ce">Department of Civil Engineering</a></li>
                         <li><a class="dropdown-item" href="dept/eee">Department of Elelctrical & Electronics Engineering</a></li>
                         <li><a class="dropdown-item" href="dept/gsh">Department of General Science & Engineering</a></li>
+                        <li><a class="dropdown-item" href="#">Department of Naval Architecture & Marine Engineering(Proposed)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -126,7 +127,8 @@ require('./inc/function.inc.php');
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Faculty & Staff<i class="fas fa-chevron-down fa-xs"></i>
+                      <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        People<i class="fas fa-chevron-down fa-xs"></i>
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">

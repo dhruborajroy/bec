@@ -123,7 +123,7 @@
                   <i class="flaticon-team-1"></i>
                </div>
                <div class="counter-content">
-                  <span class="timer" data-to="1790" data-speed="10000">1790</span>
+                  <span class="timer" data-to="600" data-speed="10000">600</span>
                   <label>Students</label>
                </div>
             </div>
@@ -134,7 +134,7 @@
                   <i class="flaticon-diploma-1"></i>
                </div>
                <div class="counter-content align-self-center">
-                  <span class="timer" data-to="245" data-speed="10000">245</span>
+                  <span class="timer" data-to="45" data-speed="10">45</span>
                   <label>Teachers</label>
                </div>
             </div>
@@ -156,7 +156,7 @@
                   <i class="flaticon-trophy-1"></i>
                </div>
                <div class="counter-content">
-                  <span class="timer" data-to="1090" data-speed="10000">1090</span>
+                  <span class="timer" data-to="4" data-speed="10">4</span>
                   <label>Institutes</label>
                </div>
             </div>
@@ -171,22 +171,15 @@
       <div class="row">
          <div class="col-sm-8">
             <div class="section-title">
-               <h2 class="title">Our Popular Courses</h2>
+               <h2 class="title">Our Departments</h2>
             </div>
-         </div>
-         <div class="col-sm-4 text-md-right mb-4 mb-sm-0">
-            <a class="btn btn-primary" href="#">All Courses</a>
          </div>
       </div>
       <div class="row">
          <div class="col-md-12">
-            <div class="filters-group mb-lg-4">
-               <button class="btn-filter  active" data-group="all">All</button>
-               <button class="btn-filter" data-group="branding">Courses</button>
-            </div>
             <div class="my-shuffle-container columns-3 popup-gallery full-screen">
                <!-- item START -->
-               <div class="grid-item" data-groups='["branding"]'>
+               <div class="grid-item" >
                   <div class="course-item">
                      <div class="coures-img">
                         <img class="img-fluid" src="images/ce/sliders/01.jpg" alt="">
@@ -204,7 +197,7 @@
                </div>
                <!-- item End -->
                <!-- item START -->
-               <div class="grid-item" data-groups='["branding"]'>
+               <div class="grid-item" >
                   <div class="course-item">
                      <div class="coures-img">
                         <img class="img-fluid" src="images/ce/sliders/02.jpg" alt="">
@@ -216,6 +209,24 @@
                         </a> -->
                         <h5 class="mb-3">
                            <a href="dept/ce">Electrical & Electronics Engineering</a>
+                        </h5>
+                     </div>
+                  </div>
+               </div>
+               <!-- item End -->
+               <!-- item START -->
+               <div class="grid-item" >
+                  <div class="course-item">
+                     <div class="coures-img">
+                        <img class="img-fluid" src="images/ce/sliders/03.jpg" alt="">
+                     </div>
+                     <div class="course-conten">
+                        <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
+                        <img class="avatar img-fluid" src="images/avatar/01.jpg" alt="">
+                        <span class="author-name">Alice Williams</span>
+                        </a> -->
+                        <h5 class="mb-3">
+                           <a href="dept/gsh">General Science & Engineering</a>
                         </h5>
                      </div>
                   </div>
@@ -236,7 +247,9 @@
          <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
             <div class="section-title">
                <h2 class="title">Why Choose Us</h2>
-               <p class="mb-0">Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.</p>
+               <p class="mb-0">
+                  Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.Let success motivate you. Find a picture of what epitomizes success to you and then pull it out when you are in need of motivation.
+               </p>
             </div>
          </div>
       </div>

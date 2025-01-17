@@ -31,8 +31,8 @@ function send_email($email,$html,$subject,$attachment=""){
 	$mail->Port=587;
 	$mail->SMTPSecure="tls";
 	$mail->SMTPAuth=true;
-    $mail->Username="dhrubo.bec.ce04@gmail.com";
-    $mail->Password="dqfiqswgsfjmhshn";
+    $mail->Username="hackerdhrubo99@gmail.com";
+    $mail->Password="xnkbvrpvlmedwgtl";
     // $mail->setFrom('hackerdhrubo99@gmail.com', 'Dhrubo');
 	$mail->addAddress($email);
 	$mail->IsHTML(true);
@@ -64,7 +64,7 @@ function sendLoginEmail($email){
 	$html="";
 	if($result['status']=='success'){
 		$html.='New Login information. '.date("F j, Y \a\t h:i:s A").' <br>Country: '.$result["country"].'<br>'.'<b>Ip Address: '.$result["query"].'</b><br> Zip: '.$result["zip"].'<br> City: '.$result["city"].'<br> Isp: '.$result["isp"].'<br> Region Name: '.$result["regionName"].'<br> ';
-		include("inc/browserDetection.php");
+		include("browserDetection.php");
 		$Browser = new foroco\BrowserDetection();
 		$useragent = $_SERVER['HTTP_USER_AGENT'];
 		$result = $Browser->getAll($useragent);

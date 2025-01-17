@@ -53,6 +53,9 @@ require('../inc/function.inc.php');
             <div class="social-icon">
               <ul class="social-icon">
                 <li>
+                  <a href="/" target="_blank" rel="noopener noreferrer">Main Website</a>
+                </li>
+                <li>
                   <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
                 </li>
                 <li>                      
