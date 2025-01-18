@@ -62,6 +62,11 @@
       <div class="row">
          <div class="col-lg-12">
             <div class="row">
+               <div class="col-md-12 mb-4 mb-md-0">
+                
+              </div>
+            </div>
+            <div class="row mt-4">
                <div class="col-md-4 mb-4 mb-md-0">
                   <div class="team-single is-sticky">
                      <div class="team-img">
@@ -98,17 +103,17 @@
                   <div class="card">
                      <div class="card-body">
                         <div class="default-tab">
-                           <nav>
-                              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                 <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                                 <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-profile" aria-selected="false">Education</a>
-                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-contact" aria-selected="false">Experience</a>
-                                 <a class="nav-item nav-link" id="nav-publications-tab" data-toggle="tab" href="#nav-publications" role="tab" aria-controls="nav-contact" aria-selected="false">Publications</a>
-                                 <a class="nav-item nav-link" id="nav-scholarship_award-tab" data-toggle="tab" href="#nav-scholarship_award" role="tab" aria-controls="nav-contact" aria-selected="false">Acholarships & Awards</a>
-                                 <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Research</a>
-                                 <a class="nav-item nav-link" id="nav-teaching_supervision-tab" data-toggle="tab" href="#nav-teaching_supervision" role="tab" aria-controls="nav-contact" aria-selected="false">Teaching & Supervision</a>
-                              </div>
-                           </nav>
+                          <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                                <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-profile" aria-selected="false">Education</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-contact" aria-selected="false">Experience</a>
+                                <a class="nav-item nav-link" id="nav-publications-tab" data-toggle="tab" href="#nav-publications" role="tab" aria-controls="nav-contact" aria-selected="false">Publications</a>
+                                <a class="nav-item nav-link" id="nav-scholarship_award-tab" data-toggle="tab" href="#nav-scholarship_award" role="tab" aria-controls="nav-contact" aria-selected="false">Acholarships & Awards</a>
+                                <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Research</a>
+                                <a class="nav-item nav-link" id="nav-teaching_supervision-tab" data-toggle="tab" href="#nav-teaching_supervision" role="tab" aria-controls="nav-contact" aria-selected="false">Teaching & Supervision</a>
+                            </div>
+                          </nav>
                            <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                               <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                  <p>
@@ -125,21 +130,39 @@
                                  </p>
                               </div>
                               <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Education</h4>
+                                 </div>
                                  <p><?php echo $row['education']?></p>
                               </div>
                               <div class="tab-pane fade" id="nav-experience" role="tabpanel" aria-labelledby="nav-experience-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Experience</h4>
+                                 </div>
                                  <p><?php echo $row['experience']?></p>
                               </div>
                               <div class="tab-pane fade" id="nav-publications" role="tabpanel" aria-labelledby="nav-publications-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Publication</h4>
+                                 </div>
                                  <p><?php echo $row['publication']?></p>
                               </div>
                               <div class="tab-pane fade" id="nav-scholarship_award" role="tabpanel" aria-labelledby="nav-scholarship_award-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Scholarships & Awards</h4>
+                                 </div>
                                  <p><?php echo $row['scholarship_award']?></p>
                               </div>
                               <div class="tab-pane fade" id="nav-research" role="tabpanel" aria-labelledby="nav-research-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Research</h4>
+                                 </div>
                                  <p><?php echo $row['research']?></p>
                               </div>
                               <div class="tab-pane fade" id="nav-teaching_supervision" role="tabpanel" aria-labelledby="nav-teaching_supervision-tab">
+                                 <div class="section-title mt-5">
+                                    <h4 class="title">Teaching Supervision</h4>
+                                 </div>
                                  <p><?php echo $row['teaching_supervision']?></p>
                               </div>
                            </div>

@@ -1,4 +1,5 @@
 <?php
+define('SECURE_ACCESS', true);
 include("../inc/constant.inc.php");
 include("../inc/connection.inc.php");
 include("../inc/function.inc.php");

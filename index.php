@@ -1,6 +1,7 @@
 <?php 
-   define('SECURE_ACCESS', true);
-   include("header.php")?>
+define('SECURE_ACCESS', true);
+include("header.php");
+?>
 <!--=================================Banner -->
 <section class="banner position-ralative">
    <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
@@ -76,42 +77,33 @@
       </div>
    </div>
 </div>
-<!--=================================About -->
-<section class="space-ptb">
+<!--=================================Why choose us -->
+<section class="bg-dark">
    <div class="container-fluid">
-      <div class="row no-guuters align-items-center col-lg-12">
-         <div class="col-lg-6 mb-4 mb-lg-7 pr-xl-6">
-            <div class="section-title mb-4">
-               <h2 class="title">Short Introduction</h2>
-               <p class="lead mb-0">
-                  <?php
-                     $genereral_infores=mysqli_query($con,"SELECT * FROM `about_us` where id='64441dc980a91'");
-                     if(mysqli_num_rows($genereral_infores)>0){
-                     while($genereral_infores_row=mysqli_fetch_assoc($genereral_infores)){                        
-                        $maxLength = 600;
-                     
-                        if (strlen($genereral_infores_row['details']) > $maxLength) {
-                            $truncatedString = substr_replace($genereral_infores_row['details'], '...', $maxLength);
-                        } else {
-                            $truncatedString = $genereral_infores_row['details'];
-                        }
-                        echo $truncatedString;
-                        } 
-                     }?>
+      <div class="row no-guuters">
+         <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
+            <div class="section-title">
+               <h2 class="title">About Us</h2>
+               <?php
+                  $about_us_sql="select about_us.details from `about_us`";
+                  $about_us_res=mysqli_query($con,$about_us_sql);
+                  if(mysqli_num_rows($about_us_res)>0){
+                  while($about_us_row=mysqli_fetch_assoc($about_us_res)){
+                  ?>
+               <p class="mb-0">
+                  <?php echo $about_us_row['details']?>
                </p>
+               <?php 
+                  } } else { ?>
+               <?php } ?>
             </div>
          </div>
-         <div class="col-lg-6 pr-lg-6">
-            <div class="row">
-               <div class="col-sm-12">
-                  <img class="img-fluid w-100 border-radius" src="images/01.jpg" alt="">
-               </div>
-            </div>
+         <div class="col-lg-6 bg-holder d-none d-lg-block" style="background-image: url(images/01.jpg);">
          </div>
       </div>
    </div>
 </section>
-<!--=================================About -->  
+<!--=================================Why choose us -->
 <!--=================================Counter -->
 <section class="space-pb bg-light">
    <div class="container">
@@ -259,25 +251,24 @@
       </div>
    </div>
 </section>
-<!--=================================
-   Why choose us -->
+<!--=================================Why choose us -->
 <!--=================================Event -->
 <section class="space-ptb">
    <div class="container">
       <div class="row">
          <div class="col-lg-12">
             <div class="row">
-               <div class="col-md-7">
-                  <div class="section-title">
-                     <h2 class="title">Latest Events</h2>
+               <div class="col-lg-7">
+                  <div class="row">
+                     <div class="col-md-7">
+                        <div class="section-title">
+                           <h2 class="title">Latest Events</h2>
+                        </div>
+                     </div>
+                     <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                        <a class="btn btn-primary btn-round" href="news">View All</a>
+                     </div>
                   </div>
-               </div>
-               <div class="col-md-5 text-md-right mb-4 mb-md-0">
-                  <a class="btn btn-primary btn-round" href="news">View All</a>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-lg-12">
                   <div class="events">
                      <div class="row">
                         <div class="col-12">
@@ -286,7 +277,7 @@
                               if(mysqli_num_rows($news_res)>0){
                               while($news_res_row=mysqli_fetch_assoc($news_res)){
                               ?>
-                           <div class="events shadow p-4 bg-white border-radius">
+                           <div class="events shadow p-4 bg-white border-radius mt-1">
                               <div class="row">
                                  <div class="col-lg-3">
                                     <div class="events-img mb-4 mb-lg-0">
@@ -303,7 +294,7 @@
                                        </div>
                                        <p class="text-dark mb-lg-0">
                                           <?php 
-                                             $maxLength = 600;
+                                             $maxLength = 700;
                                              
                                              if (strlen($news_res_row['details']) > $maxLength) {
                                                 $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
@@ -325,6 +316,54 @@
                      </div>
                   </div>
                </div>
+               <div class="col-xl-5 mt-xl-0 mt-4 shadow" >
+               <div class="row">
+                  <div class="col-md-7">
+                     <div class="section-title">
+                        <h2 class="title">Notices</h2>
+                     </div>
+                  </div>
+                  <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                     <a class="btn btn-primary btn-round" href="notices">View All Notice</a>
+                  </div>
+               </div>
+               <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5">
+               <?php 
+               $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc limit 5");
+               if(mysqli_num_rows($notice_res)>0){
+               while($notice_res_row=mysqli_fetch_assoc($notice_res)){?>
+                <div class="blog-post d-flex align-items-center border border-radius mt-1">
+                  <div class="blog-date">
+                    <h3><?php echo date("d",$notice_res_row['added_on'])?></h3>
+                    <span><?php echo date("F",$notice_res_row['added_on'])?></span>
+                  </div>
+                  <div class="blog-contant">
+                     <a class="btn p-0" href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>">
+                        <h5 class="mt-0 mb-3"><?php echo $notice_res_row['title']?></h5>
+                     </a>
+                  </div>
+                </div>
+                
+              <?php } }?>
+               </marquee>
+
+              </div>
+               <!-- <div class="col-lg-4 equal-height-cols" >
+                  <div class="col-md-12 ">
+                     <div class="card">
+                        <div class="card-body">
+                           <div class="default-tab">
+                              <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                                 <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <p>
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div> -->
             </div>
          </div>
       </div>

@@ -91,7 +91,7 @@ require('./inc/function.inc.php');
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                   <ul class="navbar-nav">
                     <li class="nav-item dropdown active">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+                      <a class="nav-link dropdown-toggle" href="index" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About Us<i class="fas fa-chevron-down fa-xs"></i>

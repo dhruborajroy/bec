@@ -1,5 +1,6 @@
 <?php 
-include('header.php');
+define('SECURE_ACCESS', true);
+include("header.php");
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);

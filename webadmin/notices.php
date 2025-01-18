@@ -1,4 +1,6 @@
-<?php include("header.php");?>
+<?php
+define('SECURE_ACCESS', true);
+ include("header.php");?>
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">

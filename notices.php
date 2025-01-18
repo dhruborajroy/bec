@@ -8,10 +8,7 @@ include("header.php");
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="section-title text-center">
-              <h2>All Notice</h2>
-              <!-- <p class="mb-0">All Notice Board</p> -->
-            </div>
+              <h1 class="text-center shadow-sm p-3 mb-5  bg-light rounded">All Notices</h1>
           </div>
         </div>
         <div class="row justify-content-center">
