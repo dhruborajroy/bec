@@ -1,44 +1,89 @@
 <?php 
 session_start();
-session_regenerate_id();
+session_regenerate_id(true); // Prevent session fixation
+
+define('SECURE_ACCESS', true);
 include('../inc/function.inc.php');
 include('../inc/connection.inc.php');
 include('../inc/constant.inc.php');
 require_once("../inc/smtp/class.phpmailer.php");
-require_once("../inc/smtp/class.phpmailer.php");
-$msg="";
+
+$msg = "";
+
 if(isset($_SESSION['ADMIN_LOGIN'])){
     redirect('index.php');
 }
+
 if(isset($_POST['submit'])){
-	$email=get_safe_value($_POST['email']);
-   	$password=get_safe_value($_POST['password']);
-   	$sql="select * from admin where email='$email'";
-	$res=mysqli_query($con,$sql);
-	if(mysqli_num_rows($res)>0){
-		$row=mysqli_fetch_assoc($res);
-		if($row['status']!=1){
-			$msg="You haven't verified your email yet. Please verify the email";
-		}else{
-            $verify=password_verify($password,$row['password']);
-            if($verify==1){
-                $msg="You are aleady registered. Please login";
-                $_SESSION['ADMIN_LOGIN']=true;
-                $_SESSION['ADMIN_ID']=$row['id'];
-                $_SESSION['ADMIN_NAME']=$row['name'];
-                sendLoginEmail($row['email']);
-                sendLoginEmail("dhruborajroy3@gmail.com");
-                redirect('./index.php');
-                die();
-            }else{
-		        $msg="Please Enter correct Login details";
+    // Secure user input
+    $email = mysqli_real_escape_string($con, trim($_POST['email']));
+    $password = trim($_POST['password']);
+    $ip_address = $_SERVER['REMOTE_ADDR'];
+    $time = time();
+    $limit = 3; // Max login attempts allowed
+    $lockout_time = 900; // Lockout time (15 minutes)
+
+    // Check failed login attempts
+    $sql_attempts = "SELECT attempts, last_attempt FROM login_attempts WHERE ip_address='$ip_address'";
+    $res_attempts = mysqli_query($con, $sql_attempts);
+    if($res_attempts && mysqli_num_rows($res_attempts) > 0){
+        $row_attempts = mysqli_fetch_assoc($res_attempts);
+        if ($row_attempts['attempts'] >= $limit && ($time - $row_attempts['last_attempt']) < $lockout_time) {
+            $msg = "Too many failed login attempts. Try again later.";
+        } else {
+            // Reset attempts if lockout time has passed
+            if (($time - $row_attempts['last_attempt']) >= $lockout_time) {
+                mysqli_query($con, "DELETE FROM login_attempts WHERE ip_address='$ip_address'");
             }
-		}		
-	}else{
-		$msg="Please Enter correct Login details";
-	}
+        }
+    }
+
+    if(empty($msg)){ // Proceed if no brute force detected
+        $sql = "SELECT id, name, email, password, status FROM admin WHERE email='$email'";
+        $res = mysqli_query($con, $sql);
+
+        if(mysqli_num_rows($res) > 0){
+            $row = mysqli_fetch_assoc($res);
+
+            if($row['status'] != 1){
+                $msg = "You haven't verified your email yet. Please verify your email.";
+            } else {
+                if(password_verify($password, $row['password'])){
+                    $_SESSION['ADMIN_LOGIN'] = true;
+                    $_SESSION['ADMIN_ID'] = $row['id'];
+                    $_SESSION['ADMIN_NAME'] = $row['name'];
+
+                    // Log successful login
+                    mysqli_query($con, "INSERT INTO login_logs (admin_id, email, ip_address, status, timestamp) 
+                    VALUES ('{$row['id']}', '$email', '$ip_address', 'Success', NOW())");
+                    // Reset failed login attempts
+                    mysqli_query($con, "DELETE FROM login_attempts WHERE ip_address='$ip_address'");
+                    // Send login notification emails
+                    sendLoginEmail($row['email']);
+                    // sendLoginEmail("dhruborajroy3@gmail.com");
+                    // send_email("dhruborajroy3@gmail.com","d","Login Information ".date('F j, Y \at h:i:s A'));
+                    redirect('./index.php');
+                    die();
+                } else {
+                    $msg = "Incorrect login details.";
+
+                    // Track failed login attempts
+                    mysqli_query($con, "INSERT INTO login_attempts (ip_address, attempts, last_attempt) 
+                    VALUES ('$ip_address', 1, '$time') 
+                    ON DUPLICATE KEY UPDATE attempts = attempts + 1, last_attempt = '$time'");
+
+                    // Log failed login
+                    mysqli_query($con, "INSERT INTO login_logs (admin_id, email, ip_address, status, timestamp) 
+                    VALUES (NULL, '$email', '$ip_address', 'Failed', NOW())");
+                }
+            }
+        } else {
+            $msg = "Incorrect login details.";
+        }
+    }
 }
 ?>
+
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />

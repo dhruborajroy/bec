@@ -1,8 +1,5 @@
 <?php
 
-if (!defined('SECURE_ACCESS')) {
-	die("Direct access not allowed!");
-  }
 /**
 * 
 * PHP Browser Detection Class

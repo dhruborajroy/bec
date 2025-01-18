@@ -1,4 +1,5 @@
 <?php 
+    define('SECURE_ACCESS', true);
    session_start();
    session_regenerate_id();
    include('../inc/function.inc.php');

@@ -1,7 +1,17 @@
 <?php
+
 if (!defined('SECURE_ACCESS')) {
     die("Direct access not allowed!");
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'mailer/src/Exception.php';
+require 'mailer/src/PHPMailer.php';
+require 'mailer/src/SMTP.php';
+
+
 function pr($arr){
 	echo '<pre>';
 	print_r($arr);
@@ -26,34 +36,59 @@ window.location.href = '<?php echo $link?>';
 <?php
 	die();
 }
+    
+function send_email($email,$html,$subject,$attachment=""){;
+    $mail = new PHPMailer(true);    
+    $mail->SMTPDebug = 0;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'hackerdhrubo99@gmail.com';                     //SMTP username
+    $mail->Password   = 'xnkbvrpvlmedwgtl';                            //SMTP password
+    $mail->SMTPSecure = "tls";            //Enable implicit TLS encryption
+    $mail->Port       = 587;         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->setFrom('hackerdhrubo99@gmail.com', 'Dhrubo');
+    $mail->addAddress($email);
+    if($attachment!=""){
+        $mail->addAttachment($attachment);
+    }
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $html;
+    
+    if($mail->send()){
+        return "done";
+    }else{
+        return "error";
+    }
 
-function send_email($email,$html,$subject,$attachment=""){
-	$mail=new PHPMailer(true);
-	$mail->isSMTP();
-	$mail->Host="smtp.gmail.com";
-	$mail->Port=587;
-	$mail->SMTPSecure="tls";
-	$mail->SMTPAuth=true;
-    $mail->Username="hackerdhrubo99@gmail.com";
-    $mail->Password="xnkbvrpvlmedwgtl";
+
+	// $mail=new PHPMailer(true);
+	// $mail->isSMTP();
+	// $mail->Host="smtp.gmail.com";
+	// $mail->Port=587;
+	// $mail->SMTPSecure="tls";
+	// $mail->SMTPAuth=true;
+    // $mail->Username="hackerdhrubo99@gmail.com";
+    // $mail->Password="xnkbvrpvlmedwgtl";
     // $mail->setFrom('hackerdhrubo99@gmail.com', 'Dhrubo');
-	$mail->addAddress($email);
-	$mail->IsHTML(true);
-	$mail->Subject=$subject;
-	if($attachment!=""){
-		$mail->addAttachment($attachment);
-	}
-	$mail->Body=$html;
-	$mail->SMTPOptions=array('ssl'=>array(
-		'verify_peer'=>false,
-		'verify_peer_name'=>false,
-		'allow_self_signed'=>false
-	));
-	if($mail->send()){
-		return "done";
-	}else{
-		return "error";
-	}
+	// $mail->addAddress($email);
+	// $mail->IsHTML(true);
+	// $mail->Subject=$subject;
+	// if($attachment!=""){
+	// 	$mail->addAttachment($attachment);
+	// }
+	// $mail->Body=$html;
+	// $mail->SMTPOptions=array('ssl'=>array(
+	// 	'verify_peer'=>false,
+	// 	'verify_peer_name'=>false,
+	// 	'allow_self_signed'=>false
+	// ));
+	// if($mail->send()){
+	// 	return "done";
+	// }else{
+	// 	return "error";
+	// }
 }
 function sendLoginEmail($email){
 	$html="";	

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2025 at 08:07 AM
+-- Generation Time: Jan 18, 2025 at 09:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -206,6 +206,59 @@ CREATE TABLE `head_message` (
 
 INSERT INTO `head_message` (`id`, `dept_id`, `message`, `status`) VALUES
 ('1', 'ce', 'Dr. Abu Zakir Morshed\r\n\r\nWelcome to the Department of Civil Engineering. Nowadays, sustainable infrastructures are essential parts for the overall development of a nation and to make a country liveable.\r\n\r\nOur department is one of the most leading and prosperous branches of this university, as well as of this country. We do have a bunch of faculty members who are competitive in their research and teaching in different fields of Civil Engineering. Our department has a set of laboratories, which are enriched with modern equipments and facilities. We are dedicated to provide innovative and high-quality opportunities for our students to acquire the fundamental knowledge, skills and attitudes necessary for entry and success in the professional practice of Civil Engineering fields.\r\n\r\nGraduates from the Department of Civil Engineering are trained to think critically and able to conduct research/real work, both in self-regulating and collaborative environment. They are capable to solve challenging problems with innovative ideas, as well as, the technological challenges they need to address in the future. With our quality education, real problem based learning, and collaborative environment, our graduates have a multitude of options after graduation.\r\n\r\nThe prospects for Civil Engineers are exciting, and can appear forward to have success after receiving their degrees. We invite all of you to join in our family and explore the excellent opportunities in the department and contact us if you would like more information.\r\n\r\n\r\n\r\nDr. Abu Zakir Morshed\r\nProfessor and Head\r\nDepartment of Civil Engineering', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `id` int(11) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `attempts` int(11) DEFAULT 0,
+  `last_attempt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_logs`
+--
+
+CREATE TABLE `login_logs` (
+  `id` int(11) NOT NULL,
+  `admin_id` varchar(25) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `status` enum('Success','Failed') NOT NULL,
+  `timestamp` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `login_logs`
+--
+
+INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `timestamp`) VALUES
+(1, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:49:14'),
+(2, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:49:19'),
+(3, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-18 13:49:28'),
+(4, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-18 13:49:55'),
+(5, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-18 13:49:59'),
+(6, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-18 13:50:02'),
+(7, NULL, 'dhruborajroy3@gmail.com', '::1', 'Failed', '2025-01-18 13:50:35'),
+(8, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:51:55'),
+(9, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:53:29'),
+(10, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:53:47'),
+(11, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 13:55:29'),
+(12, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:12:16'),
+(13, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:12:29'),
+(14, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:13:01'),
+(15, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:13:33'),
+(16, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:18:15'),
+(17, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:20:12'),
+(18, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:21:05'),
+(19, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:25:40');
 
 -- --------------------------------------------------------
 
@@ -555,6 +608,19 @@ ALTER TABLE `general_info`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ip_address` (`ip_address`);
+
+--
+-- Indexes for table `login_logs`
+--
+ALTER TABLE `login_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
@@ -611,6 +677,18 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `general_info`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `login_logs`
+--
+ALTER TABLE `login_logs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
