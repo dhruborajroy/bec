@@ -33,6 +33,7 @@ require('./inc/function.inc.php');
     <link rel="stylesheet" href="css/magnific-popup/magnific-popup.css" />
     <link rel="stylesheet" href="css/swiper/swiper.min.css" />
     <link rel="stylesheet" href="css/animate/animate.min.css"/>
+    <link rel="stylesheet" href="http://cdn.datatables.net/2.2.1/css/dataTables.dataTables.min.css"/>
 
     <!-- Template Style -->
     <link rel="stylesheet" href="css/style.css" />
@@ -111,10 +112,10 @@ require('./inc/function.inc.php');
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="dept/ce">Department of Civil Engineering</a></li>
-                        <li><a class="dropdown-item" href="dept/eee">Department of Elelctrical & Electronics Engineering</a></li>
-                        <li><a class="dropdown-item" href="dept/gsh">Department of General Science & Engineering</a></li>
-                        <li><a class="dropdown-item" href="#">Department of Naval Architecture & Marine Engineering(Proposed)</a></li>
+                        <li><a class="dropdown-item" target="_blank" href="dept/ce">Department of Civil Engineering</a></li>
+                        <li><a class="dropdown-item" target="_blank" href="dept/eee">Department of Elelctrical & Electronics Engineering</a></li>
+                        <li><a class="dropdown-item" target="_blank" href="dept/gsh">Department of General Science & Engineering</a></li>
+                        <li><a class="dropdown-item" target="_blank" href="#">Department of Naval Architecture & Marine Engineering(Proposed)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

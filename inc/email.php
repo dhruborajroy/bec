@@ -1,3 +1,9 @@
+<?php 
+
+// if (!defined('SECURE_ACCESS')) {
+//    die("Direct access not allowed!");
+//  }
+?>
 <div style="margin:50px auto;width:70%;padding:20px 0">
    <span class="im">
       <div class="adM">

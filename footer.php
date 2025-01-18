@@ -105,6 +105,7 @@ if (!defined('SECURE_ACCESS')) {
     <script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jarallax/jarallax.js"></script>
     <script src="js/shuffle/shuffle.min.js"></script>
+    <script src="http://cdn.datatables.net/2.2.1/js/dataTables.min.js"></script>
     <script src="js/custom.js"></script>
 
   </body>

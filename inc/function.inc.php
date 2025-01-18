@@ -1,4 +1,7 @@
 <?php
+if (!defined('SECURE_ACCESS')) {
+    die("Direct access not allowed!");
+}
 function pr($arr){
 	echo '<pre>';
 	print_r($arr);

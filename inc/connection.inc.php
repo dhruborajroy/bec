@@ -1,4 +1,7 @@
 <?php
+if (!defined('SECURE_ACCESS')) {
+  die("Direct access not allowed!");
+}
 $database_host="localhost";
 $database_username="root";
 $database_password="";

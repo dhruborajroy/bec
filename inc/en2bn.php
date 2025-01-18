@@ -1,12 +1,8 @@
 <?php
-/*
-Plugin Name: English To Bengali Number Converter
-Plugin URI:  http://www.timenews24.com/plugin/English-To-Bengli-Number-Convert.zip
-Description: This plugin will help users  convert English to Bengali Date,Time and All Numbers .
-Author: Ruhul Amin
-Author URI: http://ruhul.me
-Version: 1.2.7
-*/
+
+if (!defined('SECURE_ACCESS')) {
+	die("Direct access not allowed!");
+  }
 
 /* Adding plugin convert section  */
 // add_filter('current_time', 'Bengali_DTN');

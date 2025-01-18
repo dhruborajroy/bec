@@ -59,7 +59,7 @@ if(isset($_GET['type'])){
                 <img class="img-fluid" src="../images/teachers/<?php echo $row['image']?>" alt="">
               </div>
               <div class="team-info">
-                <a href="faculty-details?id=<?php echo md5($row['id'])?>" class="team-name"><?php echo $row['name']?></a>
+                <a href="../faculty-details?id=<?php echo md5($row['id'])?>" class="team-name"><?php echo $row['name']?></a>
                 <p class="team-leader"><?php echo $row['designation']?></p>
                 <ul class="list-unstyled">
                   <li><a href="<?php echo $row['facebook']?>"><i class="fab fa-facebook-f"></i></a></li>

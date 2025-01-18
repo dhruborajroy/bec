@@ -22,8 +22,8 @@ if(mysqli_num_rows($res)>0){
     $html='<table class="table" width="100%">';
     $html.='
         <tr>
-            <td align="center">                    
-                <img width="100" src="'.BD_LOGO.'" width="100" height="100" /> 
+            <td align="left">                    
+                <img  src="'.BD_LOGO.'" width="100" height="100" /> 
             </td>
             <td  align="center" colspan="5">
                 <span style="font-size:20px">'.NAME.'</span>
@@ -34,8 +34,8 @@ if(mysqli_num_rows($res)>0){
                 <br>
                 '.FRONT_SITE_PATH.'
             </td>
-            <td align="center">                    
-                <img width="100" src="'.LOGO.'" width="100" height="100" /> 
+            <td align="right">                    
+                <img  src="'.LOGO.'" width="100" height="100" /> 
             </td>
         </tr>';
         $html.='
@@ -79,9 +79,6 @@ if(mysqli_num_rows($res)>0){
                             <br>
                                 <span style="font-size:20px">'.SIGNATURE_NAME.' </span>
                             <br>
-                            '.DESIGNATION.'
-                            <br>
-                            '.NAME.'
                         </span>
                     </div>
                 </td>

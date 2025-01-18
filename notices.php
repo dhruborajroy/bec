@@ -9,15 +9,15 @@ include("header.php");
         <div class="row">
           <div class="col-lg-12">
             <div class="section-title text-center">
-              <h2>University Campus Weather</h2>
-              <p class="mb-0">All Notice Board</p>
+              <h2>All Notice</h2>
+              <!-- <p class="mb-0">All Notice Board</p> -->
             </div>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-12">
             <div class="table-responsive">
-              <table class="table table-striped text-center mb-0">
+              <table class="table table-striped text-center mb-0 data_table">
                 <thead>
                   <tr class="bg-dark">
                     <th class="text-white" scope="col">Date</th>
@@ -47,3 +47,6 @@ include("header.php");
     <!--=================================camps-->
 
 <?php include("footer.php")?>
+<script>
+  let table = new DataTable('.data_table');
+</script>
