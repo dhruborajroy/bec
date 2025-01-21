@@ -49,6 +49,7 @@
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" href="css/custom.css">
       <link rel="stylesheet" href="css/invoice.css">
+      <link rel="stylesheet" href="css/summernote-bs4.min.css">
       <!-- Modernize js -->
       <script src="js/modernizr-3.6.0.min.js"></script>
    </head>

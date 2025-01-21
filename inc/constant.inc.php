@@ -13,10 +13,12 @@ if(mysqli_num_rows($site_res)>0){
 	define('EMAIL',$site_res_row['email']);
 	define('TEL',$site_res_row['phone']);
 	define('ADDRESS',$site_res_row['address']);
-		
 	define('SIGNATURE_NAME',$site_res_row['signature_name']);
 	define('DESIGNATION',$site_res_row['name']);
 	define('SIGNATURE_IMAGE',$site_res_row['signature_image']);
+	define('SMTP_USERNAME',$site_res_row['smtp_username']);
+	define('SMTP_PASSWORD',$site_res_row['smtp_password']);
+	
 }else{	
 	define('LOGO','../images/gallery/logo.png');
 	define('BD_LOGO','../images/bd.png');
@@ -34,6 +36,8 @@ if(mysqli_num_rows($site_res)>0){
 	define('SIGNATURE_NAME','জনাব মোঃ লিটন রাব্বানী <br> অধ্যক্ষ <br> বরিশাল ইঞ্জিনিয়ারিং কলেজ');
 	define('DESIGNATION','');
 	define('SIGNATURE_IMAGE','');
+	define('SMTP_USERNAME',"");
+	define('SMTP_PASSPORT',$site_res_row['smtp_password']);
 }
 
 

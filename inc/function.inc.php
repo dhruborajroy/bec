@@ -43,11 +43,11 @@ function send_email($email,$html,$subject,$attachment=""){;
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'hackerdhrubo99@gmail.com';                     //SMTP username
-    $mail->Password   = 'xnkbvrpvlmedwgtl';                            //SMTP password
+    $mail->Username   = SMTP_USERNAME;                     //SMTP username
+    $mail->Password   = SMTP_PASSWORD;                            //SMTP password
     $mail->SMTPSecure = "tls";            //Enable implicit TLS encryption
     $mail->Port       = 587;         //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    $mail->setFrom('hackerdhrubo99@gmail.com', 'Dhrubo');
+    $mail->setFrom(SMTP_USERNAME, 'BEC');
     $mail->addAddress($email);
     if($attachment!=""){
         $mail->addAttachment($attachment);
@@ -61,34 +61,6 @@ function send_email($email,$html,$subject,$attachment=""){;
     }else{
         return "error";
     }
-
-
-	// $mail=new PHPMailer(true);
-	// $mail->isSMTP();
-	// $mail->Host="smtp.gmail.com";
-	// $mail->Port=587;
-	// $mail->SMTPSecure="tls";
-	// $mail->SMTPAuth=true;
-    // $mail->Username="hackerdhrubo99@gmail.com";
-    // $mail->Password="xnkbvrpvlmedwgtl";
-    // $mail->setFrom('hackerdhrubo99@gmail.com', 'Dhrubo');
-	// $mail->addAddress($email);
-	// $mail->IsHTML(true);
-	// $mail->Subject=$subject;
-	// if($attachment!=""){
-	// 	$mail->addAttachment($attachment);
-	// }
-	// $mail->Body=$html;
-	// $mail->SMTPOptions=array('ssl'=>array(
-	// 	'verify_peer'=>false,
-	// 	'verify_peer_name'=>false,
-	// 	'allow_self_signed'=>false
-	// ));
-	// if($mail->send()){
-	// 	return "done";
-	// }else{
-	// 	return "error";
-	// }
 }
 function sendLoginEmail($email){
 	$html="";	
@@ -140,18 +112,7 @@ function get_content($URL){
 	curl_close($ch);
 	return $data;
 }
-function vailidatePayment($tran_id){
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_URL, "https://sandbox.sslcommerz.com/validator/api/merchantTransIDvalidationAPI.php?tran_id='$tran_id'&store_id=".STORE_ID."&store_passwd=".STORE_PASSWORD."&format=json");
-	$data = curl_exec($ch);
-    if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
-	curl_close($ch);
-	$data=json_decode($data,1);
-	return $data;
-}
+
 
   
 function isAdmin(){
@@ -172,6 +133,8 @@ window.location.href = './login.php';
 <?php
 	}
 }
+
+
 function getUsers(){
 	global $con;
 	$sql="SELECT count(DISTINCT id) as number FROM users ";
@@ -204,6 +167,8 @@ function gettotalstudent(){
 	  return $row['student'];
 	}
 }
+
+
 function send_email_using_tamplate($name,$otp){
 	$tamplate= "email.php";
 	$file_content=file_get_contents("../email.php");

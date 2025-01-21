@@ -172,7 +172,7 @@ require('./inc/function.inc.php');
                       <?php }
                       }?>
                     <li class="nav-item dropdown">
-                      <a class="nav-link " href="notices.php" role="button">Notices</a>
+                      <a class="nav-link " href="notice" role="button">Notices</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="contact-us.php">Contact Us</a>

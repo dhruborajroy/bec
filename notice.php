@@ -31,7 +31,7 @@ include("header.php");
                <tr  style="font-size: 22px;">
                  <td style="color:#1a2844 !important;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></td>
                  <td><?php echo $notice_res_row['title']?></td>
-                 <td  style="color:red;"><a  style="color:red;" href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>">Download <i class="fa fa-download "></i></a></td>
+                 <td  style="color:red;"><a  style="color:red;" href="notice_files/<?php echo $notice_res_row['link']?>">Download <i class="fa fa-download "></i></a></td>
                </tr>
               <?php } }?>
                 </tbody>
@@ -45,5 +45,12 @@ include("header.php");
 
 <?php include("footer.php")?>
 <script>
-  let table = new DataTable('.data_table');
+let table = new DataTable('.data_table', {
+    order: [[0, 'asc']], 
+    columnDefs: [
+        { type: "date", targets: 0 }
+    ],
+    paging: true,   
+    searching: true 
+});
 </script>

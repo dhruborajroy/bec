@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2025 at 09:26 AM
+-- Generation Time: Jan 19, 2025 at 08:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -258,7 +258,9 @@ INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `ti
 (16, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:18:15'),
 (17, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:20:12'),
 (18, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:21:05'),
-(19, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:25:40');
+(19, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:25:40'),
+(20, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 17:00:14'),
+(21, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 17:00:32');
 
 -- --------------------------------------------------------
 
@@ -309,6 +311,7 @@ CREATE TABLE `notice` (
   `details` text NOT NULL,
   `dept` varchar(20) NOT NULL,
   `reference` text NOT NULL,
+  `link` text NOT NULL,
   `added_on` varchar(20) NOT NULL,
   `updated_on` varchar(20) NOT NULL,
   `user_id` varchar(11) NOT NULL,
@@ -319,21 +322,23 @@ CREATE TABLE `notice` (
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`id`, `title`, `details`, `dept`, `reference`, `added_on`, `updated_on`, `user_id`, `status`) VALUES
-('630078a5ef84d', 'Vacation!', 'All activities of Oporajeyo Ekattor Hall will be on hold from 01/10/2022 to 10/10/2022 Due to Durgapuja. From 11/10/2022 , all activities will continue as before.', 'EEE', 'বইক/ছাত্রাবাস/২০২২-০৯', '1660975269', '1661542138', '1', 1),
-('630079a47c1b9', 'Appointment of new Meal Manager', '<p>New Meal Manager&nbsp;</p><figure class=\"table\"><table><tbody><tr><td>Name</td><td>Roll</td></tr><tr><td>Dhrubo</td><td>200130</td></tr></tbody></table></figure>', 'EEE', 'বইক/ছাত্রাবাস/২০২২-০৮', '1660975524', '1661542338', '1', 1),
-('63090b99ae3c4', 'দূর্গাপূজা', 'আগামী ১ অক্টোবর থেকে ১০অক্টোবর দূর্গাপূজা উপলক্ষে হলের সকল কার্যক্রম বন্ধ থাকবে। ১১ অক্টোবর হতে পুনরায় সকল কার্যক্রম অব্যাহত থাকিবে।\r\n', 'CE', '01', '1661537177', '1661539974', '', 1),
-('63090c3006496', 'খাবারের নোটিশ  ', 'আগামী কাল মিলের সময় সূচী\r\nদুপুর _ ২-৩ টা\r\nরাত_৯-১০টা', 'EEE', '02', '1661537328', '', '', 1),
-('630927ffd7a88', 'শীতকালীন অবকাশ ', '<ol><li>আগামী ১ ডিসেম্বর থেকে ১২ ডিসেম্বর পর্যন্ত হলের সকল কার্যক্রম বন্ধ থাকবে।</li><li>১৩ ডিসেম্বর থেকে সকল কার্যক্রম পুনরায় অব্যাহত থাকবে।</li></ol>', '', '05', '1661544447', '', '1', 1),
-('630b408d4a4b4', 'Title', '<p>Demo</p>', '', 'বইক/ছাত্রাবাস/২০২২-০৮', '1661681805', '', '1', 1),
-('631b45772386f', 'sdfwekfn', '<p>wdfihio</p><ol><li>week</li><li>jwefh</li><li>efvn</li></ol>', '', 'sdjbsdj', '1662731639', '', '1', 1),
-('6322f7a195081', 'ষ', '<p><i>গসকসকসকসকসহ</i></p>', '', 'হ ০১', '1663236001', '', '1', 1),
-('677ca91276175', '07 a 24 ta meye', '<p>bec 07 a 24 ta meye but sobai muslim</p>', '', '1 2 3 ', '1736222994', '', '1', 1),
-('677ca914f184a', '07 a 24 ta meye', '<p>bec 07 a 24 ta meye but sobai muslim</p>', '', '1 2 3 ', '1736222996', '', '1', 1),
-('677cbcf46c238', 'নোটিশ ', '<p>এতদ্দ্বারা অত্র কলেজের ২০২৩-২০২৪ শিক্ষাবর্ষের ভর্তিকৃত শিক্ষার্থী সহ সকল শিক্ষার্থী, শিক্ষক কর্মকর্তা ও কর্মচারীদের অবগতির জন্য জানানো যাচ্ছে যে, অনিবার্য কারণ বশত আগামী ০৫.১২.২০২৪ খ্রিঃ তারিখের ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন প্রোগ্রাম আগামী ০৮/১২/২০২৪ খ্রিঃ তারিখে সকাল ১০:০০ ঘটিকার সময় অনুষ্ঠিত হবে। উক্ত অনুষ্ঠানে সংশ্লিষ্ট সকলকে যথাসময় উপস্থিত থাকতে বলা হলো।<br />\r\n<br />\r\nউল্লেখ্য, ০৮/১২/২০২৪ খ্রিঃ তারিখে ২০২৩-২০২৪ শিক্ষাবর্ষের ক্লাস শুরু করা হবে।<br />\r\n&nbsp;</p>\r\n', '', 'বইক ', '1736228084', '1737179079', '1', 1),
-('677ccf0e24b07', 'sdf', '', '', 'sdf', '1736232718', '', '1', 1),
-('677ccf1a80476', 'sdf', '', '', 'sdf', '1736232730', '', '1', 1),
-('677cd36bb1105', ' ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন সংক্রান্ত।', '<p style=\"text-align:center\">এতদ্দ্বারা অত্র কলেজের ২০২৩-২০২৪ শিক্ষাবর্ষের ভর্তিকৃত শিক্ষার্থী সহ সকল শিক্ষার্থী, শিক্ষক কর্মকর্তা ও কর্মচারীদের অবগতির জন্য জানানো যাচ্ছে যে, অনিবার্য কারণ বশত আগামী ০৫.১২.২০২৪ খ্রিঃ তারিখের ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন প্রোগ্রাম আগামী ০৮/১২/২০২৪ খ্রিঃ তারিখে সকাল ১০:০০ ঘটিকার সময় অনুষ্ঠিত হবে। উক্ত অনুষ্ঠানে সংশ্লিষ্ট সকলকে যথাসময় উপস্থিত থাকতে বলা হলো।<br />\r\n<br />\r\nউল্লেখ্য, ০৮/১২/২০২৪ খ্রিঃ তারিখে ২০২৩-২০২৪ শিক্ষাবর্ষের ক্লাস শুরু করা হবে।</p>\r\n', '', '৫৭,০৩,০৬০০,০০০,১৮.০০৭.২২-১০১০', '1736233835', '1736391225', '1', 1);
+INSERT INTO `notice` (`id`, `title`, `details`, `dept`, `reference`, `link`, `added_on`, `updated_on`, `user_id`, `status`) VALUES
+('630078a5ef84d', 'Vacation!', 'All activities of Oporajeyo Ekattor Hall will be on hold from 01/10/2022 to 10/10/2022 Due to Durgapuja. From 11/10/2022 , all activities will continue as before.', 'EEE', 'বইক/ছাত্রাবাস/২০২২-০৯', '630078a5ef84d_1737203820.pdf', '1660975269', '1661542138', '1', 1),
+('630079a47c1b9', 'Appointment of new Meal Manager', '<p>New Meal Manager&nbsp;</p><figure class=\"table\"><table><tbody><tr><td>Name</td><td>Roll</td></tr><tr><td>Dhrubo</td><td>200130</td></tr></tbody></table></figure>', 'EEE', 'বইক/ছাত্রাবাস/২০২২-০৮', '630079a47c1b9_1737203819.pdf', '1660975524', '1661542338', '1', 1),
+('63090b99ae3c4', 'দূর্গাপূজা', 'আগামী ১ অক্টোবর থেকে ১০অক্টোবর দূর্গাপূজা উপলক্ষে হলের সকল কার্যক্রম বন্ধ থাকবে। ১১ অক্টোবর হতে পুনরায় সকল কার্যক্রম অব্যাহত থাকিবে।\r\n', 'CE', '01', '63090b99ae3c4_1737203818.pdf', '1661537177', '1661539974', '', 1),
+('63090c3006496', 'খাবারের নোটিশ  ', 'আগামী কাল মিলের সময় সূচী\r\nদুপুর _ ২-৩ টা\r\nরাত_৯-১০টা', 'EEE', '02', '63090c3006496_1737203817.pdf', '1661537328', '', '', 1),
+('630927ffd7a88', 'শীতকালীন অবকাশ ', '<ol><li>আগামী ১ ডিসেম্বর থেকে ১২ ডিসেম্বর পর্যন্ত হলের সকল কার্যক্রম বন্ধ থাকবে।</li><li>১৩ ডিসেম্বর থেকে সকল কার্যক্রম পুনরায় অব্যাহত থাকবে।</li></ol>', '', '05', '630927ffd7a88_1737203816.pdf', '1661544447', '', '1', 1),
+('630b408d4a4b4', 'Title', '<p>Demo</p>', '', 'বইক/ছাত্রাবাস/২০২২-০৮', '630b408d4a4b4_1737203814.pdf', '1661681805', '', '1', 1),
+('631b45772386f', 'sdfwekfn', '<p>wdfihio</p><ol><li>week</li><li>jwefh</li><li>efvn</li></ol>', '', 'sdjbsdj', '631b45772386f_1737203813.pdf', '1662731639', '', '1', 1),
+('6322f7a195081', 'ষ', '<p><i>গসকসকসকসকসহ</i></p>', '', 'হ ০১', '6322f7a195081_1737203811.pdf', '1663236001', '', '1', 1),
+('677ca91276175', '07 a 24 ta meye', '<p>bec 07 a 24 ta meye but sobai muslim</p>', '', '1 2 3 ', '677ca91276175_1737203810.pdf', '1736222994', '', '1', 1),
+('677ca914f184a', '07 a 24 ta meye', '<p>bec 07 a 24 ta meye but sobai muslim</p>', '', '1 2 3 ', '677ca914f184a_1737203809.pdf', '1736222996', '', '1', 1),
+('677cbcf46c238', 'নোটিশ ', '<p>এতদ্দ্বারা অত্র কলেজের ২০২৩-২০২৪ শিক্ষাবর্ষের ভর্তিকৃত শিক্ষার্থী সহ সকল শিক্ষার্থী, শিক্ষক কর্মকর্তা ও কর্মচারীদের অবগতির জন্য জানানো যাচ্ছে যে, অনিবার্য কারণ বশত আগামী ০৫.১২.২০২৪ খ্রিঃ তারিখের ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন প্রোগ্রাম আগামী ০৮/১২/২০২৪ খ্রিঃ তারিখে সকাল ১০:০০ ঘটিকার সময় অনুষ্ঠিত হবে। উক্ত অনুষ্ঠানে সংশ্লিষ্ট সকলকে যথাসময় উপস্থিত থাকতে বলা হলো।<br />\r\n<br />\r\nউল্লেখ্য, ০৮/১২/২০২৪ খ্রিঃ তারিখে ২০২৩-২০২৪ শিক্ষাবর্ষের ক্লাস শুরু করা হবে।<br />\r\n&nbsp;</p>\r\n', '', 'বইক ', '677cbcf46c238_1737203807.pdf', '1736228084', '1737179079', '1', 1),
+('677ccf0e24b07', 'sdf', '', '', 'sdf', '677ccf0e24b07_1737203806.pdf', '1736232718', '', '1', 1),
+('677ccf1a80476', 'sdf', '', '', 'sdf', '677ccf1a80476_1737203805.pdf', '1736232730', '', '1', 1),
+('677cd36bb1105', ' ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন সংক্রান্ত।', '<p style=\"text-align:center\">এতদ্দ্বারা অত্র কলেজের ২০২৩-২০২৪ শিক্ষাবর্ষের ভর্তিকৃত শিক্ষার্থী সহ সকল শিক্ষার্থী, শিক্ষক কর্মকর্তা ও কর্মচারীদের অবগতির জন্য জানানো যাচ্ছে যে, অনিবার্য কারণ বশত আগামী ০৫.১২.২০২৪ খ্রিঃ তারিখের ২০২৩-২০২৪ শিক্ষাবর্ষের ওরিয়েন্টেশন প্রোগ্রাম আগামী ০৮/১২/২০২৪ খ্রিঃ তারিখে সকাল ১০:০০ ঘটিকার সময় অনুষ্ঠিত হবে। উক্ত অনুষ্ঠানে সংশ্লিষ্ট সকলকে যথাসময় উপস্থিত থাকতে বলা হলো।<br />\r\n<br />\r\nউল্লেখ্য, ০৮/১২/২০২৪ খ্রিঃ তারিখে ২০২৩-২০২৪ শিক্ষাবর্ষের ক্লাস শুরু করা হবে।</p>\r\n', '', '৫৭,০৩,০৬০০,০০০,১৮.০০৭.২২-১০১০', '677cd36bb1105_1737203944.pdf', '1736233835', '1736391225', '1', 1),
+('678b927f2f564', 'sdsdv', '<p>sdffdv</p>\r\n', '', 'sdgf', '678b927f2f564_1737203802.pdf', '1737200255', '', '1', 1),
+('678bb222ebe9c', '1', '<p>1</p>\r\n', '', 'বইক 1', '678bb222ebe9c_1737208355.pdf', '1737208354', '', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -381,7 +386,14 @@ INSERT INTO `notice_referance` (`id`, `notice_id`, `referance_id`, `status`) VAL
 ('677f3a394c575', '677cd36bb1105', 'DFGDFVDFBB', 1),
 ('677f3a394c9cf', '677cd36bb1105', 'fdgdfg', 1),
 ('678b3f624fa8b', '677cbcf46c238', 'dfeggegxdv', 1),
-('678b3f6250b96', '677cbcf46c238', 'dfgddfv', 1);
+('678b3f6250b96', '677cbcf46c238', 'dfgddfv', 1),
+('678b927f30ebb', '678b927f2f564', 'dfgddfv', 1),
+('678b927f316bc', '678b927f2f564', 'DFGDFVDFBB', 1),
+('678bb222ed506', '678bb222ebe9c', '677cea5825d80', 1),
+('678bb222eecd8', '678bb222ebe9c', 'dfbddb', 1),
+('678bb222f0684', '678bb222ebe9c', 'dfbdfbergfdrv', 1),
+('678bb222f0c53', '678bb222ebe9c', 'dfdfbfdgdfg', 1),
+('678bb222f11f3', '678bb222ebe9c', 'dfgddfv', 1);
 
 -- --------------------------------------------------------
 
@@ -457,6 +469,8 @@ CREATE TABLE `site_details` (
   `site_logo` text NOT NULL,
   `bd_logo` text NOT NULL,
   `email` text NOT NULL,
+  `smtp_username` varchar(50) NOT NULL,
+  `smtp_password` varchar(50) NOT NULL,
   `address` text NOT NULL,
   `signature_name` text NOT NULL,
   `signature_image` text NOT NULL,
@@ -474,8 +488,8 @@ CREATE TABLE `site_details` (
 -- Dumping data for table `site_details`
 --
 
-INSERT INTO `site_details` (`id`, `name`, `site_logo`, `bd_logo`, `email`, `address`, `signature_name`, `signature_image`, `phone`, `facebook_link`, `twitter_link`, `youtube_link`, `instagram_link`, `short_details`, `updated_on`, `status`) VALUES
-('1', '\nগণপ্রজাতন্ত্রী বাংলাদেশ সরকার \n<br>\nঅধ্যক্ষের কার্যালয়\n<br>\nবরিশাল ইঞ্জিনিয়ারিং কলেজ', '../images/gallery/logo.png', '../images/bd.png', 'contact@bec.edu.com', 'দুর্গাপুর, বরিশাল', 'জনাব মোঃ লিটন রাব্বানী <br> অধ্যক্ষ(অতিরিক্ত দায়িত্ব) <br> বরিশাল ইঞ্জিনিয়ারিং কলেজ', 'https://static.vecteezy.com/system/resources/thumbnails/023/264/092/small_2x/fake-hand-drawn-autographs-set-handwritten-signature-scribble-for-business-certificate-or-letter-isolated-illustration-vector.jpg', '০১৭০৫৫৫৫৫৫৫৫', '#', '#', '#', '#', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>', '1', 1);
+INSERT INTO `site_details` (`id`, `name`, `site_logo`, `bd_logo`, `email`, `smtp_username`, `smtp_password`, `address`, `signature_name`, `signature_image`, `phone`, `facebook_link`, `twitter_link`, `youtube_link`, `instagram_link`, `short_details`, `updated_on`, `status`) VALUES
+('1', '\nগণপ্রজাতন্ত্রী বাংলাদেশ সরকার \n<br>\nঅধ্যক্ষের কার্যালয়\n<br>\nবরিশাল ইঞ্জিনিয়ারিং কলেজ', '../images/gallery/logo.png', '../images/bd.png', 'contact@bec.edu.com', 'hackerdhrubo99@gmail.com', 'xnkbvrpvlmedwgtl', 'দুর্গাপুর, বরিশাল', 'জনাব মোঃ লিটন রাব্বানী <br> অধ্যক্ষ(অতিরিক্ত দায়িত্ব) <br> বরিশাল ইঞ্জিনিয়ারিং কলেজ', 'https://static.vecteezy.com/system/resources/thumbnails/023/264/092/small_2x/fake-hand-drawn-autographs-set-handwritten-signature-scribble-for-business-certificate-or-letter-isolated-illustration-vector.jpg', '০১৭০৫৫৫৫৫৫৫৫', '#', '#', '#', '#', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -688,7 +702,7 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

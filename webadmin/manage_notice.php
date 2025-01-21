@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
         $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`updated_on`, `user_id`, `status`) VALUES 
                                     ('$id', '$title', '$details','$reference', '$added_on', '','$user_id', '1')";
         if(mysqli_query($con,$sql)){
-
+            
             if(isset($_POST['referance_ids'])){
                 // Assuming 'referance_ids' is an array of checked reference IDs
                 // and 'unreferance_ids' is an array of unchecked reference IDs
@@ -136,6 +136,7 @@ if(isset($_POST['submit'])){
         }
     }
     // echo $sql;
+    redirect('../pdfreports/notice?notice_id='.$id);
     // redirect('./notices');
 }
 
@@ -179,14 +180,14 @@ if(isset($_POST['submit'])){
                                 <textarea name="details" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
                             <div class="col-12 form-group mg-t-8">
-                                    <h3>Select References for Notice ?></h3>
+                                    <h3>Select References for Notice</h3>
                                     <?php 
-                                        $sql="select * from referances";
+                                        $sql="select * from referances order by priority asc";
                                         $referances_res=mysqli_query($con,$sql);
                                         while ($referances_row = mysqli_fetch_assoc($referances_res)) { ?>
-                                        <div>
+                                        <div class="col-12-xxxl col-lg-12 col-12 form-group d-flex">
                                             <input type="checkbox" name="referance_ids[]" value="<?php echo $referances_row['id']; ?>">
-                                            <label><?php echo htmlspecialchars($referances_row['name']); ?></label>
+                                            <label style="padding-left:30px"><?php echo htmlspecialchars($referances_row['name']); ?></label>
                                         </div>
                                     <?php } ?>
                             </div>
@@ -208,5 +209,4 @@ if(isset($_POST['submit'])){
 <script src="js/ckfinder/ckfinder.js""></script> <!-- Update with the correct path -->
 <script>
     CKEDITOR.replace( 'editor' );
-    CKFinder.setupCKEditor('editor');
 </script>

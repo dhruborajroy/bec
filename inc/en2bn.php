@@ -34,5 +34,4 @@ function Bengali_DTN($NRS){
         $converted = str_replace($englDTN, $bangDTN, $NRS);
     return $converted; 
 }
-echo Bengali_DTN("12 nov 2025");
 ?>

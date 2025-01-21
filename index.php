@@ -68,7 +68,7 @@ include("header.php");
                if(mysqli_num_rows($notice_res)>0){
                while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                ?>
-            <a href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
+            <a href="notice_files/<?php echo $notice_res_row['link']?>" target="_blank"  style="padding-left:100px">
             <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
             <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
             </a>
@@ -338,7 +338,7 @@ include("header.php");
                     <span><?php echo date("F",$notice_res_row['added_on'])?></span>
                   </div>
                   <div class="blog-contant">
-                     <a class="btn p-0" href="pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>">
+                     <a class="btn p-0" href="notice_files/<?php echo $notice_res_row['link']?>">
                         <h5 class="mt-0 mb-3"><?php echo $notice_res_row['title']?></h5>
                      </a>
                   </div>
