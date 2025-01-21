@@ -6,120 +6,146 @@ include("../inc/function.inc.php");
 include("../inc/en2bn.php");
 require('../inc/vendor/autoload.php');
 require_once("../inc/phpqrcode/qrlib.php");
-if (isset($_GET['notice_id']) && $_GET['notice_id']!="") {
-    $notice_id=get_safe_value($_GET['notice_id']);
-}else{
-    $_SESSION['PERMISSION_ERROR']=1;
-    redirect("/");
-}
-$sql="select * from `notice` where id='$notice_id'";
-$res=mysqli_query($con,$sql);
-$html="";
 
-$filepath = "../images/qr_code/qrcode.png";
-if(mysqli_num_rows($res)>0){
-    $row=mysqli_fetch_assoc($res);
-    $file=$notice_id.'_'.time().'.pdf';
-    QRcode::png(FRONT_SITE_PATH."notice_files/".$file, $filepath);
-    $html='<table class="table" width="100%">';
-    $html.='
-        <tr>
-            <td align="left">                    
-                <img  src="'.BD_LOGO.'" width="100" height="100" /> 
-            </td>
-            <td  align="center" colspan="5">
-                <span style="font-size:20px">'.NAME.'</span>
-                <br>
-                '.ADDRESS.'
-                <br>
-                Tel: '.TEL.' | Email: '.EMAIL.'
-                <br>
-                '.FRONT_SITE_PATH.'
-            </td>
-            <td align="right">                    
-                <img  src="'.LOGO.'" width="100" height="100" /> 
+$html = '<table class="table" width="100%" border="0" cellspacing="0" cellpadding="5" style="border-collapse: collapse;">';
+$html .= '
+    <tr>
+        <td align="left" width="10%">                    
+            <img src="'.BD_LOGO.'" width="100" height="100" /> 
+        </td>
+        <td align="center" colspan="4">
+            <span style="font-size:20px">'.NAME.'</span>
+            <br>
+            '.ADDRESS.'
+            <br>
+            Tel: '.TEL.' | Email: '.EMAIL.'
+            <br>
+            '.FRONT_SITE_PATH.'
+        </td>
+        <td align="right" width="10%">                    
+            <img src="'.LOGO.'" width="100" height="100" /> 
+        </td>
+    </tr>';
+
+$html .= '
+    <tr>
+        <td align="left" colspan="6" style="height:4; border-bottom: 1px solid black;">                    
+            <hr>
+        </td>
+    </tr>';
+
+// **Main Content with Borders**
+$html .= '
+    <tr style="border: 0px solid black;">
+        <td align="left" colspan="6" style="padding-top:30px;text-align: justify;font-size:20px; border: 0px solid black;">
+            অত্র কলেজের সিভিল/ইইই বিভাগের ছাত্র/ছাত্রী ধ্রুবরাজ রায়, ঢাবি রেজিঃ ৮৬২, শিক্ষাবর্ষ ২০২০-২০২১ এর সকল একাডেমিক কার্যক্রম শেষ হওয়া
+        </td>
+    </tr>';  
+
+$sql = "SELECT * FROM depts_lab_list";
+$res = mysqli_query($con, $sql);
+if (mysqli_num_rows($res) > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        // Force a page break before the department name if necessary
+        $html .= '
+        <tr align="center" style="border: 0px solid black; page-break-before: always;">
+            <td colspan="6" align="center" style="font-size:25px; border: 1px solid black;">
+                <u>'.$row['name_bn'].'</u>
             </td>
         </tr>';
-        $html.='
-            <tr>
-                <td align="left" colspan="7" style="height:4">                    
-                    <hr>
-                </td>
-            </tr>';
-        $html.='
-            <tr >
-                <td align="left" colspan="4">                    
-                    স্মারক নং: '.$row['reference'].'
-                </td>
-                <td  align="right" colspan="3">
-                    তারিখ: '.Bengali_DTN(date("d F Y ",($row['added_on']))).' ইং
-                </td>
-            </tr>';
-            $html.='
-                <tr>
-                    <td align="left" colspan="7" align="center" style="padding-top:30px">                    
-                    <u style="font-size:35px">'.$row['title'].'</u>
-                    </td>
-                </tr>';
-                $html.='
-                    <tr >
-                        <td align="left" colspan="7" align="center" style="padding-top:10px">                    
-                            <p>'.$row['details'].'</p>
-                        </td>
-                    </tr>';
-            $html.='
-            <tr>
-                <td align="left"  colspan="1">
-                    <img width="150" src="'.$filepath.'" width="100" height="100" />
-                </td>
-                <td  align="center" colspan="3"> 
-                </td>
-                <td  align="center" style="padding-top:100px" colspan="4">
-                    <div align="right">
-                        <img  src="'.SIGNATURE_IMAGE.'" width="100" height="50" />
-                        <span style="font-style:30px">
-                            <br>
-                                <span style="font-size:20px">'.SIGNATURE_NAME.' </span>
-                            <br>
-                        </span>
-                    </div>
-                </td>
-            </tr>';
-            $html .= '
-            <tr>
-                <td align="left" colspan="7">
-                    <ol>';
-                    $notice_res = mysqli_query($con, "SELECT referances.name FROM referances INNER JOIN notice_referance ON referances.id = notice_referance.referance_id INNER JOIN notice ON notice.id = notice_referance.notice_id WHERE notice.id = '".$notice_id."'");
-                    if(mysqli_num_rows($notice_res)>0){
-                        $html .=  "<u>সদয় অবগতি ও প্রয়োজনীয় কার্যার্থে অনুলিপি(জেষ্ঠতার ভিত্তিতে নয়):</u>";
-                    }
-                    while ($notice_res_row = mysqli_fetch_assoc($notice_res)) {
-                        $html .= '<li>' . $notice_res_row['name'] . '</li>';
-                    }
-                    
-                    $html .= '
-                    </ol>
-                </td>
-            </tr>';
         
-	    $html.='</table>';
-}else{
-    redirect("/");
+        $html .= '
+        <tr style="border: 1px solid black;">
+            <td align="center" width="10%" style="border: 1px solid black;">ক্রমিক</td>
+            <td align="left" width="30%" style="border: 1px solid black;">বিভাগ/সপ</td>
+            <td align="left" width="15%" style="border: 1px solid black;">দেনা-পাওনা তথ্য</td>
+            <td align="left" width="15%" style="border: 1px solid black;">ভারপ্রাপ্ত কর্মকর্তার স্বাক্ষর</td>
+            <td align="left" width="15%" style="border: 1px solid black;">ওয়ার্কশপ সুপার/সপ ইনচার্জের স্বাক্ষর</td>
+            <td align="left" width="15%" style="border: 1px solid black;">বিভাগীয় প্রধানের স্বাক্ষর</td>
+        </tr>';
+
+        $lab_sql = "SELECT * FROM lab_list WHERE dept_id='".$row['id']."'";
+        $lab_res = mysqli_query($con, $lab_sql);
+        if (mysqli_num_rows($lab_res) > 0) {
+            $i = 1;
+            while ($lab_row = mysqli_fetch_assoc($lab_res)) {
+                // Add page-break-before or prevent breaking for each lab name
+                $html .= '
+                <tr style="border: 1px solid black; page-break-before: always;">
+                    <td align="center" style="border: 1px solid black;">'.$i.'</td>
+                    <td align="left" style="border: 1px solid black;">'.$lab_row['name'].'</td>
+                    <td align="left" style="border: 1px solid black;"></td>
+                    <td align="left" style="border: 1px solid black;"></td>
+                    <td align="left" style="border: 1px solid black;"></td>
+                    <td align="left" style="border: 1px solid black;"></td>
+                </tr>';
+                $i++;
+            }
+        } else {
+            $html .= '
+            <tr style="border: 0px solid black;">
+                <td colspan="6" align="center" style="border: 1px solid black;">কোন তথ্য পাওয়া যায়নি</td>
+            </tr>';
+        }
+    }
+} else {
+    $html .= '
+    <tr style="border: 0px solid black;">
+        <td colspan="6" align="center" style="border: 1px solid black;">কোন তথ্য পাওয়া যায়নি</td>
+    </tr>';
 }
-// echo $html;
-$mpdf=new \Mpdf\Mpdf([
+
+// **Footer with Borders**
+$html .= '
+<tr style="border: 0px solid black;">
+    <td align="center" colspan="6" style="font-size:20px;padding-top:70px">
+        তাঁর নিকট থেকে ___________________ টাকা পাওয়া/ফেরত দেয়া হলো।
+    </td>
+</tr>';
+
+$html .= '
+<tr style="border: 0px solid black;">
+    <td align="center" colspan="3" style="font-size:20px;padding-top:70px">কোষাধ্যক্ষ</td>
+    <td align="center" colspan="3" style="font-size:20px;padding-top:70px">হিসাবরক্ষক</td>
+</tr>';
+
+$html .= '
+<tr style="border: 0px solid black;">
+    <td align="center" colspan="6" style="font-size:20px;padding-top:20px"> 
+    উপরোক্ত তথ্যের প্রেক্ষিতে তাকে ছাড়পত্র প্রদানের নির্দেশ প্রদান করা হলো।
+    </td>
+</tr>';
+
+$html .= '
+<tr style="border: 0px solid black;">
+    <td align="left" colspan="1"></td>
+    <td align="center" colspan="3"></td>
+    <td align="center" style="padding-top:100px" colspan="2">
+        <div align="right">
+            <img src="'.SIGNATURE_IMAGE.'" width="100" height="50" />
+            <span style="font-style:30px">
+                <br>
+                    <span style="font-size:20px">'.SIGNATURE_NAME.'</span>
+                <br>
+            </span>
+        </div>
+    </td>
+</tr>';
+
+$html .= '</table>';
+
+$mpdf = new \Mpdf\Mpdf([
     'tempDir' => __DIR__ . '/custom',
     'default_font_size' => 12,
     'default_font' => 'FreeSerif',
-	'margin_left' => 20,
-	'margin_right' => 20,
-	'margin_top' => 2,
-	'margin_bottom' => 10,
+    'margin_left' => 20,
+    'margin_right' => 20,
+    'margin_top' => 2,
+    'margin_bottom' => 10,
 ]);
 $mpdf->SetTitle('Notice Barisal Engineering College');
-$mpdf->SetFooter('Developed By The Web divers');
+// $mpdf->SetFooter('Developed By The Web divers');
 $mpdf->WriteHTML($html);
-$mpdf->output("../notice_files/".$file,'F');
-$sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
-mysqli_query($con,$sql);
-redirect("../webadmin/notices");
+$file = time().'.pdf';
+$mpdf->output("clearance_".$file, 'I');
+?>

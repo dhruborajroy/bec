@@ -7,7 +7,7 @@ include("../inc/en2bn.php");
 require('../inc/vendor/autoload.php');
 require_once("../inc/phpqrcode/qrlib.php");
 $filepath = "../images/qr_code/qrcode.png";
-QRcode::png("d", $filepath);
+QRcode::png("Demo QR code.", $filepath);
 $html="";
 $html='<table class="table" width="100%">';
 $html.='
@@ -30,11 +30,11 @@ $html.='
         </tr>';
     $html.='
         <tr >
-            <td align="left" colspan="4">                    
-                স্মারক নং: sdd
+            <td align="left" colspan="4">                     
+                Ref No: BEC/testimonial/25
             </td>
             <td  align="right" colspan="3">
-                তারিখ: ss ইং
+                Date: ss ইং
             </td>
         </tr>';
         $html.='

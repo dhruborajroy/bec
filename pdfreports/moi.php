@@ -7,7 +7,7 @@ include("../inc/en2bn.php");
 require('../inc/vendor/autoload.php');
 require_once("../inc/phpqrcode/qrlib.php");
 $filepath = "../images/qr_code/qrcode.png";
-QRcode::png("d", $filepath);
+QRcode::png("Demo QR code.", $filepath);
 $html="";
 $html='<table class="table" width="100%">';
 $html.='
@@ -34,7 +34,7 @@ $html.='
                 Ref No: BEC/MOI/25
             </td>
             <td  align="right" colspan="3">
-                তারিখ: 13 Jan 2025
+                Date: 13 Jan 2025
             </td>
         </tr>';
         $html.='

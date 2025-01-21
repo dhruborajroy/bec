@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2025 at 08:55 AM
+-- Generation Time: Jan 21, 2025 at 07:22 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,6 +67,33 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `phoneNumber`, `password`, `last_notification`, `image`, `status`) VALUES
 (1, 'Dhrubo Raj Roy', 'Dhruborajroy3@gmail.com', '01705927257', '$2y$10$3xSV8g1xd.7b6leqDI08MOZS6CMMiYKfsL32wzasO7Sp9BqqF92im', '', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `depts_lab_list`
+--
+
+CREATE TABLE `depts_lab_list` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `name_bn` text NOT NULL,
+  `short_form` varchar(20) NOT NULL,
+  `status` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `depts_lab_list`
+--
+
+INSERT INTO `depts_lab_list` (`id`, `name`, `name_bn`, `short_form`, `status`) VALUES
+(1, 'Civil Engineering', 'সিভিল ইঞ্জিনিয়ারিং', 'CE', 1),
+(2, 'Electrical and Electronics Engineering', 'ইলেকট্রিক্যাল এন্ড ইলেকট্রনিক ইঞ্জিনিয়ারিং', 'EEE', 1),
+(3, 'Naval Architecture & Marine Engineering ', 'নেভাল আর্কিটেকচার এন্ড মেরিন ইঞ্জিনিয়ারিং', 'NAME ', 1),
+(4, 'General Science & Humanities', 'জেনারেল সায়েন্স এন্ড হিউম্যানিটিস\r\n', 'GSH', 1),
+(5, 'Hostels', 'হোস্টেল সুপার', 'HS', 1),
+(6, 'Cenreal Computer Center', 'সেন্ট্রাল কম্পিউটার সেন্টার', 'CCC', 1),
+(7, 'Office', 'অফিস', 'Office', 1);
 
 -- --------------------------------------------------------
 
@@ -210,6 +237,42 @@ INSERT INTO `head_message` (`id`, `dept_id`, `message`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lab_list`
+--
+
+CREATE TABLE `lab_list` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `name_bn` text NOT NULL,
+  `dept_id` varchar(20) NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lab_list`
+--
+
+INSERT INTO `lab_list` (`id`, `name`, `name_bn`, `dept_id`, `status`) VALUES
+(1, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '1', 1),
+(2, 'Structural Engineering Labratory', ' ', '1', 1),
+(3, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '2', 1),
+(4, 'Structural Engineering Labratory', ' ', '2', 1),
+(5, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '2', 1),
+(6, 'Structural Engineering Labratory', ' ', '2', 1),
+(7, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '6', 1),
+(8, 'Structural Engineering Labratory', ' ', '3', 1),
+(9, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '4', 1),
+(10, 'Structural Engineering Labratory', ' ', '3', 1),
+(11, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '5', 1),
+(12, 'Structural Engineering Labratory', ' ', '6', 1),
+(13, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '7', 1),
+(14, 'Structural Engineering Labratory', ' ', '2', 1),
+(15, 'Geo-Technical Engineeirng Labratory', 'জিওটেক ', '7', 1),
+(16, 'Structural Engineering Labratory', ' ', '4', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login_attempts`
 --
 
@@ -260,7 +323,8 @@ INSERT INTO `login_logs` (`id`, `admin_id`, `email`, `ip_address`, `status`, `ti
 (18, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:21:05'),
 (19, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 14:25:40'),
 (20, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 17:00:14'),
-(21, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 17:00:32');
+(21, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-18 17:00:32'),
+(22, '1', 'dhruborajroy3@gmail.com', '::1', 'Success', '2025-01-21 22:43:30');
 
 -- --------------------------------------------------------
 
@@ -439,6 +503,7 @@ INSERT INTO `people` (`id`, `name`, `image`, `designation`, `phone`, `email`, `d
 CREATE TABLE `referances` (
   `id` varchar(20) NOT NULL,
   `name` varchar(250) NOT NULL,
+  `priority` int(3) NOT NULL,
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -446,16 +511,16 @@ CREATE TABLE `referances` (
 -- Dumping data for table `referances`
 --
 
-INSERT INTO `referances` (`id`, `name`, `status`) VALUES
-('677cea5825d80', 'জনাব লিটন রাব্বানী, অধ্যক্ষ(অতিরিক্ত দায়িত্ব) , বরিশাল ইঞ্জিনিয়ারিং কলেজ', 1),
-('677ceafcacdae', 'জনাব লিটন রাব্বানী,অধ্যক্ষ,বরিশাল ইঞ্জিনিয়ারিং কলেজ', 1),
-('dfbddb', 'বিভাগীয় প্রধান: সকল, অত্র কলেজ।', 1),
-('dfbdfbergfdrv', 'সংরক্ষণ নথি।', 1),
-('dfdfbfdgdfg', ' শাখা প্রধান: সকল, অত্র কলেজ।', 1),
-('dfeggegxdv', 'জনাব লিটন রাব্বানী', 1),
-('dfgddfv', 'মহাপরিচালক, কারিগরি শিক্ষা অধিদপ্তর, আগারগাঁও, শেরেবাংলা নগর, ঢাকা-১২০৭।', 1),
-('DFGDFVDFBB', 'নোটিশ বোর্ড: সকল, অত্র কলেজ।', 1),
-('fdgdfg', 'পরিচালক (প্রশাসন), কারিগরি শিক্ষা অধিদপ্তর, আগারগাঁও, শেরেবাংলা নগর, ঢাকা-১২০৭।', 1);
+INSERT INTO `referances` (`id`, `name`, `priority`, `status`) VALUES
+('677cea5825d80', 'জনাব লিটন রাব্বানী, অধ্যক্ষ(অতিরিক্ত দায়িত্ব) , বরিশাল ইঞ্জিনিয়ারিং কলেজ', 4, 1),
+('677ceafcacdae', 'জনাব লিটন রাব্বানী,অধ্যক্ষ,বরিশাল ইঞ্জিনিয়ারিং কলেজ', 5, 1),
+('dfbddb', 'বিভাগীয় প্রধান: সকল, অত্র কলেজ।', 3, 1),
+('dfbdfbergfdrv', 'সংরক্ষণ নথি।', 7, 1),
+('dfdfbfdgdfg', ' শাখা প্রধান: সকল, অত্র কলেজ।', 6, 1),
+('dfeggegxdv', 'জনাব লিটন রাব্বানী', 9, 1),
+('dfgddfv', 'মহাপরিচালক, কারিগরি শিক্ষা অধিদপ্তর, আগারগাঁও, শেরেবাংলা নগর, ঢাকা-১২০৭।', 1, 1),
+('DFGDFVDFBB', 'নোটিশ বোর্ড: সকল, অত্র কলেজ।', 8, 1),
+('fdgdfg', 'পরিচালক (প্রশাসন), কারিগরি শিক্ষা অধিদপ্তর, আগারগাঁও, শেরেবাংলা নগর, ঢাকা-১২০৭।', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -598,6 +663,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `depts_lab_list`
+--
+ALTER TABLE `depts_lab_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `dept_general_info`
 --
 ALTER TABLE `dept_general_info`
@@ -619,6 +690,12 @@ ALTER TABLE `faculty`
 -- Indexes for table `general_info`
 --
 ALTER TABLE `general_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lab_list`
+--
+ALTER TABLE `lab_list`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -687,10 +764,22 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `depts_lab_list`
+--
+ALTER TABLE `depts_lab_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `general_info`
 --
 ALTER TABLE `general_info`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `lab_list`
+--
+ALTER TABLE `lab_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `login_attempts`
@@ -702,7 +791,7 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `login_logs`
 --
 ALTER TABLE `login_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
