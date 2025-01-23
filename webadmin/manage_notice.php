@@ -34,8 +34,8 @@ if(isset($_POST['submit'])){
     $ref_id=uniqid();
    if($id==''){
         $id=uniqid();
-        $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`updated_on`, `user_id`, `status`) VALUES 
-                                    ('$id', '$title', '$details','$reference', '$added_on', '','$user_id', '1')";
+        $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`upload_status`,`updated_on`, `user_id`, `status`) VALUES 
+                                    ('$id', '$title', '$details','$reference', '$added_on', '0','','$user_id', '1')";
         if(mysqli_query($con,$sql)){
             
             if(isset($_POST['referance_ids'])){

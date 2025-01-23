@@ -2,6 +2,7 @@
 define('SECURE_ACCESS', true);
 include("header.php");
 $title="";
+$date="";
 $id="";
 if(isset($_GET['id']) && $_GET['id']>0){
 	$id=get_safe_value($_GET['id']);
@@ -9,6 +10,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
         $title=$row['title'];
+        $date=$row['date'];
     }else{
         $_SESSION['TOASTR_MSG']=array(
            'type'=>'error',
@@ -20,43 +22,25 @@ if(isset($_GET['id']) && $_GET['id']>0){
 }
 if(isset($_POST['submit'])){
 	$title=get_safe_value($_POST['title']);
-	$reference=get_safe_value($_POST['reference']);
-	$details=$_POST['details'];
+    $date=time();
     $user_id=$_SESSION['ADMIN_ID'];
-    $added_on=time();
-    $ref_id=uniqid();
    if($id==''){
         $id=uniqid();
-        $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`updated_on`, `user_id`, `status`) VALUES 
-                                    ('$id', '$title', '$details','$reference', '$added_on', '','$user_id', '1')";
+        $pdf=$id."_".time().'.pdf';
+        move_uploaded_file($_FILES['notice_pdf']['tmp_name'],UPLOAD_NOTICE_PDF.$pdf);
+        $sql="INSERT INTO `notice` (`id`, `title`, `link`, `added_on`,`upload_status`,`user_id`, `status`) VALUES 
+                                    ('$id', '$title',  '$pdf', '$date','1','$user_id', '1')";
         if(mysqli_query($con,$sql)){
             $_SESSION['TOASTR_MSG']=array(
                 'type'=>'success',
                 'body'=>'Data Inserted',
                 'title'=>'Success',
             );
-            // redirect('./about_us');
-        }else{
-            echo $sql;
-        }
-    }else{
-        $updated_on=time();
-        // print_r($_POST);
-        $sql="update `notice` set  `title`='$title', `details`='$details',`reference`='$reference',`updated_on`='$updated_on' where id='$id'";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',
-                'body'=>'Data Inserted',
-                'title'=>'Success',
-            );
-            // redirect('./about_us');
         }else{
             echo $sql;
         }
     }
-    // echo $sql;
-    redirect('../pdfreports/notice?notice_id='.$id);
-    // redirect('./notices');
+    redirect('./notices');
 }
 
 ?>
@@ -73,43 +57,59 @@ if(isset($_POST['submit'])){
     </div>
     <!-- Breadcubs Area End Here -->
     <div class="row">
-        <!-- Add Notice Area Start Here -->
-        <div class="col-12-xxxl col-12">
-            <div class="card height-auto">
-                <div class="card-body">
-                    <div class="heading-layout1">
-                        <div class="item-title">
-                            <h3>Create A Notice</h3>
+                    <!-- Add Notice Area Start Here -->
+                    <div class="col-4-xxxl col-12">
+                        <div class="card height-auto">
+                            <div class="card-body">
+                                <div class="heading-layout1">
+                                    <div class="item-title">
+                                        <h3>Upload A Notice</h3>
+                                    </div>
+                                </div>
+                                <form class="new-added-form" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Title</label>
+                                            <input type="text" required placeholder="" class="form-control" name="title" id="title"
+                                                value="<?php echo $title?>">
+                                        </div>
+                                        <div class="col-12-xxxl col-lg-12 col-12 ">
+                                                <label>Upload Files(Only PDF Format)</label>
+                                                <input required type="file" name="notice_pdf" id="pdfUpload" accept="application/pdf">
+                                        </div>
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Date</label>
+                                            <input type="text" name="date" placeholder="" class="form-control air-datepicker">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </div>
+                                        <div class="col-12 form-group mg-t-8 mt-5 center">
+                                            <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
+                                                name="submit">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <form id="validate" class="new-added-form" method="post">
-                        <div class="row">
-                            <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                <label>Title</label>
-                                <input type="text" required placeholder="" class="form-control" name="title" id="title"
-                                    value="<?php echo $title?>">
-                            </div>
-                            <div class="col-12-xxxl col-lg-12 col-12 row">
-                                <div class="col-4-xxxl col-lg-4 col-4">
-                                    <label>Upload Files</label>
-                                    <input type="file" id="pdfUpload" accept="application/pdf">
+                    <!-- Add Notice Area End Here -->
+                    <!-- All Notice Area Start Here -->
+                    <div class="col-8-xxxl col-12">
+                        <div class="card height-auto">
+                            <div class="card-body">
+                                <div class="heading-layout1">
+                                    <div class="item-title">
+                                        <h3>Notice Preview</h3>
+                                    </div>
                                 </div>
-                                <div class="col-8-xxxl col-lg-8 col-8">
-                                    <label>Upload Files</label>
+                                <div class="notice-board-wrap">
                                     <iframe id="pdfPreview" width="100%" height="500px" style="display: none;"></iframe>
                                 </div>
                             </div>
-                            <div class="col-12 form-group mg-t-8">
-                                <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
-                                    name="submit">
-                            </div>
                         </div>
-                    </form>
+                    </div>
+                    <!-- All Notice Area End Here -->
                 </div>
-            </div>
-        </div>
-        <!-- Add Notice Area End Here -->
-    </div>
+
     <?php include("footer.php")?>
     <script>
         document.getElementById('pdfUpload').addEventListener('change', function(event) {

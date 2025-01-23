@@ -262,6 +262,11 @@
                                  class="nav-link "><i
                                     class="fas fa-angle-right"></i>Add new notice</a>
                         </li>
+                        <li class="nav-item">
+                           <a href="upload_notice.php"
+                                 class="nav-link "><i
+                                    class="fas fa-angle-right"></i>Upload notice</a>
+                        </li>
                      </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
@@ -272,6 +277,23 @@
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All
                            Referances</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_subjects"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>
+                           Manage Subjects</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Testimonials</span></a>
+                  <ul class="nav sub-group-menu ">
+                  <li class="nav-item">
+                        <a href="testimonials"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>All
+                           testimonials</a>
                      </li>
                      <li class="nav-item">
                         <a href="manage_subjects"

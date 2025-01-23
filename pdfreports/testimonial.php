@@ -6,17 +6,29 @@ include("../inc/function.inc.php");
 include("../inc/en2bn.php");
 require('../inc/vendor/autoload.php');
 require_once("../inc/phpqrcode/qrlib.php");
-
 $filepath = "../images/qr_code/qrcode.png";
+$additional_sql = "";
+$page_break = "";  // Ensure first page has no page break
+$first_page = true; // Flag to track first iteration
 
-// Fetch student records from the database
-$query = "SELECT name, father_name, reg_no, session, study_period, photo FROM students"; 
+if (isset($_GET['reg_no']) && $_GET['reg_no'] > 0) {
+    $reg_no = get_safe_value($_GET['reg_no']);
+    $additional_sql = " WHERE reg_no='$reg_no'";
+}
+
+$query = "SELECT name, father_name, reg_no, session, study_period, photo FROM students $additional_sql"; 
 $result = mysqli_query($con, $query);
 
-$all_testimonials_html = ''; // Store all testimonials for final PDF
-
+$all_testimonials_html = ''; 
+if(mysqli_num_rows($result)<=0){
+    redirect("/");
+}
 while ($student = mysqli_fetch_assoc($result)) {
-    // Create a new MPDF instance for each student
+    if (!$first_page) {
+        $all_testimonials_html .= "<pagebreak />";
+    }
+    $first_page = false; 
+
     $mpdf = new \Mpdf\Mpdf([
         'tempDir' => __DIR__ . '/custom',
         'default_font_size' => 12,
@@ -30,9 +42,8 @@ while ($student = mysqli_fetch_assoc($result)) {
     $mpdf->SetTitle('TESTIMONIAL - ' . $student['name']);
     $mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
 
-    // Generate HTML for the testimonial
-    $html = '<pagebreak /><table width="100%">'; 
-    $html .= '
+    $html = '<table width="100%">'; 
+    $html .= ' 
         <tr>
             <td align="left" colspan="3" style="font-size:20px">
                 <span style="font-size:25px; font-family: Siyam Rupali;">সিভিল ইঞ্জিনিয়ারিং বিভাগ</span><br>
@@ -79,11 +90,8 @@ while ($student = mysqli_fetch_assoc($result)) {
                 </p>
             </td>
         </tr>';
-
-    // Generate QR Code
     $qr_text = "http://mashallah.shop/BEC/notice_files/" . $student['reg_no'] . "_TESTIMONIAL.pdf";
     QRcode::png($qr_text, $filepath);
-
     $html .= '
         <tr>
             <td align="left" style="padding-top:100px" colspan="5">
@@ -104,17 +112,12 @@ while ($student = mysqli_fetch_assoc($result)) {
         </tr>';
 
     $html .= '</table>';
-
-    // Save Individual Testimonial PDF
     $mpdf->WriteHTML($html);
     $file = $student['reg_no'] . '_TESTIMONIAL.pdf';
-    $mpdf->Output("../notice_files/" . $file, 'F'); // Save the file
-
-    // Append testimonial HTML to the final combined PDF
+    $mpdf->Output("../notice_files/" . $file, 'F'); 
     $all_testimonials_html .= $html;
 }
 
-// Generate the combined "All Testimonials" PDF
 $all_mpdf = new \Mpdf\Mpdf([
     'tempDir' => __DIR__ . '/custom',
     'default_font_size' => 12,
@@ -126,10 +129,7 @@ $all_mpdf = new \Mpdf\Mpdf([
 ]);
 $all_mpdf->SetTitle('All Testimonials - Barishal Engineering College');
 $all_mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
-
-// Write all testimonials to the final PDF
 $all_mpdf->WriteHTML($all_testimonials_html);
 $all_mpdf->Output("../notice_files/ALL_TESTIMONIALS.pdf", 'I'); // Save the file
-
 mysqli_close($con);
 ?>

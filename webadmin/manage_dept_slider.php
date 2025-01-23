@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
             if(isset($img)){
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_DEPT_SLIDER_IMAGE.$image);
-                echo $sql="update `dept_sliders` set  `title`='$title', `image`='$image',  `dept`='$dept_id', `sub_title`='$sub_title',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
+                $sql="update `dept_sliders` set  `title`='$title', `image`='$image',  `dept`='$dept_id', `sub_title`='$sub_title',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',

@@ -22,32 +22,7 @@ define('SECURE_ACCESS', true);
                         <div class="item-title">
                             <h3>Notice Board</h3>
                         </div>
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-expanded="false">...</a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
-                            </div>
-                        </div>
                     </div>
-                    <!-- <form class="mg-b-20">
-                        <div class="row gutters-8">
-                            <div class="col-lg-5 col-12 form-group">
-                                <input type="text" placeholder="Search by Date ..." class="form-control">
-                            </div>
-                            <div class="col-lg-5 col-12 form-group">
-                                <input type="text" placeholder="Search by Title ..." class="form-control">
-                            </div>
-                            <div class="col-lg-2 col-12 form-group">
-                                <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
-                            </div>
-                        </div>
-                    </form> -->
                     <div class="notice-board-wrap">
                         <?php 
                         $sql="select * from notice where status='1' order by added_on desc";
@@ -58,17 +33,21 @@ define('SECURE_ACCESS', true);
                         ?>
                         <div class="notice-list">
                             <div class="post-date bg-skyblue">
-                                <?php echo date('d-M-Y h:i A',$row['added_on']);
-                                // echo time()?>
+                                <?php echo date('d-M-Y h:i A',$row['added_on']);?>
                             </div>
                             <div class="post-date bg-orange">
                                 <a href="manage_notice?id=<?php echo $row['id']?>" style="color:black">Edit</a>
                             </div>
-                            <div class="post-date bg-orange">
-                                <a href="../pdfreports/notice.php?notice_id=<?php echo $row['id']?>" style="color:white">Generate Pdf</a>
-                            </div>
-
-                            <h6 class="notice-title"><a href="#"><?php echo $row['title']?></a></h6>
+                            <?php if($row['upload_status']!=1){?>
+                                <div class="post-date bg-orange">
+                                    <a href="../pdfreports/notice.php?notice_id=<?php echo $row['id']?>" style="color:white">Generate Pdf</a>
+                                </div>
+                            <?php }else{?>
+                                <div class="post-date bg-orange">
+                                    <a href="../notice_files/<?php echo $row['link']?>" style="color:white">Generate Pdf</a>
+                                </div>
+                            <?php } ?>
+                            <h6 class="notice-title"><a href="../notice_files/<?php echo $row['link']?>"><?php echo $row['title']?></a></h6>
                             <div class="entry-meta"><?php echo $row['details']?></div>
                         </div>
                         <?php 

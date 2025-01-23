@@ -31,13 +31,12 @@ if(mysqli_num_rows($site_res)>0){
 	define('TAGLINE','');
 	define('EMAIL','contact@bec.edu.com');
 	define('TEL','০১৭০৫৫৫৫৫৫৫৫');
-	define('ADDRESS','দুর্গাপুর, বরিশাল');
-		
+	define('ADDRESS','দুর্গাপুর, বরিশাল');		
 	define('SIGNATURE_NAME','জনাব মোঃ লিটন রাব্বানী <br> অধ্যক্ষ <br> বরিশাল ইঞ্জিনিয়ারিং কলেজ');
 	define('DESIGNATION','');
 	define('SIGNATURE_IMAGE','');
 	define('SMTP_USERNAME',"");
-	define('SMTP_PASSPORT',$site_res_row['smtp_password']);
+	define('SMTP_PASSPORT',"");
 }
 
 
@@ -50,6 +49,8 @@ define('DEPT_SLIDER_IMAGE',FRONT_SITE_PATH."/images/dept/sliders/");
 define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");
 define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/dept/sliders/");
 define('UPLOAD_FACULTY_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/teachers/");
+define('UPLOAD_NOTICE_PDF',$_SERVER['DOCUMENT_ROOT']."/BEC/notice_files/");
+
 
 
 

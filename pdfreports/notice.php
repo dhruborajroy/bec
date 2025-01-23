@@ -12,7 +12,7 @@ if (isset($_GET['notice_id']) && $_GET['notice_id']!="") {
     $_SESSION['PERMISSION_ERROR']=1;
     redirect("/");
 }
-$sql="select * from `notice` where id='$notice_id'";
+$sql="select * from `notice` where id='$notice_id' and upload_status='0'";
 $res=mysqli_query($con,$sql);
 $html="";
 
@@ -119,7 +119,9 @@ $mpdf=new \Mpdf\Mpdf([
 $mpdf->SetTitle('Notice Barisal Engineering College');
 $mpdf->SetFooter('Developed By The Web divers');
 $mpdf->WriteHTML($html);
-$mpdf->output("../notice_files/".$file,'F');
-$sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
-mysqli_query($con,$sql);
+// if($row['link']==""){
+    $mpdf->output("../notice_files/".$file,'F');
+    $sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
+    mysqli_query($con,$sql);
+// }
 redirect("../webadmin/notices");
