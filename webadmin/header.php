@@ -287,6 +287,23 @@
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>faculty</span></a>
+                  <ul class="nav sub-group-menu ">
+                  <li class="nav-item">
+                        <a href="faculty"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>All
+                           Faculty</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_faculty"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>
+                           Manage faculty</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Testimonials</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">

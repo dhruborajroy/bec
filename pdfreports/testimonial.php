@@ -94,9 +94,12 @@ while ($student = mysqli_fetch_assoc($result)) {
     QRcode::png($qr_text, $filepath);
     $html .= '
         <tr>
-            <td align="left" style="padding-top:100px" colspan="5">
-                <div align="right">
-                    <span style="font-size:20px">
+            <td align="right" colspan="2">
+                <img src="' . $filepath . '" width="150" height="150" />
+            </td>
+            <td align="right" colspan="5">
+                <span align="center">
+                    <span style="font-size:20px" align="center">
                         Md. Liton Rabbani <br>
                         Assistant Professor &amp; Head <br>
                         Department of Civil Engineering<br>
@@ -104,10 +107,7 @@ while ($student = mysqli_fetch_assoc($result)) {
                         Cell: +8801745599180<br>
                         E-mail: litonkce01@gmail.com
                     </span>
-                </div>
-            </td>
-            <td align="right" colspan="2">
-                <img src="' . $filepath . '" width="150" height="150" />
+                </span>
             </td>
         </tr>';
 

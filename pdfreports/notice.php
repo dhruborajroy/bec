@@ -57,13 +57,13 @@ if(mysqli_num_rows($res)>0){
             </tr>';
             $html.='
                 <tr>
-                    <td align="left" colspan="7" align="center" style="padding-top:30px">                    
+                    <td align="left" colspan="7"  style="padding-top:30px">                    
                     <u style="font-size:35px">'.$row['title'].'</u>
                     </td>
                 </tr>';
                 $html.='
                     <tr >
-                        <td align="left" colspan="7" align="center" style="padding-top:10px">                    
+                        <td align="left" colspan="7"  style="padding-top:10px">                    
                             <p>'.$row['details'].'</p>
                         </td>
                     </tr>';

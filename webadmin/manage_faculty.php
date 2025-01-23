@@ -194,13 +194,13 @@ define('SECURE_ACCESS', true);
                <label for="email">Email</label>
                <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($email); ?>" class="form-control">
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="research_interest">Research Interest</label>
-               <input type="text" name="research_interest" id="research_interest" value="<?php echo htmlspecialchars($research_interest); ?>" class="form-control">
+               <textarea class="full_input" name="research_interest" id="research_interest"  class="form-control"><?php echo htmlspecialchars($research_interest); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="bio">Bio</label>
-               <textarea name="bio" id="bio" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($bio); ?></textarea>
+               <textarea class="full_input" name="bio" id="bio" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($bio); ?></textarea>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="Dept">Department</label>
@@ -214,29 +214,29 @@ define('SECURE_ACCESS', true);
                <label for="linked_in">LinkedIn</label>
                <input type="text" name="linked_in" id="linked_in" value="<?php echo htmlspecialchars($linked_in); ?>" class="form-control">
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="education">Education</label>
-               <textarea name="education" id="education" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($education); ?></textarea>
+               <textarea class="full_input" name="education" id="education" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($education); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="experience">Experience</label>
-               <textarea name="experience" id="experience" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($experience); ?></textarea>
+               <textarea class="full_input" name="experience" id="experience" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($experience); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="publication">Publication</label>
-               <textarea name="publication" id="publication" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($publication); ?></textarea>
+               <textarea class="full_input" name="publication" id="publication" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($publication); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12">
                <label for="scholarship_award">Scholarship & Awards</label>
-               <textarea name="scholarship_award" id="scholarship_award" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($scholarship_award); ?></textarea>
+               <textarea class="full_input" name="scholarship_award" id="scholarship_award" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($scholarship_award); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="research">Research</label>
-               <textarea name="research" id="research" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($research); ?></textarea>
+               <textarea class="full_input" name="research" id="research" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($research); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+            <div class="col-12-xxxl col-lg-12 col-12 ">
                <label for="teaching_supervision">Teaching & Supervision</label>
-               <textarea name="teaching_supervision" id="teaching_supervision" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($teaching_supervision); ?></textarea>
+               <textarea class="full_input" class="full_input" name="teaching_supervision" id="teaching_supervision" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($teaching_supervision); ?></textarea>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="joined_at">Joined At</label>
@@ -290,11 +290,3 @@ define('SECURE_ACCESS', true);
    <!-- Add Notice Area End Here -->
 </div>
 <?php include("footer.php")?>
-<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-<script>
-   // Select all textareas on the page
-   const textAreas = document.querySelectorAll('textarea');
-   textAreas.forEach(textArea => {
-       ClassicEditor.create(textArea).catch(error => console.error(error));
-   });
-</script>

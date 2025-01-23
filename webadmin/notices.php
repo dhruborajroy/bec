@@ -22,6 +22,13 @@ define('SECURE_ACCESS', true);
                         <div class="item-title">
                             <h3>Notice Board</h3>
                         </div>
+                        <div class="dropdown">
+                            <a href="manage_notice"> 
+                                <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Notice</button>
+                            </a>
+                            <a href="upload_notice"> <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Upload Notice</button>
+                            </a>
+                        </div>
                     </div>
                     <div class="notice-board-wrap">
                         <?php 
