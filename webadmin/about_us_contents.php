@@ -14,74 +14,127 @@ include("header.php");
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->
-    <div class="row">
-        <!-- All Notice Area Start Here -->
-        <div class="col-12-xxxl col-12">
-            <div class="card height-auto">
-                <div class="card-body">
-                    <div class="heading-layout1">
-                        <div class="item-title">
-                            <h3>Notice Board</h3>
-                        </div>
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                aria-expanded="false">...</a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <form class="mg-b-20">
-                        <div class="row gutters-8">
-                            <div class="col-lg-5 col-12 form-group">
-                                <input type="text" placeholder="Search by Date ..." class="form-control">
-                            </div>
-                            <div class="col-lg-5 col-12 form-group">
-                                <input type="text" placeholder="Search by Title ..." class="form-control">
-                            </div>
-                            <div class="col-lg-2 col-12 form-group">
-                                <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
-                            </div>
-                        </div>
-                    </form> -->
-                    <div class="notice-board-wrap">
-                        <?php 
-                        $sql="select * from notice where status='1' order by added_on desc";
-                        $res=mysqli_query($con,$sql);
-                        if(mysqli_num_rows($res)>0){
-                        $i=1;
-                        while($row=mysqli_fetch_assoc($res)){
-                        ?>
-                        <div class="notice-list">
-                            <div class="post-date bg-skyblue">
-                                <?php echo date('d-M-Y h:i A',$row['added_on']);
-                                // echo time()?>
-                            </div>
-                            <div class="post-date bg-orange">
-                                <a href="manage_notice?id=<?php echo $row['id']?>" style="color:black">Edit</a>
-                            </div>
-                            <div class="post-date bg-orange">
-                                <a href="../pdfreports/notice.php?notice_id=<?php echo $row['id']?>" style="color:white">Generate Pdf</a>
-                            </div>
-
-                            <h6 class="notice-title"><a href="#"><?php echo $row['title']?></a></h6>
-                            <div class="entry-meta"><?php echo $row['details']?></div>
-                        </div>
-                        <?php 
-                           $i++;
-                           } } else { ?>
-                        <tr>
-                            <td colspan="5">No data found</td>
-                        </tr>
-                        <?php } ?>
+<?php 
+$sql="select * from dept_general_info";
+$res=mysqli_query($con,$sql);
+if(mysqli_num_rows($res)>0){
+$i=1;
+while($row=mysqli_fetch_assoc($res)){
+?>
+<div class="card ui-tab-card">
+   <div class="card-body">
+      
+      <div class="heading-layout1 mg-b-25">
+         <div class="item-title">
+            <h3><?php echo $row['dept_id']?> Dept Infos</h3>
+         </div>
+         <div class="dropdown">
+               <a href="manage_dept_info?dept_id=<?php echo md5( $row['dept_id'])?>"> <button type="submit"
+                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+               </a>
+         </div>
+      </div>
+      <div class="basic-tab">
+         <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+               <a class="nav-link active show" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_publication" role="tab" aria-selected="true">
+               Publications
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_research" role="tab" aria-selected="false">
+               Dept Research
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_scholarships" role="tab" aria-selected="false">
+               Dept scholarships
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_about" role="tab" aria-selected="false">
+                 Dept about
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_vision_mission" role="tab" aria-selected="false">
+               Dept vision mission
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_head_msg" role="tab" aria-selected="false">
+               Dept Head Message
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#<?php echo $row['dept_id']?>_dept_booklet" role="tab" aria-selected="false">
+               Dept booklet
+               </a>
+            </li>
+         </ul>
+         <div class="tab-content">
+                <div class="tab-pane fade active show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_publication" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_publication']?>
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- All Notice Area End Here -->
-    </div> <?php include("footer.php")?>
+                <div class="tab-pane fade show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_research" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_research']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_scholarships" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_scholarships']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_about" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_about']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="dept_about" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_about']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_vision_mission" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_vision_mission']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_head_msg" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_head_msg']?>
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade  show col-12 form-group" id="<?php echo $row['dept_id']?>_dept_booklet" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['dept_booklet']?>
+                        </p>
+                    </div>
+                </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<?php 
+$i++;
+} } else { ?>
+No data found
+<?php } ?>
+<?php include('footer.php');?>

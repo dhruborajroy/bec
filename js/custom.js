@@ -306,7 +306,7 @@ $('[data-toggle="popover"]').popover()
   POTENZA.countdownTimer = function () {
     if ($countdownTimer.exists()) {
       $countdownTimer.downCount({
-        date: '12/25/2020 12:00:00', // Month/Date/Year HH:MM:SS
+        date: '01/24/2025 12:00:00', // Month/Date/Year HH:MM:SS
         offset: -4
       });
     }

@@ -1,4 +1,6 @@
 <?php 
+define('SECURE_ACCESS', true);
+
 if(!isset($_GET['news_id'])){
   header("Location: /");
 }

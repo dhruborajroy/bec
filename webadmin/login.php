@@ -1,7 +1,6 @@
 <?php 
 session_start();
 session_regenerate_id(true); // Prevent session fixation
-
 define('SECURE_ACCESS', true);
 include('../inc/function.inc.php');
 include('../inc/connection.inc.php');

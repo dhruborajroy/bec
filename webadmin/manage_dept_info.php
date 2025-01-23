@@ -1,14 +1,17 @@
 <?php 
+define('SECURE_ACCESS', true);
 include("header.php");
 $id="";
-$title="";
-$user_id="";
-$details="";
-$added_on="";
-if(isset($_GET['id']) && $_GET['id']!==""){
+$dept_publication="";
+$dept_research="";
+$dept_scholarships="";
+$dept_about="";
+$dept_vision_mission="";
+$dept_head_msg="";
+$dept_booklet="";
+if(isset($_GET['dept_id']) && $_GET['dept_id']!==""){
 	$dept_id=get_safe_value($_GET['dept_id']);
-	$type=get_safe_value($_GET['type']);
-    $swl="select * from `dept_general_info` where md5(id)='$id'";
+    $swl="select * from `dept_general_info` where md5(dept_id)='$dept_id'";
     $res=mysqli_query($con,$swl);
     if(mysqli_num_rows($res)>0){
         $row=mysqli_fetch_assoc($res);
@@ -19,7 +22,6 @@ if(isset($_GET['id']) && $_GET['id']!==""){
         $dept_vision_mission=$row['dept_vision_mission'];
         $dept_head_msg=$row['dept_head_msg'];
         $dept_booklet=$row['dept_booklet'];
-        $added_on=$row['added_on'];
     }else{
         $_SESSION['TOASTR_MSG']=array(
            'type'=>'error',
@@ -60,7 +62,7 @@ if(isset($_POST['submit'])){
             dept_head_msg = '$dept_head_msg', 
             dept_booklet = '$dept_booklet', 
             status = 'active'
-        WHERE id = '$id'";
+        WHERE md5(id) = '$dept_id'";
         if(mysqli_query($con,$sql)){
             $_SESSION['TOASTR_MSG']=array(
                 'type'=>'success',                
@@ -83,7 +85,7 @@ if(isset($_POST['submit'])){
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>Notices </li>
+            <li>Department Infos </li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -94,19 +96,38 @@ if(isset($_POST['submit'])){
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Create A Notice</h3>
+                            <h3>Department Infos</h3>
                         </div>
                     </div>
                     <form id="validate" class="new-added-form" method="post">
                         <div class="row">
-                            <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                <label>Title</label>
-                                <input type="text" required placeholder="" class="form-control" name="title" id="title"
-                                    value="<?php echo $type?>">
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department Publication</h1>
+                                <textarea class="full_input" name="dept_publication" id="dept_publication"><?php echo $dept_publication?></textarea class="full_input">
                             </div>
-                            <div class="col-12-xxxl col-lg-12 col-12 form-group">
-                                <label>Details</label>
-                                <textarea name="details" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department Research</h1>
+                                <textarea class="full_input" name="dept_research" id="dept_research" cols="30" rows="30"><?php echo $dept_research?></textarea class="full_input">
+                            </div>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department Scholarships</h1>
+                                <textarea class="full_input" name="dept_scholarships" id="dept_scholarships" cols="30" rows="30"><?php echo $dept_scholarships?></textarea class="full_input">
+                            </div>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department About</h1>
+                                <textarea class="full_input" name="dept_about" id="dept_about" cols="30" rows="30"><?php echo $dept_about?></textarea class="full_input">
+                            </div>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department vision mission</h1>
+                                <textarea class="full_input" name="dept_vision_mission" id="dept_vision_mission" cols="30" rows="30"><?php echo $dept_vision_mission?></textarea class="full_input">
+                            </div>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department head message</h1>
+                                <textarea class="full_input" name="dept_head_msg" id="dept_head_msg" cols="30" rows="30"><?php echo $dept_head_msg?></textarea class="full_input">
+                            </div>
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
+                                <h1>Department booklet</h1>
+                                <textarea class="full_input" name="dept_booklet" id="dept_booklet" cols="30" rows="30"><?php echo $dept_booklet?></textarea class="full_input">
                             </div>
                             <div class="col-12 form-group mg-t-8">
                                 <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
@@ -120,15 +141,3 @@ if(isset($_POST['submit'])){
         <!-- Add Notice Area End Here -->
     </div>
     <?php include("footer.php")?>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-
-    <script>
-            ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-    </script>

@@ -18,8 +18,6 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	}
 
 }
-$sql="select * from about_us";
-$res=mysqli_query($con,$sql);
 ?>
 <!-- Page Area Start Here -->
 <div class="dashboard-content-one">
@@ -34,79 +32,63 @@ $res=mysqli_query($con,$sql);
             </ul>
     </div>
     <!-- Breadcubs Area End Here -->
-    <!-- Teacher Table Area Start Here -->
-    <div class="card height-auto">
-        <div class="card-body">
-            <div class="heading-layout1">
-                <div class="item-title">
-                    <h3>All Books' Data</h3>
-                </div>
-                <div class="dropdown show">
+
+    
+<?php 
+$sql="select * from about_us";
+$res=mysqli_query($con,$sql);
+if(mysqli_num_rows($res)>0){
+$i=1;
+while($row=mysqli_fetch_assoc($res)){
+?>
+<div class="card ui-tab-card">
+   <div class="card-body">
+      
+      <div class="heading-layout1 mg-b-25">
+         <div class="item-title">
+            <h3>About Us</h3>
+         </div>
+         <div class="dropdown">
+               <a href=""> <button type="submit"
+                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+               </a>
+         </div>
+      </div>
+      <div class="basic-tab">
+         <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+               <a class="nav-link active show" data-toggle="tab" href="#title" role="tab" aria-selected="true">
+               Title
+               </a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" data-toggle="tab" href="#details" role="tab" aria-selected="false">
+               Details
+               </a>
+            </li>
+         </ul>
+         <div class="tab-content">
+                <div class="tab-pane fade active show col-12 form-group" id="title" role="tabpanel">
                     <div class="col-12 form-group mg-t-8">
-                        <a href="manage_about_us"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new about us</button>
-                        </a>
+                        <p><?php echo $row['title']?>
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table display data-table text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Details</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                        <?php if(mysqli_num_rows($res)>0){
-                        $i=1;
-                        while($row=mysqli_fetch_assoc($res)){
-                        ?>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1 dtr-control"><?php echo $row['title']?></td>
-                            <td class="sorting_1 dtr-control">
-                            <?php 
-                            $maxLength = 120;
+                <div class="tab-pane fade show col-12 form-group" id="details" role="tabpanel">
+                    <div class="col-12 form-group mg-t-8">
+                        <p><?php echo $row['details']?>
+                        </p>
+                    </div>
+                    
+                </div>
+         </div>
+      </div>
+   </div>
+</div>
 
-                            if (strlen($row['details']) > $maxLength) {
-                                $truncatedString = substr_replace($row['details'], '...', $maxLength);
-                            } else {
-                                $truncatedString = $row['details'];
-                            }
-                            echo $truncatedString;
-                            ?></td>
-                            <td>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <span class="flaticon-more-button-of-three-dots"></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="manage_about_us.php?id=<?php echo md5($row['id'])?>"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                <?php if($row['status']=='0'){?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Active</a>
-                                                <?php }else{?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a>
-                                                <?php }?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=delete"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Delete</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php 
-                           $i++;
-                           } } else { ?>
-                        <tr>
-                            <td colspan="3">No data found</td>
-                        </tr>
-                        <?php } ?>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- Teacher Table Area End Here -->
-    <?php include('footer.php');?>
+<?php 
+$i++;
+} } else { ?>
+No data found
+<?php } ?>
+<?php include('footer.php');?>

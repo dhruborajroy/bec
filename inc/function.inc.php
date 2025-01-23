@@ -143,22 +143,6 @@ function getUsers(){
 	  return $row['number'];
 	}
 } 
-function getPayments(){
-	global $con;
-	$sql="SELECT count(DISTINCT id) as number FROM payment";
-	$res=mysqli_query($con,$sql);
-	while($row=mysqli_fetch_assoc($res)){
-	  return $row['number'];
-	}
-} 
-function getTotalPayments(){
-	global $con;
-	$sql="SELECT sum(amount) as number FROM payment";
-	$res=mysqli_query($con,$sql);
-	while($row=mysqli_fetch_assoc($res)){
-	  return $row['number'];
-	}
-} 
 function gettotalstudent(){
 	global $con;
 	$sql="SELECT count(DISTINCT id) as student FROM applicants";
@@ -215,34 +199,15 @@ function get_time_ago($time){
     }
 }
 
-function getTotalMarks($exam_roll){
-	global $con;
-	$sql="SELECT SUM(mark) as total_marks FROM mark  where exam_roll='$exam_roll'";
-	$res=mysqli_query($con,$sql);
-	while($row=mysqli_fetch_assoc($res)){
-	  return $row['total_marks'];
-	}
-}
-function getTotalMeal($month_id,$roll=""){
-	global $con;
-	$additional_sql="";
-	if($roll!=""){
-		$additional_sql=" and roll='$roll'";
-	}
-	$sql="SELECT SUM(meal_value) as total_meal FROM meal_table WHERE month_id='$month_id' $additional_sql";
-	$res=mysqli_query($con,$sql);
-	while($row=mysqli_fetch_assoc($res)){
-	  return $row['total_meal'];
-	}
+function randomEmail($name) {
+    $domains = ["@ce.bec.edu.bd", "@bec.edu.bd","@eee.bec.edu.bd", "@gmail.com"];
+    return strtolower(str_replace(' ', '_', $name)) . rand(1, 99) . $domains[array_rand($domains)];
 }
 
-function getMealRate($month_id){
-	$getTotalMeal=getTotalMeal($month_id);
-	if($getTotalMeal!=0){
-		return floatval(getTotalExpense($month_id)/getTotalMeal($month_id));
-	}else{
-		return "0";
-	}
+function randomBangladeshiName() {
+    $firstNames = ["Abdul", "Md.", "Shahriar", "Rafi", "Hasan", "Tariq", "Shams", "Arif", "Imran", "Nayeem"];
+    $lastNames = ["Rahman", "Islam", "Hossain", "Ahmed", "Khan", "Chowdhury", "Alam", "Kabir", "Faruque", "Sikder"];
+    return "Dr. " . $firstNames[array_rand($firstNames)] . " " . $lastNames[array_rand($lastNames)];
 }
 
 function addOrdinalNumberSuffix($num) {
@@ -344,11 +309,13 @@ function numberTowords($num){
     }
     return $rettxt;
 }
+
 function csrf(){
 	$csrf_token=md5(uniqid(rand()));
 	$_SESSION['csrf_token']=$csrf_token;
 	return $_SESSION['csrf_token'];
 }
+
 function form_csrf(){
 	$csrf_token=csrf();
 	$html='<input type="hidden" name="csrf_token" id="csrf_token"
@@ -371,245 +338,4 @@ function form_csrf(){
     "pin":"12121"
 */
 // Bkash Functions Starts here
-function timeWiseTokenGeneartion(){
-    global $con;
-    $sql="select time from bkash_credentials where id='1' limit 1";
-    $res=mysqli_query($con,$sql);
-    if(mysqli_num_rows($res)>0){
-        $row=mysqli_fetch_assoc($res);
-        $time=$row['time'];
-        if($time==""){
-            $time=0;
-        }
-        if((time()-$time)>3600){
-            $time=time();
-            $data=grandToken();
-            $id_token=$data['id_token'];
-            $refresh_token=$data['refresh_token'];
-            $sql="update bkash_credentials set id_token='$id_token', refresh_token='$refresh_token',  time='$time'  where id='1'";
-            $res=mysqli_query($con,$sql);
-        }
-        $sql="select * from bkash_credentials where id='1' limit 1";
-        $res=mysqli_query($con,$sql);
-        $row=mysqli_fetch_assoc($res);
-        $data=array(
-            'id_token'=>$row['id_token'],
-            'refresh_token'=>$row['refresh_token'],
-            'time'=>$time,
-        );
-        return $data;
-    }else{
-        return "error";
-    }
-}
-
-function grandToken(){
-    $request_data = array(
-        'app_key'=>APP_KEY,
-        'app_secret'=>APP_SECRET
-    );  
-    $url = curl_init(BASE_URL.'/tokenized/checkout/token/grant');
-    $request_data_json=json_encode($request_data);
-    $header = array(
-        'Content-Type:application/json',
-        'username:'.USERNAME,               
-        'password:'.PASSWORD
-    );
-    curl_setopt($url,CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url,CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url,CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url,CURLOPT_POSTFIELDS, $request_data_json);
-    curl_setopt($url,CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data=curl_exec($url);
-    if (curl_errno($url)) {
-        echo 'Error:' . curl_error($url);
-    }
-    curl_close($url);
-    $data=json_decode($data,true);
-    // echo "<pre>";
-    return $data;
-}
-
-
-function refreshToken($refresh_token){
-    $request_data = array(
-        'app_key'=>APP_KEY,
-        'app_secret'=>APP_SECRET,
-        'refresh_token'=>$refresh_token,
-    );  
-    $url = curl_init(BASE_URL.'/tokenized/checkout/token/refresh');
-    $request_data_json = json_encode($request_data);
-    $header = array(
-        'Content-Type:application/json',
-        'username:'.USERNAME,               
-        'password:'.PASSWORD
-    );
-    curl_setopt($url,CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url,CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url,CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url,CURLOPT_POSTFIELDS, $request_data_json);
-    curl_setopt($url,CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data=curl_exec($url);
-    if (curl_errno($url)) {
-        echo 'Error:' . curl_error($url);
-    }
-    curl_close($url);
-    $data=json_decode($data,true);
-    return $data;
-}
-
-function createPayment($id_token,$user_data){
-    $callbackURL=FRONT_SITE_PATH.'/executePayment.php';
-    $requestbody = array(
-        'mode' => '0011',
-        'amount' => $user_data['amount'],
-        'currency' => 'BDT',
-        'intent' => 'sale',
-        'payerReference' => '01770618575',
-        'merchantInvoiceNumber' => $user_data['tran_id'],
-        'callbackURL' => $callbackURL
-    );
-    $url = curl_init(BASE_URL.'/tokenized/checkout/create');
-    $requestbodyJson = json_encode($requestbody);
-    $header = array(
-        'Content-Type:application/json',
-        'Authorization: ' . $id_token,
-        'X-APP-Key:'. APP_KEY
-    );
-    curl_setopt($url, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
-    curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data = curl_exec($url);
-    if (curl_errno($url)) {
-       $data=  curl_error($url); 
-    }
-    curl_close($url);
-    $data = json_decode($data,true);
-    return $data;
-}
-
-function executePayment($paymentID,$id_token){
-    $post_token = array(
-        'paymentID' => $paymentID
-    );
-    $url = curl_init(BASE_URL.'/tokenized/checkout/execute');       
-    $posttoken = json_encode($post_token);
-    $header = array(
-        'Content-Type:application/json',
-        'Authorization:' . $id_token,
-        'X-APP-Key:'.APP_KEY
-    );
-    curl_setopt($url, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $posttoken);
-    curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data = curl_exec($url);
-    curl_close($url);
-    $data = json_decode($data,true);
-    return $data;
-}
-function queryPayment($paymentID,$id_token){
-    $requestbody = array(
-        'paymentID' => $paymentID
-    );
-    $requestbodyJson = json_encode($requestbody);
-    $url=curl_init(BASE_URL.'/tokenized/checkout/payment/status');
-    $header=array(
-        'Content-Type:application/json',
-        'authorization:'.$id_token,
-        'x-app-key:'.APP_KEY
-    );    
-    curl_setopt($url,CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url,CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url,CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
-    curl_setopt($url,CURLOPT_FOLLOWLOCATION, 1);
-    $data = curl_exec($url);
-    curl_close($url);
-    $data = json_decode($data,true);
-    return $data;
-}
-
-function refundPayment($id_token,$trxID,$data){
-    $callbackURL='http://thewebdivers.com/';
-    $requestbody = array(
-        'paymentID' => $data['paymentID'],
-        'amount'=>$data['amount'],
-        'trxID'=>$trxID, //pass tran id
-        'sku'=>$data['sku'],
-        'reason'=>$data['reason'],
-    );
-    $requestbodyJson = json_encode($requestbody);
-    // die;
-    $url = curl_init(BASE_URL.'/tokenized/checkout/payment/refund');
-    $header = array(
-        'Content-Type:application/json',
-        'Authorization: ' . $id_token,
-        'X-APP-Key:'.APP_KEY
-    );
-    // die;
-    curl_setopt($url, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
-    curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data = curl_exec($url);
-    curl_close($url);
-    $data = json_decode($data,true);
-    return $data;
-}
-
-function refundStatus($id_token,$trxID,$data){
-    $header = array(
-        'Content-Type:application/json',
-        'Authorization: ' . $id_token,
-        'X-APP-Key:'.APP_KEY
-    );
-    $requestbody = array(
-        'paymentID' => $data['paymentID'],
-        'trxID'=>$trxID, //pass tran id
-    );
-    $requestbodyJson = json_encode($requestbody);
-    $url = curl_init(BASE_URL.'/tokenized/checkout/payment/refund');
-    curl_setopt($url, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
-    curl_setopt($url, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($url, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    $data = curl_exec($url);
-    curl_close($url);
-    $data = json_decode($data,true);
-    return $data;
-}
-
-function searchTransection($tran_id,$id_token){
-    $requestbody = array(
-        'trxID' => $tran_id
-    );
-    $requestbodyJson = json_encode($requestbody);
-    $url=curl_init(BASE_URL.'/tokenized/checkout/general/searchTransaction');
-    $header=array(
-        'Content-Type:application/json',
-        'authorization:'.$id_token,
-        'x-app-key:'.APP_KEY
-    );    
-    curl_setopt($url,CURLOPT_HTTPHEADER, $header);
-    curl_setopt($url,CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($url,CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($url, CURLOPT_POSTFIELDS, $requestbodyJson);
-    curl_setopt($url,CURLOPT_FOLLOWLOCATION, 1);
-    $result=curl_exec($url);
-    curl_close($url);
-    $result = json_decode($result,true);
-    return $result;  
-}
 ?>

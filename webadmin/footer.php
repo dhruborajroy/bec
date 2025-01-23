@@ -43,12 +43,28 @@
 <script src="js/toastr.min.js"></script>
 <!-- sweet alert JS -->
 <script src="./js/sweetalert.min.js"></script>
+<script src="css/summernote/summernote.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Custom Js -->
 <script src="js/main.js"></script>
 <script src="js/custom.php"></script>
 <script src="js/validation.php"></script>
 
+<script>
+      $('.full_input').summernote({
+        tabsize: 2,
+        height: 300,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['help']]
+        ]
+      });
+    </script>
 </body>
 
 </html>

@@ -175,9 +175,9 @@ if(isset($_POST['submit'])){
                                 <input type="text" required placeholder="" class="form-control" name="title" id="title"
                                     value="<?php echo $title?>">
                             </div>
-                            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+                            <div class="col-12-xxxl col-lg-12 col-12">
                                 <label>Details</label>
-                                <textarea name="details" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
+                                <textarea name="details" class="full_input" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
                             <div class="col-12 form-group mg-t-8">
                                     <h3>Select References for Notice</h3>
@@ -203,10 +203,3 @@ if(isset($_POST['submit'])){
         <!-- Add Notice Area End Here -->
     </div>
     <?php include("footer.php")?>
-
-    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> -->
-<script src="js/ckeditor/ckeditor.js""></script> <!-- Update with the correct path -->
-<script src="js/ckfinder/ckfinder.js""></script> <!-- Update with the correct path -->
-<script>
-    CKEDITOR.replace( 'editor' );
-</script>

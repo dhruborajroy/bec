@@ -1,4 +1,5 @@
 <?php 
+define('SECURE_ACCESS', true);
 include("header.php");
 $id="";
 $title="";

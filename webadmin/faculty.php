@@ -18,8 +18,6 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	}
 
 }
-$sql="select * from faculty";
-$res=mysqli_query($con,$sql);
 ?>
 <!-- Page Area Start Here -->
 <div class="dashboard-content-one">
@@ -59,7 +57,11 @@ $res=mysqli_query($con,$sql);
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        <?php if(mysqli_num_rows($res)>0){
+                        <?php 
+                        
+                        $sql="select * from faculty";
+                        $res=mysqli_query($con,$sql);
+                        if(mysqli_num_rows($res)>0){
                         $i=1;
                         while($row=mysqli_fetch_assoc($res)){
                         ?>
