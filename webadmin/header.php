@@ -233,12 +233,12 @@
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
-                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Sliders</span></a>
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                   <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
                      <li class="nav-item">
-                        <a href="users"
+                        <a href="students"
                            class="nav-link "><i
-                           class="fas fa-angle-right"></i>About Us</a>
+                           class="fas fa-angle-right"></i>All Students</a>
                      </li>
                   </ul>
                </li>
@@ -287,6 +287,23 @@
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>General Info</span></a>
+                  <ul class="nav sub-group-menu ">
+                  <li class="nav-item">
+                        <a href="bec_general_infos"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>All
+                           BEC Gneral Infos</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_subjects"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>
+                           Manage Subjects</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>faculty</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
@@ -300,6 +317,23 @@
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>
                            Manage faculty</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>News</span></a>
+                  <ul class="nav sub-group-menu ">
+                  <li class="nav-item">
+                        <a href="news"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>All
+                           News</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_news"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>
+                           Add News</a>
                      </li>
                   </ul>
                </li>

@@ -29,33 +29,16 @@ if(isset($_POST['submit'])){
 	$details=get_safe_value($_POST['details']);
     $user_id=$_SESSION['ADMIN_ID'];
     $added_on=time();
-   if($id==''){
-        $id=uniqid();
-        $sql="INSERT INTO `about_us` (`id`, `title`, `details`, `added_on`,`updated_on`, `added_by`, `status`) VALUES 
-                                    ('$id', '$title', '$details', '$added_on', '','$user_id', '1')";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',
-                'body'=>'Data Inserted',
-                'title'=>'Success',
-            );
-            // redirect('./about_us');
-        }else{
-            echo $sql;
-        }
+    $sql="update `about_us` set  `title`='$title', `details`='$details',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
+    if(mysqli_query($con,$sql)){
+        $_SESSION['TOASTR_MSG']=array(
+            'type'=>'success',                
+            'body'=>'Data Updated',
+            'title'=>'Success',
+        );
+        // redirect('./about_us');
     }else{
-        $updated_on=time();
-        $sql="update `about_us` set  `title`='$title', `details`='$details',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',                
-                'body'=>'Data Updated',
-                'title'=>'Success',
-            );
-            // redirect('./about_us');
-        }else{
-            echo $sql;
-        }
+        echo $sql;
     }
 }
 
@@ -63,12 +46,12 @@ if(isset($_POST['submit'])){
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Notice board</h3>
+        <h3>About Us</h3>
         <ul>
             <li>
                 <a href="index.php">Home</a>
             </li>
-            <li>Notices </li>
+            <li>About Us </li>
         </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -79,7 +62,7 @@ if(isset($_POST['submit'])){
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Create A Notice</h3>
+                            <h3>About Us</h3>
                         </div>
                     </div>
                     <form id="validate" class="new-added-form" method="post">
@@ -89,9 +72,9 @@ if(isset($_POST['submit'])){
                                 <input type="text" required placeholder="" class="form-control" name="title" id="title"
                                     value="<?php echo $title?>">
                             </div>
-                            <div class="col-12-xxxl col-lg-12 col-12 form-group">
+                            <div class="col-12-xxxl col-lg-12 col-12 ">
                                 <label>Details</label>
-                                <textarea name="details" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
+                                <textarea name="details" class="full_input" id="editor" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
                             <div class="col-12 form-group mg-t-8">
                                 <input type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"
@@ -105,15 +88,3 @@ if(isset($_POST['submit'])){
         <!-- Add Notice Area End Here -->
     </div>
     <?php include("footer.php")?>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-
-    <script>
-            ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-    </script>

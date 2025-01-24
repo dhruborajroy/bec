@@ -20,13 +20,13 @@ $news_id=get_safe_value($_GET['news_id']);
                ?>
             <div class="events">
               <div class="events-img">
-                <img class="img-fluid border-0" src="images/events/01.jpg" alt="">
+                <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" alt="">
               </div>
               <div class="events-content mt-4">
                 <a href="#" class="text-dark h2"><?php echo $news_res_row['title']?></a>
                  <div class="events-meta my-2 mt-3">
                   <ul class="list-unstyled mb-0 d-flex">
-                    <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i><?php echo date("d M Y",strtotime($news_res_row['added_on']))?></a></li>
+                    <li class="mr-3"><a href="#"><i class="fas fa-calendar-alt pr-1"></i><?php echo date("d M Y",($news_res_row['added_on']))?></a></li>
                   </ul>
                 </div>
                 <p> <?php echo $news_res_row['details']?></p>

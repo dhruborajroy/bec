@@ -41,7 +41,7 @@ include("header.php");
                             <div class="col-6 form-group mg-t-8">
                                 <label></label>
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Generate</button>
-                                <a href="pdfreports/user_bill.php" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate Full Bill</a>
+                                <a href="../pdfreports/testimonial.php" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Generate All</a>
                             </div>
                         </div>
                     </form>

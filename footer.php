@@ -19,20 +19,7 @@ if (!defined('SECURE_ACCESS')) {
               </ul>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-2 mb-4 mb-lg-0">
-            <h5 class="text-white mb-2 mb-sm-4">Category</h5>
-            <div class="footer-link">
-              <ul class="list-unstyled mb-0">
-                <li><a class="text-white" href="#">Economics</a></li>
-                <li><a class="text-white" href="#">Natural</a></li>
-                <li><a class="text-white" href="#">Architecture</a></li>
-                <li><a class="text-white" href="#">Electrical</a></li>
-                <li><a class="text-white" href="#">Biological</a></li>
-                <li><a class="text-white" href="#">Psychology</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-2 mb-4 mb-sm-0">
+          <div class="col-sm-12 col-lg-4 mb-4 mb-sm-0">
             <h5 class="text-white mb-2 mb-sm-4">Useful Link</h5>
             <div class="footer-link">
               <ul class="list-unstyled mb-0">
@@ -41,27 +28,27 @@ if (!defined('SECURE_ACCESS')) {
                 if(mysqli_num_rows($useful_links_res)>0){
                 while($useful_links_row=mysqli_fetch_assoc($useful_links_res)){
                 ?>
-                  <li><a class="text-white" href="<?php echo $useful_links_row['link']?>"><?php echo $useful_links_row['link_text']?></a></li>
+                  <li><a target="_blank" class="text-white" href="<?php echo $useful_links_row['link']?>"><?php echo $useful_links_row['link_text']?></a></li>
                 <?php } }?>
               </ul>
             </div>
           </div>
           <div class="col-sm-6 col-lg-4">
             <h5 class="text-white mb-2 mb-sm-4">Contact Us</h5>
-            <p class="text-white">Helped thousands of clients to find the right property for their needs.</p>
+            <!-- <p class="text-white">Helped thousands of clients to find the right property for their needs.</p> -->
             <div class="footer-contact-info">
               <div class="contact-address mt-4">
                 <div class="contact-item">
                   <i class="fas fa-map-marker-alt"></i>
-                  <p class="ml-3 mb-0 text-white">6580 Allison Turnpike Creminfort, AL 32808-4509</p>
+                  <p class="ml-3 mb-0 text-white"><?php echo ADDRESS?></p>
                 </div>
                 <div class="contact-item">
                   <i class="fas fa-microphone-alt"></i>
-                  <p class="mb-0 font-weight-bold ml-3"><a class="text-white" href="#">+(123) 456-7890</a></p>
+                  <p class="mb-0 font-weight-bold ml-3"><a class="text-white" href="tel:<?php echo TEL?>"><?php echo TEL?></a></p>
                 </div>
                 <div class="contact-item mb-0">
                   <i class="fas fa-headset"></i>
-                  <a class="text-white ml-3 text-white" href="#">letstalk@academic.com</a>
+                  <a class="text-white ml-3 text-white" href="mailto:<?php echo EMAIL?>"><?php echo EMAIL?></a>
                 </div>
               </div>
             </div>

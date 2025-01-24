@@ -89,7 +89,13 @@ if(mysqli_num_rows($res)>0){
             <tr>
                 <td align="left" colspan="7">
                     <ol>';
-                    $notice_res = mysqli_query($con, "SELECT referances.name FROM referances INNER JOIN notice_referance ON referances.id = notice_referance.referance_id INNER JOIN notice ON notice.id = notice_referance.notice_id WHERE notice.id = '".$notice_id."'");
+                    $notice_sql = "SELECT referances.name 
+                                    FROM referances 
+                                    INNER JOIN notice_referance ON referances.id = notice_referance.referance_id 
+                                    INNER JOIN notice ON notice.id = notice_referance.notice_id 
+                                    WHERE notice.id = '$notice_id' 
+                                    ORDER BY referances.priority ASC";
+                    $notice_res = mysqli_query($con, $notice_sql);
                     if(mysqli_num_rows($notice_res)>0){
                         $html .=  "<u>সদয় অবগতি ও প্রয়োজনীয় কার্যার্থে অনুলিপি(জেষ্ঠতার ভিত্তিতে নয়):</u>";
                     }
@@ -121,7 +127,8 @@ $mpdf->SetFooter('Developed By The Web divers');
 $mpdf->WriteHTML($html);
 // if($row['link']==""){
     $mpdf->output("../notice_files/".$file,'F');
+    $mpdf->output("../notice_files/".$file,'I');
     $sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
     mysqli_query($con,$sql);
 // }
-redirect("../webadmin/notices");
+// redirect("../webadmin/notices");

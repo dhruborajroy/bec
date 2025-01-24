@@ -1,7 +1,7 @@
 <?php 
-define('SECURE_ACCESS', true);
-include("header.php");
-?>
+   define('SECURE_ACCESS', true);
+   include("header.php");
+   ?>
 <!--=================================Banner -->
 <section class="banner position-ralative">
    <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
@@ -90,7 +90,7 @@ include("header.php");
                   if(mysqli_num_rows($about_us_res)>0){
                   while($about_us_row=mysqli_fetch_assoc($about_us_res)){
                   ?>
-               <p class="mb-0">
+               <p class="mb-0" style=" text-align: justify;text-justify: inter-word;">
                   <?php echo $about_us_row['details']?>
                </p>
                <?php 
@@ -169,56 +169,32 @@ include("header.php");
       <div class="row">
          <div class="col-md-12">
             <div class="my-shuffle-container columns-3 popup-gallery full-screen">
-               <!-- item START -->
-               <div class="grid-item" >
-                  <div class="course-item">
-                     <div class="coures-img">
-                        <img class="img-fluid" src="images/dept/sliders/01.jpg" alt="">
-                     </div>
-                     <div class="course-conten">
-                        <h5 class="mb-3">
-                           <a href="dept/ce">Civil Engineering</a>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <!-- item End -->
-               <!-- item START -->
-               <div class="grid-item" >
-                  <div class="course-item">
-                     <div class="coures-img">
-                        <img class="img-fluid" src="images/dept/sliders/02.jpg" alt="">
-                     </div>
-                     <div class="course-conten">
-                        <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
-                           <img class="avatar img-fluid" src="images/avatar/01.jpg" alt="">
-                           <span class="author-name">Alice Williams</span>
-                           </a> -->
-                        <h5 class="mb-3">
-                           <a href="dept/ce">Electrical & Electronics Engineering</a>
-                        </h5>
+
+                  <?php
+                  $depts_lab_list_sql="SELECT * FROM `depts_lab_list` where public_view='1'";
+                  $depts_lab_list_res=mysqli_query($con,$depts_lab_list_sql);
+                  if(mysqli_num_rows($depts_lab_list_res)>0){
+                  while($depts_lab_list_row=mysqli_fetch_assoc($depts_lab_list_res)){
+                  ?>
+
+                  <!-- item START -->
+                  <div class="grid-item" >
+                     <div class="course-item">
+                        <div class="coures-img">
+                           <img class="img-fluid" src="images/dept/sliders/<?php echo $depts_lab_list_row['image']?>" alt="">
+                        </div>
+                        <div class="course-conten">
+                           <h5 class="mb-3">
+                              <a target="_blank" href="dept/<?php echo strtolower($depts_lab_list_row['short_form'])?>"><?php echo $depts_lab_list_row['name']?></a>
+                           </h5>
+                        </div>
                      </div>
                   </div>
-               </div>
-               <!-- item End -->
-               <!-- item START -->
-               <div class="grid-item" >
-                  <div class="course-item">
-                     <div class="coures-img">
-                        <img class="img-fluid" src="images/dept/sliders/03.jpg" alt="">
-                     </div>
-                     <div class="course-conten">
-                        <!-- <a href="#" class="course-author d-flex align-items-center mb-3">
-                           <img class="avatar img-fluid" src="images/avatar/01.jpg" alt="">
-                           <span class="author-name">Alice Williams</span>
-                           </a> -->
-                        <h5 class="mb-3">
-                           <a href="dept/gsh">General Science & Engineering</a>
-                        </h5>
-                     </div>
-                  </div>
-               </div>
-               <!-- item End -->
+                  <!-- item End -->
+                  
+                  <?php 
+                     } } else { ?>
+                  <?php } ?>
             </div>
          </div>
       </div>
@@ -234,18 +210,18 @@ include("header.php");
          <div class="col-lg-6 px-4 px-md-5 px-lg-6 py-6 px-lg-6" style="background-image: url(images/about/pattern.png);">
             <div class="section-title">
                <h2 class="title">About Us</h2>
+               <p class="mb-0"  style=" text-align: justify;text-justify: inter-word;">
                <?php
                   $about_us_sql="select about_us.details from `about_us`";
                   $about_us_res=mysqli_query($con,$about_us_sql);
                   if(mysqli_num_rows($about_us_res)>0){
                   while($about_us_row=mysqli_fetch_assoc($about_us_res)){
                   ?>
-               <p class="mb-0">
                   <?php echo $about_us_row['details']?>
+                  <?php 
+                     } } else { ?>
+                  <?php } ?>
                </p>
-               <?php 
-                  } } else { ?>
-               <?php } ?>
             </div>
          </div>
       </div>
@@ -281,18 +257,18 @@ include("header.php");
                               <div class="row">
                                  <div class="col-lg-3">
                                     <div class="events-img mb-4 mb-lg-0">
-                                       <img class="img-fluid border-0" src="images/events/<?php echo $news_res_row['image']?>" alt="">
+                                       <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" alt="">
                                     </div>
                                  </div>
                                  <div class="col-lg-6 align-self-center">
                                     <div class="events-content">
-                                       <a href="event-detail.html" class="text-dark h5"><?php echo $news_res_row['title']?></a>
+                                       <a href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>" class="text-dark h5"><?php echo $news_res_row['title']?></a>
                                        <div class="events-meta my-2">
                                           <ul class="list-unstyled mb-0 d-flex">
                                              <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
                                           </ul>
                                        </div>
-                                       <p class="text-dark mb-lg-0">
+                                       <p class="text-dark mb-lg-0" style=" text-align: justify;text-justify: inter-word;">
                                           <?php 
                                              $maxLength = 700;
                                              
@@ -317,37 +293,35 @@ include("header.php");
                   </div>
                </div>
                <div class="col-xl-5 mt-xl-0 mt-4 shadow" >
-               <div class="row">
-                  <div class="col-md-7">
-                     <div class="section-title">
-                        <h2 class="title">Notices</h2>
+                  <div class="row">
+                     <div class="col-md-7">
+                        <div class="section-title">
+                           <h2 class="title">Notices</h2>
+                        </div>
+                     </div>
+                     <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                        <a class="btn btn-primary btn-round" href="notices">View All Notice</a>
                      </div>
                   </div>
-                  <div class="col-md-5 text-md-right mb-4 mb-md-0">
-                     <a class="btn btn-primary btn-round" href="notices">View All Notice</a>
-                  </div>
+                  <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5">
+                     <?php 
+                        $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc limit 5");
+                        if(mysqli_num_rows($notice_res)>0){
+                        while($notice_res_row=mysqli_fetch_assoc($notice_res)){?>
+                     <div class="blog-post d-flex align-items-center border border-radius mt-1">
+                        <div class="blog-date">
+                           <h3><?php echo date("d",$notice_res_row['added_on'])?></h3>
+                           <span><?php echo date("F",$notice_res_row['added_on'])?></span>
+                        </div>
+                        <div class="blog-contant">
+                           <a class="btn p-0" href="notice_files/<?php echo $notice_res_row['link']?>">
+                              <h5 class="mt-0 mb-3"><?php echo $notice_res_row['title']?></h5>
+                           </a>
+                        </div>
+                     </div>
+                     <?php } }?>
+                  </marquee>
                </div>
-               <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5">
-               <?php 
-               $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc limit 5");
-               if(mysqli_num_rows($notice_res)>0){
-               while($notice_res_row=mysqli_fetch_assoc($notice_res)){?>
-                <div class="blog-post d-flex align-items-center border border-radius mt-1">
-                  <div class="blog-date">
-                    <h3><?php echo date("d",$notice_res_row['added_on'])?></h3>
-                    <span><?php echo date("F",$notice_res_row['added_on'])?></span>
-                  </div>
-                  <div class="blog-contant">
-                     <a class="btn p-0" href="notice_files/<?php echo $notice_res_row['link']?>">
-                        <h5 class="mt-0 mb-3"><?php echo $notice_res_row['title']?></h5>
-                     </a>
-                  </div>
-                </div>
-                
-              <?php } }?>
-               </marquee>
-
-              </div>
                <!-- <div class="col-lg-4 equal-height-cols" >
                   <div class="col-md-12 ">
                      <div class="card">
@@ -363,7 +337,7 @@ include("header.php");
                         </div>
                      </div>
                   </div>
-               </div> -->
+                  </div> -->
             </div>
          </div>
       </div>

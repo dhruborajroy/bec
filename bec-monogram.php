@@ -21,7 +21,7 @@ include("header.php");
               <div class="col-sm-3">
               </div>
               <div class="col-sm-6">
-                  <a href="https://www.kuet.ac.bd/storage/webfile/logo.png">
+                  <a href="images/gallery/logo.png">
                       <img width="80%" src="images/gallery/logo.png"><br> </a>
               </div>
           </div>

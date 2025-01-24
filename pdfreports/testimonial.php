@@ -16,7 +16,7 @@ if (isset($_GET['reg_no']) && $_GET['reg_no'] > 0) {
     $additional_sql = " WHERE reg_no='$reg_no'";
 }
 
-$query = "SELECT name, father_name, reg_no, session, study_period, photo FROM students $additional_sql"; 
+$query = "SELECT name, father_name, reg_no, session, study_period FROM students $additional_sql"; 
 $result = mysqli_query($con, $query);
 
 $all_testimonials_html = ''; 

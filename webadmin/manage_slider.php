@@ -71,6 +71,7 @@ if(isset($_POST['submit'])){
         }
     }else{
         $updated_on=time();
+        $image=time().'.jpg';
         if($_FILES['image']['name']!=''){
             $info=getimagesize($_FILES['image']['tmp_name']);
         }

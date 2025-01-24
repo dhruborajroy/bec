@@ -50,6 +50,7 @@ define('UPLOAD_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/sliders/");
 define('UPLOAD_DEPT_SLIDER_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/dept/sliders/");
 define('UPLOAD_FACULTY_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/teachers/");
 define('UPLOAD_NOTICE_PDF',$_SERVER['DOCUMENT_ROOT']."/BEC/notice_files/");
+define('UPLOAD_NEWS_IMAGE',$_SERVER['DOCUMENT_ROOT']."/BEC/images/news/");
 
 
 

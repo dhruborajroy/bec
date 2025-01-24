@@ -101,7 +101,7 @@ require('./inc/function.inc.php');
                         <li><a class="dropdown-item" href="history.php">History</a></li>
                         <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
                         <li><a class="dropdown-item" href="vision-mission.php">Vision and Mission</a></li>
-                        <li><a class="dropdown-item" href="bec-organogram.php">Organogram</a></li>
+                        <!-- <li><a class="dropdown-item" href="bec-organogram.php">Organogram</a></li> -->
                         <li><a class="dropdown-item" href="bec-at-glance.php">BEC at a Glance</a></li>
                         <li><a class="dropdown-item" href="bec-monogram.php">BEC Monogram</a></li>
                         </ul>
@@ -112,11 +112,18 @@ require('./inc/function.inc.php');
                       </a>
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" target="_blank" href="dept/ce">Department of Civil Engineering</a></li>
-                        <li><a class="dropdown-item" target="_blank" href="dept/eee">Department of Elelctrical & Electronics Engineering</a></li>
-                        <li><a class="dropdown-item" target="_blank" href="dept/gsh">Department of General Science & Engineering</a></li>
-                        <li><a class="dropdown-item" target="_blank" href="#">Department of Naval Architecture & Marine Engineering(Proposed)</a></li>
-                        </ul>
+                      <?php
+                      $depts_lab_list_sql="SELECT * FROM `depts_lab_list` where public_view='1'";
+                      $depts_lab_list_res=mysqli_query($con,$depts_lab_list_sql);
+                      if(mysqli_num_rows($depts_lab_list_res)>0){
+                      while($depts_lab_list_row=mysqli_fetch_assoc($depts_lab_list_res)){
+                      ?>
+                        <li><a class="dropdown-item" target="_blank" href="dept/<?php echo strtolower($depts_lab_list_row['short_form'])?>">Department of <?php echo $depts_lab_list_row['name']?></a></li>
+                        
+                      <?php 
+                        } } else { ?>
+                      <?php } ?>
+                      </ul>
                     </li>
                     <li class="nav-item dropdown">
                       <a class="nav-link  dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academic<i class="fas fa-chevron-down fa-xs"></i>

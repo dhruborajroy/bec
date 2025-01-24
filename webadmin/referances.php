@@ -1,3 +1,4 @@
+
 <?php 
 define('SECURE_ACCESS', true);
 include('header.php');
@@ -20,8 +21,6 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	}
 
 }
-$sql="select * from referances";
-$res=mysqli_query($con,$sql);
 ?>
 <!-- Page Area Start Here -->
 <div class="dashboard-content-one">
@@ -37,68 +36,128 @@ $res=mysqli_query($con,$sql);
     </div>
     <!-- Breadcubs Area End Here -->
     <!-- Teacher Table Area Start Here -->
-    <div class="card height-auto">
-        <div class="card-body">
-            <div class="heading-layout1">
-                <div class="item-title">
-                    <h3>All Students Data</h3>
-                </div>
-            </div>
-            <form class="mg-b-20">
-                <div class="row gutters-8">
-                    <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                        <input type="text" placeholder="Search by ID/ Name/ Number ..." class="form-control"
-                            id="myInput">
+     <div class="row col-lg-12">
+
+        <div class="row col-lg-8">
+            <div class="card col-lg-12">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>All References</h3>
+                        </div>
+                    </div>
+                    <form class="mg-b-20">
+                        <div class="row gutters-8">
+                            <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                                <input type="text" placeholder="Search by ID/ Name/ Number ..." class="form-control"
+                                    id="myInput">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive">
+                        <table class="table display data-table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <?php 
+                                
+                                $sql="select * from referances order by priority asc";
+                                $res=mysqli_query($con,$sql);
+                                if(mysqli_num_rows($res)>0){
+                                $i=1;
+                                while($row=mysqli_fetch_assoc($res)){
+                                ?>
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1 dtr-control"><?php echo $row['name']?></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="flaticon-more-button-of-three-dots"></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <?php if($row['status']=='1'){?>
+                                                    <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
+                                                            class="fas fa-times text-orange-red"></i>Deactivate</a>
+                                                <?php }else{?>
+                                                    <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
+                                                            class="fas fa-times text-orange-red"></i>Active</a>
+                                                <?php }?>
+                                                <a class="dropdown-item"
+                                                    href="manage_referances?id=<?php echo $row['id']?>"><i
+                                                        class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                <!-- <a class="dropdown-item" href="#"><i
+                                                        class="fas fa-redo-alt text-orange-peel"></i>Refresh</a> -->
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php 
+                                $i++;
+                                } } else { ?>
+                                <tr>
+                                    <td colspan="5">No data found</td>
+                                </tr>
+                                <?php } ?>
+                        </table>
                     </div>
                 </div>
-            </form>
-            <div class="table-responsive">
-                <table class="table display data-table text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody id="myTable">
-                        <?php if(mysqli_num_rows($res)>0){
-                        $i=1;
-                        while($row=mysqli_fetch_assoc($res)){
+            </div>
+        </div>
+        <div class="row col-lg-4">
+            <div class="container">
+                
+            <div class="card col-lg-12">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>References Priority </h3>
+                        </div>
+                    </div>
+                    <ul id="sortable" style="list-style-type: none; padding: 0; ">
+                        <?php
+                        $query = "SELECT * FROM referances ORDER BY priority ASC";
+                        $result = mysqli_query($con, $query);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<li class="sortable-item list-group-item d-flex justify-content-between align-items-center" data-id="'.$row['id'].'" style="padding: 10px; margin: 5px; background: #f4f4f4; border: 1px solid #ddd; cursor: move; ">
+                                '.$row['name'].'
+                                <span class="handle">&#x2630;</span>
+                            </li>';
+                        }
                         ?>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1 dtr-control"><?php echo $row['name']?></td>
-                            <td>
-                                <div class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <span class="flaticon-more-button-of-three-dots"></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <?php if($row['status']=='1'){?>
-                                            <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
-                                                    class="fas fa-times text-orange-red"></i>Deactivate</a>
-                                        <?php }else{?>
-                                            <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
-                                                    class="fas fa-times text-orange-red"></i>Active</a>
-                                        <?php }?>
-                                        <a class="dropdown-item"
-                                            href="manage_referances?id=<?php echo $row['id']?>"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                        <!-- <a class="dropdown-item" href="#"><i
-                                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a> -->
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php 
-                           $i++;
-                           } } else { ?>
-                        <tr>
-                            <td colspan="5">No data found</td>
-                        </tr>
-                        <?php } ?>
-                </table>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    
+     </div>
     <!-- Teacher Table Area End Here -->
     <?php include('footer.php');?>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#sortable").sortable({
+                update: function (event, ui) {
+                    var order = [];
+                    $("#sortable li").each(function () {
+                        order.push($(this).attr("data-id"));
+                    });
+
+                    $.ajax({
+                        url: "ajax/save_priority",
+                        method: "POST",
+                        data: { order: order },
+                        success: function (response) {
+                            alert("Order saved:", response);
+                        }
+                    });
+                }
+            });
+        });
+    </script>

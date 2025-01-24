@@ -25,7 +25,7 @@ include("header.php");
               <div class="align-items-center">
                 <h2 class="title align-items-center">HISTORY OF <span class="text-primary">BEC</span></h2>
               </div>
-              <p class="lead">
+              <p class="lead"  style=" text-align: justify;text-justify: inter-word;">
                 <?php
                     $genereral_infores=mysqli_query($con,"select general_info.history from general_info where id=1");
                     if(mysqli_num_rows($genereral_infores)>0){

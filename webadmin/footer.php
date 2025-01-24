@@ -61,9 +61,17 @@
           ['para', ['ul', 'ol', 'paragraph']],
           ['table', ['table']],
           ['insert', ['link', 'picture', 'video']],
-          ['view', ['help']]
+          ['view', ['code','help']]
         ]
       });
+    </script>
+    
+    <script>
+        function replaceApostrophe() {
+            var details = document.getElementById('details').value;
+            details = details.replace(/'/g, "\\'"); 
+            document.getElementById('details').value = details; 
+        }
     </script>
 </body>
 
