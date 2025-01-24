@@ -49,8 +49,8 @@ while($row=mysqli_fetch_assoc($res)){
             <h3>About Us</h3>
          </div>
          <div class="dropdown">
-               <a href=""> <button type="submit"
-                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Slider</button>
+               <a href="manage_about_us"> <button type="submit"
+                     class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Edit</button>
                </a>
          </div>
       </div>
@@ -58,11 +58,6 @@ while($row=mysqli_fetch_assoc($res)){
          <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                <a class="nav-link active show" data-toggle="tab" href="#title" role="tab" aria-selected="true">
-               Title
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" data-toggle="tab" href="#details" role="tab" aria-selected="false">
                Details
                </a>
             </li>
@@ -70,7 +65,9 @@ while($row=mysqli_fetch_assoc($res)){
          <div class="tab-content">
                 <div class="tab-pane fade active show col-12 form-group" id="title" role="tabpanel">
                     <div class="col-12 form-group mg-t-8">
-                        <p><?php echo $row['title']?>
+                        <h1><?php echo $row['title']?>
+                        </h1>
+                        <p><?php echo $row['details']?>
                         </p>
                     </div>
                 </div>

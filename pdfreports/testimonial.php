@@ -13,15 +13,15 @@ $first_page = true; // Flag to track first iteration
 
 if (isset($_GET['reg_no']) && $_GET['reg_no'] > 0) {
     $reg_no = get_safe_value($_GET['reg_no']);
-    $additional_sql = " WHERE reg_no='$reg_no'";
+    $additional_sql = " and reg_no='$reg_no'";
 }
 
-$query = "SELECT name, father_name, reg_no, session, study_period FROM students $additional_sql"; 
+$query = "SELECT students.name, students.fName, students.reg_no, batch.session FROM students,batch where batch.id=students.batch $additional_sql"; 
 $result = mysqli_query($con, $query);
 
 $all_testimonials_html = ''; 
 if(mysqli_num_rows($result)<=0){
-    redirect("/");
+    // redirect("/");
 }
 while ($student = mysqli_fetch_assoc($result)) {
     if (!$first_page) {
@@ -77,7 +77,7 @@ while ($student = mysqli_fetch_assoc($result)) {
                 <p style="padding-top:100px">
                     This is to certify that <strong>' . $student['name'] . '</strong>, bearing Reg No.
                     <strong>' . $student['reg_no'] . '</strong>, Session <strong>' . $student['session'] . '</strong>,
-                    father\'s name: <strong>' . $student['father_name'] . '</strong>,
+                    father\'s name: <strong>' . $student['fName'] . '</strong>,
                     is a current student at the Department of Civil Engineering of Barishal Engineering College, Barishal,
                     under the affiliation of the University of Dhaka.
                 </p><br>
@@ -97,17 +97,19 @@ while ($student = mysqli_fetch_assoc($result)) {
             <td align="right" colspan="2">
                 <img src="' . $filepath . '" width="150" height="150" />
             </td>
-            <td align="right" colspan="5">
-                <span align="center">
-                    <span style="font-size:20px" align="center">
-                        Md. Liton Rabbani <br>
-                        Assistant Professor &amp; Head <br>
-                        Department of Civil Engineering<br>
-                        Barishal Engineering College, Barishal, Bangladesh.<br>
-                        Cell: +8801745599180<br>
-                        E-mail: litonkce01@gmail.com
+            
+            <td  align="center" style="" colspan="5">
+                    <span style="font-style:30px"> 
+                        <br>
+                        
+                            <span style="font-size:20px;text-align:center">
+                                Md. Liton Rabbani <br>
+                            Assistant Professor &amp; Head <br>
+                            Department of Civil Engineering<br>
+                            Barishal Engineering College, <br>Barishal, Bangladesh.<br>
+                         </span>
+                        <br>
                     </span>
-                </span>
             </td>
         </tr>';
 

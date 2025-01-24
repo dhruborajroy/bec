@@ -72,7 +72,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['title']?></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['sub_title']?></td>
-                            <td class="sorting_1 dtr-control"><img src="<?php echo SLIDER_IMAGE.$row['image']?>" width="150px"></td>
+                            <td class="sorting_1 dtr-control"><img src="../images/sliders/<?php echo $row['image']?>" width="150px"></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

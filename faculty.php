@@ -29,7 +29,7 @@ include("header.php");
         <div class="row mb-xl-4">
           
             <?php
-            $sql="select * from faculty";
+            $sql="select * from people where type='faculty'";
             $res=mysqli_query($con,$sql); 
             if(mysqli_num_rows($res)>0){
               $i=1;        

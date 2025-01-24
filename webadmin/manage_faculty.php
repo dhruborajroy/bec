@@ -94,7 +94,7 @@ define('SECURE_ACCESS', true);
                    $image=time().'.jpg';
                    move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                            
-                   $sql = "INSERT INTO faculty (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head, status) 
+                   $sql = "INSERT INTO people (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head, status) 
                    VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '$status')";
                    if(mysqli_query($con,$sql)){
                        $_SESSION['TOASTR_MSG']=array(
@@ -125,7 +125,7 @@ define('SECURE_ACCESS', true);
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                 $updated_on=time();
-                $sql = "UPDATE faculty SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
+                $sql = "UPDATE people SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',
@@ -139,7 +139,7 @@ define('SECURE_ACCESS', true);
             }
         }else{
             $updated_on=time();
-            $sql = "UPDATE faculty SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
+            $sql = "UPDATE people SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head WHERE id='$id'";
             if(mysqli_query($con,$sql)){
                 $_SESSION['TOASTR_MSG']=array(
                     'type'=>'success',

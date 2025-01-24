@@ -4,7 +4,7 @@
    ?>
 <!--=================================Banner -->
 <section class="banner position-ralative">
-   <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400">
+   <div id="main-slider" class="swiper-container h-800 h-lg-700 h-md-600 h-sm-400" style="max-height:500px">
       <div class="swiper-wrapper">
          <?php
             $active="";
@@ -181,7 +181,7 @@
                   <div class="grid-item" >
                      <div class="course-item">
                         <div class="coures-img">
-                           <img class="img-fluid" src="images/dept/sliders/<?php echo $depts_lab_list_row['image']?>" alt="">
+                           <img class="img-fluid" src="images/dept/<?php echo $depts_lab_list_row['image']?>" alt="">
                         </div>
                         <div class="course-conten">
                            <h5 class="mb-3">
@@ -300,7 +300,7 @@
                         </div>
                      </div>
                      <div class="col-md-5 text-md-right mb-4 mb-md-0">
-                        <a class="btn btn-primary btn-round" href="notices">View All Notice</a>
+                        <a class="btn btn-primary btn-round" href="notice">View All Notice</a>
                      </div>
                   </div>
                   <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5">

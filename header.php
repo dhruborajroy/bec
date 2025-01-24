@@ -58,7 +58,7 @@ require('./inc/function.inc.php');
                       <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
                     </li>
                     <li>                      
-                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Libray</a>
+                      <a href="http://library.bec.edu.bd" target="_blank" rel="noopener noreferrer">Libray</a>
                     </li>
                     <li>
                       <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
@@ -70,14 +70,14 @@ require('./inc/function.inc.php');
           </div>
         </div>
       </div>
-      <div class="header-main py-3">
+      <div class="header-main">
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
               <div class="d-lg-flex align-items-center">
                 <!-- logo -->
                 <a class="navbar-brand logo" href="index.php">
-                  <img src="images/logo.svg" alt="Logo">
+                  <img src="images/logo.png" alt="Logo">
                 </a>
                 <nav class="navbar navbar-expand-lg">
 

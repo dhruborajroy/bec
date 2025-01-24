@@ -37,24 +37,17 @@ if(isset($_POST['submit'])){
         $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`upload_status`,`updated_on`, `user_id`, `status`) VALUES 
                                     ('$id', '$title', '$details','$reference', '$added_on', '0','','$user_id', '1')";
         if(mysqli_query($con,$sql)){
-            
             if(isset($_POST['referance_ids'])){
-                // Assuming 'referance_ids' is an array of checked reference IDs
-                // and 'unreferance_ids' is an array of unchecked reference IDs
                 for ($i = 0; $i <= count($_POST['referance_ids']) - 1; $i++) {
                     $referance_id = get_safe_value($_POST['referance_ids'][$i]);
-                    
-                    // Check if the record already exists
                     $check_sql = "SELECT id FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$referance_id'";
                     $check_result = mysqli_query($con, $check_sql);
                     
                     if (mysqli_num_rows($check_result) > 0) {
-                        // Record exists, perform UPDATE
                         $update_sql = "UPDATE notice_referance SET status = 1 WHERE notice_id = '$id' AND referance_id = '$referance_id'";
                         mysqli_query($con, $update_sql);
                     } else {
-                        // Record does not exist, perform INSERT
-                        $ref_id = uniqid(); // Generates a unique ID
+                        $ref_id = uniqid(); 
                         $insert_sql = "INSERT INTO notice_referance (id, notice_id, referance_id, status) 
                                     VALUES ('$ref_id', '$id', '$referance_id', 1)";
                         mysqli_query($con, $insert_sql);
@@ -63,12 +56,9 @@ if(isset($_POST['submit'])){
 
                 
             }
-            // Handle unchecked checkboxes - delete records from notice_referance
             if (isset($_POST['unreferance_ids'])) {
                 for ($i = 0; $i <= count($_POST['unreferance_ids']) - 1; $i++) {
                     $unreferance_id = get_safe_value($_POST['unreferance_ids'][$i]);
-                    
-                    // Delete from notice_referance if the checkbox was unchecked
                     $delete_sql = "DELETE FROM notice_referance WHERE notice_id = '$id' AND referance_id = '$unreferance_id'";
                     mysqli_query($con, $delete_sql);
                 }
@@ -85,12 +75,9 @@ if(isset($_POST['submit'])){
         }
     }else{
         $updated_on=time();
-        // print_r($_POST);
         $sql="update `notice` set  `title`='$title', `details`='$details',`reference`='$reference',`updated_on`='$updated_on' where id='$id'";
         if(mysqli_query($con,$sql)){
                 if(isset($_POST['referance_ids'])){
-                // Assuming 'referance_ids' is an array of checked reference IDs
-                    // and 'unreferance_ids' is an array of unchecked reference IDs
                     for ($i = 0; $i <= count($_POST['referance_ids']) - 1; $i++) {
                         $referance_id = get_safe_value($_POST['referance_ids'][$i]);
                         

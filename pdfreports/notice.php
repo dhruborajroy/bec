@@ -10,7 +10,7 @@ if (isset($_GET['notice_id']) && $_GET['notice_id']!="") {
     $notice_id=get_safe_value($_GET['notice_id']);
 }else{
     $_SESSION['PERMISSION_ERROR']=1;
-    redirect("/");
+    // redirect("/");
 }
 $sql="select * from `notice` where id='$notice_id' and upload_status='0'";
 $res=mysqli_query($con,$sql);
@@ -64,7 +64,7 @@ if(mysqli_num_rows($res)>0){
                 $html.='
                     <tr >
                         <td align="left" colspan="7"  style="padding-top:10px">                    
-                            <p>'.$row['details'].'</p>
+                            <p style="text-align: justify !important;text-justify: inter-word  !important;">'.$row['details'].'</p>
                         </td>
                     </tr>';
             $html.='

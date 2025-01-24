@@ -425,7 +425,7 @@ label {
   background: #a61d37 !important; }
 
 .bg-dark {
-  background: #1a2844 !important; }
+  background: #761315 !important; }
 
 .bg-gray {
   background: #f4f4f5 !important; }
@@ -1359,7 +1359,7 @@ label {
   position: relative;
   z-index: 1; }
   .bg-overlay-black-70:before {
-    background: rgba(26, 40, 68, 0.7);
+    background: #761315 /30%;
     content: "";
     height: 100%;
     left: 0;
@@ -1385,7 +1385,7 @@ label {
   position: relative;
   z-index: 1; }
   .bg-overlay-black-90:before {
-    background: rgba(26, 40, 68, 0.9);
+    background: rgba(68, 34, 26, 0.55);
     content: "";
     height: 100%;
     left: 0;
@@ -3627,7 +3627,7 @@ button {
   position: relative;
   z-index: 99; }
   .header .navbar-brand img {
-    height: 50px; }
+    height: 80px; }
   .header .header-contact-info i {
     width: 40px;
     height: 40px;
@@ -3674,9 +3674,10 @@ button {
     .header .navbar .navbar-nav .nav-item .nav-link {
       font-weight: 600;
       font-size: 16px;
-      padding: 18px 22px;
+      padding: 18px 10px;
       color: #1a2844;
-      text-transform: capitalize; }
+      text-transform: capitalize; 
+    }
       .header .navbar .navbar-nav .nav-item .nav-link i {
         padding-left: 5px;
         font-size: 12px; }

@@ -6,37 +6,34 @@ $title="";
 $user_id="";
 $details="";
 $added_on="";
-if(isset($_GET['id']) && $_GET['id']!==""){
-	$id=get_safe_value($_GET['id']);
-    $swl="select * from `about_us` where md5(id)='$id'";
-    $res=mysqli_query($con,$swl);
-    if(mysqli_num_rows($res)>0){
-        $row=mysqli_fetch_assoc($res);
-        $title=$row['title'];
-        $details=$row['details'];
-        $added_on=$row['added_on'];
-    }else{
-        $_SESSION['TOASTR_MSG']=array(
-           'type'=>'error',
-           'body'=>'You don\'t have the permission to access the location!',    
-           'title'=>'Error',
-        );
-        // redirect("index.php");
-    }
+$swl="select * from `about_us` where (id)='1'";
+$res=mysqli_query($con,$swl);
+if(mysqli_num_rows($res)>0){
+    $row=mysqli_fetch_assoc($res);
+    $title=$row['title'];
+    $details=$row['details'];
+    $added_on=$row['added_on'];
+}else{
+    $_SESSION['TOASTR_MSG']=array(
+        'type'=>'error',
+        'body'=>'You don\'t have the permission to access the location!',    
+        'title'=>'Error',
+    );
+    // redirect("index.php");
 }
 if(isset($_POST['submit'])){
 	$title=get_safe_value($_POST['title']);
 	$details=get_safe_value($_POST['details']);
     $user_id=$_SESSION['ADMIN_ID'];
-    $added_on=time();
-    $sql="update `about_us` set  `title`='$title', `details`='$details',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
+    $updated_on=time();
+    $sql="update `about_us` set  `title`='$title', `details`='$details',`updated_on`='$updated_on',`added_by`='$user_id' where (id)='1'";
     if(mysqli_query($con,$sql)){
         $_SESSION['TOASTR_MSG']=array(
             'type'=>'success',                
             'body'=>'Data Updated',
             'title'=>'Success',
         );
-        // redirect('./about_us');
+        redirect('./about_us');
     }else{
         echo $sql;
     }

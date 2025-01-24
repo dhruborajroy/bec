@@ -1,34 +1,3 @@
-
-<script>
-    $(document).ready(function(){
-        updateHiddenInputs(); // Capture initial values
-
-        $("#select-single, #select-multiple").dragOptions({
-            highlight: '-> ',
-            onChange: function(){
-                updateHiddenInputs(); // Update when reordered
-            }
-        });
-
-        function updateHiddenInputs() {
-            let singleOrder = $("#select-single option").map(function() {
-                return this.value;
-            }).get().join(",");
-
-            let multipleOrder = $("#select-multiple option").map(function() {
-                return this.value;
-            }).get().join(",");
-
-            $("#hidden-single").val(singleOrder);
-            $("#hidden-multiple").val(multipleOrder);
-        }
-
-        // Ensure values are updated before submitting the form
-        $("form").on("submit", function() {
-            updateHiddenInputs();
-        });
-    });
-</script>
 <?php 
 define('SECURE_ACCESS', true);
 include('header.php');
@@ -36,16 +5,16 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
-		mysqli_query($con,"delete from book where id='$id'");
-		redirect('books');
+		mysqli_query($con,"delete from students where id='$id'");
+		redirect('students');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
 		if($type=='deactive'){
 			$status=0;
 		}
-		mysqli_query($con,"update book set status='$status' where id='$id'");
-        redirect('./books');
+		mysqli_query($con,"update students set status='$status' where id='$id'");
+        redirect('students');
 	}
 
 }
@@ -54,12 +23,12 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 <div class="dashboard-content-one">
     <!-- Breadcubs Area Start Here -->
     <div class="breadcrumbs-area">
-        <h3>Books</h3>
+        <h3>Students</h3>
             <ul>
                 <li>
                     <a href="index.php">Home</a>
                 </li>
-                <li>All Books</li>
+                <li>All Students</li>
             </ul>
     </div>
     <!-- Breadcubs Area End Here -->
@@ -68,12 +37,12 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
         <div class="card-body">
             <div class="heading-layout1">
                 <div class="item-title">
-                    <h3>All Books' Data</h3>
+                    <h3>All Students' Data</h3>
                 </div>
                 <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
-                        <a href="manage_books"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Book</button>
+                        <a href="manage_students"> <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new student</button>
                         </a>
                     </div>
                 </div>
@@ -87,6 +56,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                             <th>Father's Name</th>
                             <th>Registration No</th>
                             <th>Session</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -100,10 +70,30 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['name']?></td>
                             <td class="sorting_1 dtr-control"><img height="30px" width="30px"
-                                    src="../media/books/<?php echo $row['image']?>" alt="student"></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['father_name']?></td>
+                                    src="../images/students/<?php echo $row['image']?>" alt="student"></td>
+                            <td class="sorting_1 dtr-control"><?php echo $row['fName']?></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['reg_no']?></td>
                             <td class="sorting_1 dtr-control"><?php echo $row['session']?></td>
+                            <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="manage_students.php?id=<?php echo md5($row['id'])?>"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                <?php if($row['status']=='0'){?>
+                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Active</a>
+                                                <?php }else{?>
+                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a>
+                                                <?php }?>
+                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=dept_delete"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Delete</a>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         <?php 
                            $i++;

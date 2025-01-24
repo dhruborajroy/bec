@@ -12,6 +12,7 @@ $button_text="";
 $image="";
 $msg="";
 $required='required';
+$dept_id="";
 if(isset($_GET['id']) && $_GET['id']!==""){
 	$id=get_safe_value($_GET['id']);
     $swl="select * from `dept_sliders` where md5(id)='$id'";
@@ -66,7 +67,7 @@ if(isset($_POST['submit'])){
                         'body'=>'Data Inserted',
                         'title'=>'Success',
                     );
-                // redirect('./sliders');
+                redirect('./sliders');
                 }
             }else{
                 $msg= "Only select jpg or png image";
@@ -95,7 +96,7 @@ if(isset($_POST['submit'])){
                         'body'=>'Data Updated',
                         'title'=>'Success',
                     );
-                    // redirect('./sliders');
+                    redirect('./sliders');
                     
                 }else{
                     $msg= "Only select jpg or png image";
@@ -109,6 +110,7 @@ if(isset($_POST['submit'])){
                     'body'=>'Data Updated',
                     'title'=>'Success',
                 );
+                redirect('./sliders');
             }
         }
     }
@@ -161,25 +163,17 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-12 form-group">
                                     <label>Dept *</label>
-                                    <select class="select2" name="dept_id" required>
-                                        <option disabled>Please select Dept </option>
+                                    <select class="form-control select2" name="dept_id" required>
                                         <?php
-                                    $data=[
-                                            'name'=>[
-                                                'CE',
-                                                'EEE',
-                                                'GSH',
-                                            ]
-                                        ];
-                                        $count=count($data['name']);
-                                        for($i=0;$i<$count;$i++){
-                                            if($data['name'][$i]==$dept_id){
-                                                echo "<option selected='selected' value=".$data['name'][$i].">".$data['name'][$i]."</option>";
+                                        $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
+                                        while($row=mysqli_fetch_assoc($res)){
+                                            if($row['short_form']==$dept_id){
+                                                echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
                                             }else{
-                                                echo "<option value=".$data['name'][$i].">".$data['name'][$i]."</option>";
+                                                echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
                                             }                                                        
                                         }
-                                    ?>
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-lg-12 col-12 form-group">

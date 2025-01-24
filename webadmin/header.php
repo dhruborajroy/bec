@@ -1,19 +1,19 @@
 <?php 
-   session_start();
-   session_regenerate_id();
-   require('../inc/constant.inc.php');
-   require('../inc/connection.inc.php');
-   require('../inc/function.inc.php');
-   require_once("../inc/smtp/class.phpmailer.php");
-   isAdmin();
-   ?>
+session_start();
+session_regenerate_id();
+require('../inc/constant.inc.php');
+require('../inc/connection.inc.php');
+require('../inc/function.inc.php');
+require_once("../inc/smtp/class.phpmailer.php");
+isAdmin();
+?>
 <!doctype html>
 <html class="no-js" lang="">
    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
    <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>School Frontend | Developed by Dhrubo</title>
+      <title>Barishal Engineering College | Developed by Dhrubo</title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- Favicon -->
@@ -234,11 +234,16 @@
                </li>
                <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
-                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <ul class="nav sub-group-menu ">
                      <li class="nav-item">
                         <a href="students"
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All Students</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_students"
+                           class="nav-link "><i
+                           class="fas fa-angle-right"></i>Add new Student</a>
                      </li>
                   </ul>
                </li>

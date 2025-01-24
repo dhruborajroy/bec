@@ -4,7 +4,7 @@
    
    if(isset($_GET['id']) && $_GET['id']>0){
    	  $id=get_safe_value($_GET['id']);
-       $res=mysqli_query($con,"select * from `faculty` where md5(id)='$id'");
+       $res=mysqli_query($con,"select * from people where type='faculty' and md5(id)='$id'");
        if(mysqli_num_rows($res)>0){
            $row=mysqli_fetch_assoc($res);
            // Retrieve all variables
@@ -32,7 +32,7 @@
               'body'=>'You don\'t have the permission to access the location!',    
               'title'=>'Error',
            );
-           // redirect("index.php");
+           redirect("index.php");
      }
    }else{
      $_SESSION['TOASTR_MSG']=array(
@@ -40,7 +40,7 @@
         'body'=>'You don\'t have the permission to access the location!',    
         'title'=>'Error',
      );
-     // redirect("index.php");
+     redirect("index.php");
    }
    ?>
 <!--=================================inner-header -->
@@ -85,6 +85,7 @@
                   <div class="team-info">
                      <a href="#" class="team-name h4"><?php echo $row['name']?></a>
                      <h6 class="border-bottom text-primary my-3 pb-3"><?php echo $row['designation']?></h6>
+                     <h6 class="border-bottom text-primary my-3 pb-3">Department of <?php echo strtoupper($row['dept'])?> </h6>
                      <div class="d-flex">
                         <h6>Phone:</h6>
                         <label class="ml-3"><?php echo $row['phone']?></label>
