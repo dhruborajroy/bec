@@ -5,7 +5,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
-		mysqli_query($con,"delete from faculty where id='$id'");
+		mysqli_query($con,"delete from depts_lab_list where id='$id'");
 		redirect('faculty');
 	}
 	if($type=='active' || $type=='deactive'){
@@ -13,7 +13,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
 		if($type=='deactive'){
 			$status=0;
 		}
-		mysqli_query($con,"update faculty set status='$status' where id='$id'");
+		mysqli_query($con,"update depts_lab_list set status='$status' where id='$id'");
         redirect('./faculty');
 	}
 
@@ -41,8 +41,8 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                 </div>
                 <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
-                        <a href="manage_people"> <button type="submit"
-                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new about us</button>
+                        <a href="manage_depts"> <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new Departments</button>
                         </a>
                     </div>
                 </div>
@@ -54,12 +54,14 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                             <th>Title</th>
                             <th>Details</th>
                             <th>Action</th>
+                            <th>Action</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">
                         <?php 
                         
-                        $sql="select * from people";
+                        $sql="select * from depts_lab_list";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;
@@ -67,14 +69,16 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                         ?>
                         <tr role="row" class="odd">
                             <td class="sorting_1 dtr-control"><?php echo $row['name']?></td>
-                            <td class="sorting_1 dtr-control"><?php echo $row['email']?></td>
+                            <td class="sorting_1 dtr-control"><?php echo $row['name_bn']?></td>
+                            <td class="sorting_1 dtr-control"><?php echo $row['short_form']?></td>
+                            <td class="sorting_1 dtr-control"><?php echo $row['public_view'] == '1' ? 'Public' : 'Private'; ?></td>
                             <td>
                                 <div class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         <span class="flaticon-more-button-of-three-dots"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="manage_faculty.php?id=<?php echo $row['id']?>"><i
+                                        <a class="dropdown-item" href="manage_depts.php?id=<?php echo $row['id']?>"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
                                                 <?php if($row['status']=='0'){?>
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i

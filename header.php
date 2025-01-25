@@ -99,7 +99,7 @@ require('./inc/function.inc.php');
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="history.php">History</a></li>
-                        <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
+                        <!-- <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li> -->
                         <li><a class="dropdown-item" href="vision-mission.php">Vision and Mission</a></li>
                         <!-- <li><a class="dropdown-item" href="bec-organogram.php">Organogram</a></li> -->
                         <li><a class="dropdown-item" href="bec-at-glance.php">BEC at a Glance</a></li>

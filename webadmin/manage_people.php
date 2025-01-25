@@ -25,7 +25,7 @@ define('SECURE_ACCESS', true);
    $required="required";
    if(isset($_GET['id']) && $_GET['id']>0){
    	$id=get_safe_value($_GET['id']);
-       $res=mysqli_query($con,"select * from `faculty` where id='$id'");
+       $res=mysqli_query($con,"select * from `people` where id='$id'");
        if(mysqli_num_rows($res)>0){
            $row=mysqli_fetch_assoc($res);
            // Retrieve all variables
@@ -95,14 +95,14 @@ define('SECURE_ACCESS', true);
                    move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                            
                    $sql = "INSERT INTO people (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head, status) 
-                   VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '$status')";
+                   VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '1')";
                    if(mysqli_query($con,$sql)){
                        $_SESSION['TOASTR_MSG']=array(
                            'type'=>'success',
                            'body'=>'Data Inserted',
                            'title'=>'Success',
                        );
-                       // redirect('./about_us');
+                       redirect('people');
                    }else{
                        echo $sql;
                    }
@@ -132,7 +132,7 @@ define('SECURE_ACCESS', true);
                         'body'=>'Data updated',
                         'title'=>'Success',
                     );
-                    // redirect('./about_us');
+                    redirect('./people');
                 }else{
                     echo $sql;
                 }
@@ -146,7 +146,7 @@ define('SECURE_ACCESS', true);
                     'body'=>'Data updated',
                     'title'=>'Success',
                 );
-                // redirect('./about_us');
+               //  redirect('faculty');
             }else{
                 echo $sql;
             }
@@ -157,12 +157,12 @@ define('SECURE_ACCESS', true);
 <div class="dashboard-content-one">
 <!-- Breadcubs Area Start Here -->
 <div class="breadcrumbs-area">
-   <h3>Notice board</h3>
+   <h3>People</h3>
    <ul>
       <li>
          <a href="index.php">Home</a>
       </li>
-      <li>Notices </li>
+      <li>People </li>
    </ul>
 </div>
 <!-- Breadcubs Area End Here -->
@@ -202,9 +202,21 @@ define('SECURE_ACCESS', true);
                <label for="bio">Bio</label>
                <textarea class="full_input" name="bio" id="bio" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($bio); ?></textarea>
             </div>
-            <div class="col-12-xxxl col-lg-12 col-12 form-group">
-               <label for="Dept">Department</label>
-               <input type="text" name="dept" id="dept" value="<?php echo htmlspecialchars($dept); ?>" class="form-control">
+            
+            <div class="col-xl-12 col-lg-12 col-12 form-group">
+               <label>Department *</label>
+               <select class="form-control select2" name="dept" required>
+                     <?php
+                     $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
+                     while($row=mysqli_fetch_assoc($res)){
+                        if($row['short_form']==$dept_id){
+                           echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
+                        }else{
+                           echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
+                        }                                                        
+                     }
+                     ?>
+               </select>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="facebook">Facebook</label>
@@ -244,7 +256,7 @@ define('SECURE_ACCESS', true);
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="visibility">Visibility</label>
-               <select name="visibility" id="visibility" class="form-control">
+               <select name="visibility" id="visibility" class="form-control select2">
                   <option value="public" <?php echo $visibility == 'public' ? 'selected' : ''; ?>>Public</option>
                   <option value="private" <?php echo $visibility == 'private' ? 'selected' : ''; ?>>Private</option>
                </select>

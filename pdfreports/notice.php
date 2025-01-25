@@ -57,7 +57,7 @@ if(mysqli_num_rows($res)>0){
             </tr>';
             $html.='
                 <tr>
-                    <td align="left" colspan="7"  style="padding-top:30px">                    
+                    <td align="center" colspan="7"  style="padding-top:30px">                    
                     <u style="font-size:35px">'.$row['title'].'</u>
                     </td>
                 </tr>';

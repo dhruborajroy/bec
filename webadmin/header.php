@@ -122,6 +122,7 @@ isAdmin();
                      <div class="item-content">
                         <ul class="settings-list">
                            <li><a href="profile.php"><i class="flaticon-user"></i>My Profile</a></li>
+                           <li><a href="change_password.php"><i class="flaticon-user"></i>Change Password</a></li>
                            <li><a href="logout.php"><i class="flaticon-turn-off"></i>Log Out</a></li>
                         </ul>
                      </div>
@@ -233,6 +234,21 @@ isAdmin();
                   </ul>
                </li>
                <li class="nav-item sidebar-nav-item">
+                  <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Departments & Labs</span></a>
+                  <ul class="nav sub-group-menu <?php // echo  $application_group_active?>">
+                  <li class="nav-item">
+                        <a href="departments"
+                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="fas fa-angle-right"></i>Menus</a>
+                     </li>
+                     <li class="nav-item">
+                        <a href="manage_menus"
+                           class="nav-link <?php // echo  $application_sub_group_active?>"><i
+                           class="fas fa-angle-right"></i>Add New Menu</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
                   <ul class="nav sub-group-menu ">
                      <li class="nav-item">
@@ -315,13 +331,13 @@ isAdmin();
                         <a href="faculty"
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All
-                           Faculty</a>
+                           People</a>
                      </li>
                      <li class="nav-item">
-                        <a href="manage_faculty"
+                        <a href="manage_people"
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>
-                           Manage faculty</a>
+                           Add people</a>
                      </li>
                   </ul>
                </li>
