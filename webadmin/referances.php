@@ -138,7 +138,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
      </div>
     <!-- Teacher Table Area End Here -->
     <?php include('footer.php');?>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 
     <script>
         $(document).ready(function () {

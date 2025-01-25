@@ -22,6 +22,7 @@ define('SECURE_ACCESS', true);
    $dept_head = 0; 
    $dept="";
    $image="";
+   $type="";
    $required="required";
    if(isset($_GET['id']) && $_GET['id']>0){
    	$id=get_safe_value($_GET['id']);
@@ -48,6 +49,7 @@ define('SECURE_ACCESS', true);
            $visibility = $row['visibility'];
            $dept_head = $row['dept_head'];
            $image = $row['image'];
+           $type = $row['type'];
            $required="";
        }else{
            $_SESSION['TOASTR_MSG']=array(
@@ -202,7 +204,29 @@ define('SECURE_ACCESS', true);
                <label for="bio">Bio</label>
                <textarea class="full_input" name="bio" id="bio" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($bio); ?></textarea>
             </div>
-            
+            <div class="col-xl-12 col-lg-6 col-12 form-group">
+               <label> Type *</label>
+               <select class="select2" name="type" required>
+                     <?php
+                     $data=[
+                        'name'=>[
+                           'Faculty',
+                           'Officers',
+                           'Staff',
+                           'Former-faculty',
+                        ]
+                     ];
+                     $count=count($data['name']);
+                     for($i=0;$i<$count;$i++){
+                        if($data['name'][$i]==$type){
+                           echo "<option selected='selected' value=".$data['name'][$i].">".$data['name'][$i]."</option>";
+                        }else{
+                           echo "<option value=".$data['name'][$i].">".$data['name'][$i]."</option>";
+                        }                                                        
+                     }                                       
+               ?>
+               </select>
+            </div>
             <div class="col-xl-12 col-lg-12 col-12 form-group">
                <label>Department *</label>
                <select class="form-control select2" name="dept" required>

@@ -143,14 +143,39 @@ function getUsers(){
 	  return $row['number'];
 	}
 } 
-function gettotalstudent(){
+function gettotalstudent($gender=""){
 	global $con;
-	$sql="SELECT count(DISTINCT id) as student FROM applicants";
+    $add_sql="";
+    if($gender!=""){
+        $add_sql="where gender='$gender'";
+    }
+	$sql="SELECT count(DISTINCT id) as student FROM students $add_sql";
 	$res=mysqli_query($con,$sql);
 	while($row=mysqli_fetch_assoc($res)){
 	  return $row['student'];
 	}
 }
+function gettotalcount($type){
+	global $con;
+	$sql="SELECT count(DISTINCT id) as people FROM people where type='$type'";
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['people'];
+	}
+}
+
+function getTotalNotice(){
+	global $con;
+	$sql="SELECT count(DISTINCT id) as count FROM notice where status='1'";
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['count'];
+	}
+}
+
+
+
+
 
 
 function send_email_using_tamplate($name,$otp){

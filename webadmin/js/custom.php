@@ -1,10 +1,8 @@
 <?php 
+define('SECURE_ACCESS', true);
 include('../../inc/connection.inc.php');
-session_start();
+include('../../inc/function.inc.php');
 ?>
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
 function drawChart() {
     var data = google.visualization.arrayToDataTable([
         ['Exp Name', 'Amount'],
@@ -29,125 +27,176 @@ function drawChart() {
     chart.draw(data, options);
 }
 (function ($) {
+
 	/*-------------------------------------
+		  Doughnut Chart 
+	  -------------------------------------*/
+	if ($("#student-doughnut-chart").length) {
+	  var doughnutChartData = {
+		labels: ["Female Students", "Male Students"],
+		datasets: [{
+		  backgroundColor: ["#304ffe", "#ffa601"],
+		  data: [<?php echo gettotalstudent('female')."," .gettotalstudent('male')?>],
+		  label: "Total Students"
+		}, ]
+	  };
+	  var doughnutChartOptions = {
+		responsive: true,
+		maintainAspectRatio: false,
+		cutoutPercentage: 65,
+		rotation: -9.4,
+		animation: {
+		  duration: 2000
+		},
+		legend: {
+		  display: false
+		},
+		tooltips: {
+		  enabled: true
+		},
+	  };
+	  var studentCanvas = $("#student-doughnut-chart").get(0).getContext("2d");
+	  var studentChart = new Chart(studentCanvas, {
+		type: 'doughnut',
+		data: doughnutChartData,
+		options: doughnutChartOptions
+	  });
+	}
+    /*-------------------------------------
 		  Bar Chart 
 	  -------------------------------------*/
+	if ($("#expense-bar-chart").length) {
+
+	  var barChartData = {
+		labels: [
+            <?php 
+                $sql = "SELECT b.id AS batch_id, b.name AS batch_name, COUNT(s.id) AS student_count 
+                FROM batch b 
+                LEFT JOIN students s ON b.id = s.batch 
+                GROUP BY b.id, b.name 
+                ORDER BY b.numaric_value ASC";
     
-    if ($("#expense-bar-chart").length) {
-
-    var barChartData = {
-        labels: [
-            <?php
-            $last_date=cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
-            for ($i=1; $i <= $last_date; $i++) {
-                echo $i.',';
-            }
-        ?>
-        ],
-        datasets: [{
-        backgroundColor: ["#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01","#40dfcd", "#417dfc", "#ffaa01",],
-        data: [
-            <?php
-            // for ($i=1; $i <= $last_date; $i++) {
-            //     $a="";
-            //     if($i<10){
-            //         $a="0";
-            //     }
-            //     $sql="SELECT sum(amount) as amount FROM `expense` WHERE month='".date('m')."' AND date_id='$a$i' and year='".date('Y')."' order by date_id desc";
-            //     $res=mysqli_query($con,$sql);
-            //     while($row=mysqli_fetch_assoc($res)){
-            //         if($row['amount']>=0){
-            //             echo $row['amount'].',';
-            //         }else{
-            //             echo '0,';                                        
-            //         }
-            //     }
-            // }
-            ?>
-        ],
-        label: "Expenses (Daily)"
-        }, ]
-    };
-    var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: {
-            duration: 2000
-        },
-        scales: {
-
-        xAxes: [{
-            display: false,
-            maxBarThickness: 100,
-            ticks: {
-                display: false,
-                padding: 0,
-                fontColor: "#646464",
-                fontSize: 14,
-            },
-            gridLines: {
-                display: true,
-                color: '#e1e1e1',
-            }
-        }],
-        yAxes: [{
-            display: true,
-            ticks: {
-            display: true,
-            autoSkip: false,
-            fontColor: "#646464",
-            fontSize: 14,
-            stepSize: 5000,
-            padding: 20,
-            beginAtZero: true,
-            callback: function (value) {
-                var ranges = [{
-                    divider: 1e6,
-                    suffix: 'M'
-                },
-                {
-                    divider: 1e3,
-                    suffix: 'k'
+                $result = mysqli_query($con, $sql);
+                
+                $batches = []; // Initialize an empty array
+                
+                // Fetch data and store in an array
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $batches[] = $row;
+                    }
+                    mysqli_free_result($result);
+                } else {
+                    echo "Error: " . mysqli_error($con);
                 }
-                ];
+                
+                $lastBatch = end($batches); // Get the last element
 
-                function formatNumber(n) {
-                for (var i = 0; i < ranges.length; i++) {
-                    if (n >= ranges[i].divider) {
-                    return (n / ranges[i].divider).toString() + ranges[i].suffix;
+                foreach ($batches as $batch) {
+                    echo $batch['batch_name'];
+                    if ($batch !== $lastBatch) {
+                        echo " ,";
                     }
                 }
-                return n;
+                ?>],
+		datasets: [{
+		  backgroundColor: ["#40dfcd", "#417dfc", "#ffaa01"],
+		  data: [
+            <?php
+            $lastBatch = end($batches); // Get the last element
+
+            foreach ($batches as $batch) {
+                echo intval($batch['student_count']);
+                if ($batch !== $lastBatch) {
+                    echo " ,";
                 }
-                return formatNumber(value);
             }
-            },
-            gridLines: {
-            display: true,
-            drawBorder: true,
-            color: '#e1e1e1',
-            zeroLineColor: '#e1e1e1'
+            ?>],
+		  label: "Students (Batch Wise)"
+		}, ]
+	  };
+	  var barChartOptions = {
+		responsive: true,
+		maintainAspectRatio: false,
+		animation: {
+		  duration: 2
+		},
+		scales: {
 
-            }
-        }]
-        },
-        legend: {
-        display: false
-        },
-        tooltips: {
-        enabled: true
-        },
-        elements: {}
-    };
-    var expenseCanvas = $("#expense-bar-chart").get(0).getContext("2d");
-    var expenseChart = new Chart(expenseCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-    });
-    }
+		  xAxes: [{
+			display: false,
+			maxBarThickness: 100,
+			ticks: {
+			  display: false,
+			  padding: 0,
+			  fontColor: "#646464",
+			  fontSize: 14,
+			},
+			gridLines: {
+			  display: true,
+			  color: '#e1e1e1',
+			}
+		  }],
+		  yAxes: [{
+			display: true,
+			ticks: {
+			  display: true,
+			  autoSkip: false,
+			  fontColor: "#646464",
+			  fontSize: 14,
+			  stepSize: 2,
+			  padding: 20,
+			  beginAtZero: true,
+			  callback: function (value) {
+				var ranges = [{
+					divider: 1e6,
+					suffix: 'M'
+				  },
+				  {
+					divider: 1e3,
+					suffix: 'k'
+				  }
+				];
 
+				function formatNumber(n) {
+				  for (var i = 0; i < ranges.length; i++) {
+					if (n >= ranges[i].divider) {
+					  return (n / ranges[i].divider).toString() + ranges[i].suffix;
+					}
+				  }
+				  return n;
+				}
+				return formatNumber(value);
+			  }
+			},
+			gridLines: {
+			  display: true,
+			  drawBorder: true,
+			  color: '#e1e1e1',
+			  zeroLineColor: '#e1e1e1'
+
+			}
+		  }]
+		},
+		legend: {
+		  display: false
+		},
+		tooltips: {
+		  enabled: true
+		},
+		elements: {}
+	  };
+	  var expenseCanvas = $("#expense-bar-chart").get(0).getContext("2d");
+	  var expenseChart = new Chart(expenseCanvas, {
+		type: 'bar',
+		data: barChartData,
+		options: barChartOptions
+	  });
+	}
+    
+    
 })(jQuery);
+
 
 
 <?php 
