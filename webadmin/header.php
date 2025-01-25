@@ -39,11 +39,8 @@ isAdmin();
       <!-- Date Picker CSS -->
       <link rel="stylesheet" href="css/datepicker.min.css">
       <!-- font awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" />
-      <!-- summernote -->
-		<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/fontawesome.min.css" /> -->
 
-      <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
       <!-- Toastr CSS -->
       <link rel="stylesheet" href="css/toastr.min.css">
       <link rel="stylesheet" href="css/style.css">
@@ -239,12 +236,12 @@ isAdmin();
                   <li class="nav-item">
                         <a href="departments"
                            class="nav-link <?php // echo  $application_sub_group_active?>"><i
-                           class="fas fa-angle-right"></i>Menus</a>
+                           class="fas fa-angle-right"></i>Departments</a>
                      </li>
                      <li class="nav-item">
-                        <a href="manage_menus"
+                        <a href="labs"
                            class="nav-link <?php // echo  $application_sub_group_active?>"><i
-                           class="fas fa-angle-right"></i>Add New Menu</a>
+                           class="fas fa-angle-right"></i>Labs</a>
                      </li>
                   </ul>
                </li>
